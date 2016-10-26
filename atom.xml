@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ivyxjc</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ivyxjc.xyz/"/>
+  <updated>2016-10-26T11:27:35.514Z</updated>
+  <id>https://ivyxjc.xyz/</id>
+  
+  <author>
+    <name>Ivyxjc</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java8默认方法</title>
+    <link href="https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/"/>
+    <id>https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/</id>
+    <published>2016-10-25T16:00:00.000Z</published>
+    <updated>2016-10-26T11:27:35.514Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法</a></p>
+<p>archive留存:</p>
+<p><a href="https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法法|archiver.org </a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Java8引入的新的语言特性--默认方法 (他人的博客存档)
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
+    
+      <category term="archive" scheme="https://ivyxjc.xyz/tags/archive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不同容器类是否线程安全</title>
+    <link href="https://ivyxjc.xyz/2016/10/26/java/concurrency/2016-10-26-collections-thread-safety/"/>
+    <id>https://ivyxjc.xyz/2016/10/26/java/concurrency/2016-10-26-collections-thread-safety/</id>
+    <published>2016-10-25T16:00:00.000Z</published>
+    <updated>2016-10-26T11:51:11.278Z</updated>
+    
+    <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>非线程安全</th>
+<th>线程安全</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ArrayList</code><br> <code>LinkedList</code></td>
+<td><code>Vector</code></td>
+</tr>
+<tr>
+<td><code>HashMap</code></td>
+<td><code>HashTable</code></td>
+</tr>
+<tr>
+<td><code>StringBuilder</code></td>
+<td><code>StringBuffer</code></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>容器类线程安全, 非线程安全的区别可以用下面这个例子来表述:</p>
+<p>以<code>ArrayList</code>和<code>Vector</code>为例, 同时建立100个线程, 每个线程都向容器中添加100个元素,<br>最后统计容器内元素的数量, 对于<code>ArrayList</code>来说, 最后的量并不一定是10000个, 甚至会出现<code>IndexOutofBoundsException</code>, 但是对于<code>Vector</code>来说, 最后的量一定是10000个, 且不会出现任何异常. 这便是线程安全与非线程安全的一个直观表现.</p>
+<h3 id="非线程安全-多线程下不可使用"><a href="#非线程安全-多线程下不可使用" class="headerlink" title="非线程安全 != 多线程下不可使用"></a>非线程安全 != 多线程下不可使用</h3><p>非线程安全并不意味这不可以在多线程环境下不可使用, 上述问题出现在多个线程操作同一个<code>ArrayList</code>对象, 如果一个<code>ArrayList</code>只在一个线程下进行操作, 还是可以使用<code>ArrayList</code>的.</p>
+<h3 id="如何使非线程安全容器类变得线程安全"><a href="#如何使非线程安全容器类变得线程安全" class="headerlink" title="如何使非线程安全容器类变得线程安全"></a>如何使非线程安全容器类变得线程安全</h3><p>使用<code>List&lt;Object&gt; list = Collections.synchronizedList(new ArrayList&lt;Object&gt;());</code>可以使<code>list</code>变得线程安全.</p>
+<h2 id="造成非线程安全的原因"><a href="#造成非线程安全的原因" class="headerlink" title="造成非线程安全的原因"></a>造成非线程安全的原因</h2><p>一般来说, 造成非线程安全主要有两个原因:</p>
+<ol>
+<li>一个操作不是原子性操作</li>
+<li>执行过程中可能被中断</li>
+</ol>
+<p>查看<code>ArrayList</code>关于<code>add(E e)</code>的相关源码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></div><div class="line">    elementData[size++] = e;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</div><div class="line">        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ensureExplicitCapacity(minCapacity);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</div><div class="line">    modCount++;</div><div class="line"></div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</div><div class="line">        grow(minCapacity);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</div><div class="line">        newCapacity = minCapacity;</div><div class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</div><div class="line">        newCapacity = hugeCapacity(minCapacity);</div><div class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></div><div class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="list中含有null的原因"><a href="#list中含有null的原因" class="headerlink" title="list中含有null的原因"></a>list中含有null的原因</h3><p>即使不发生<code>IndexOutofBoundsException</code>异常, 最后的元素总数也不全都是100000个.<br>问题出现在<code>add(E e)</code>中的<code>elementData[size++] = e;</code>, 这句代码大致会分成以下两步:</p>
+<ol>
+<li><code>elementData[size] = e;</code></li>
+<li>`size++``</li>
+</ol>
+<p>如果线程A执行完第1步中断, 线程B开执行add, 执行到第1步时候因为<code>size</code>还未+1, 所以线程B仍会将e赋值给<code>elementData[size]</code>, 之后线程B执行+1操作, 线程A也执行+1操作, 也就意味着,并没有对 <code>elementData[size+1]</code>进行赋值, 其值也就为null.</p>
+<h3 id="元素总量不符合预期的原因"><a href="#元素总量不符合预期的原因" class="headerlink" title="元素总量不符合预期的原因"></a>元素总量不符合预期的原因</h3><p>根本原因在于自加操作不是原子性的</p>
+<p>线程B可能在线程A执行<code>size++</code>中间就开始同时执行<code>size++</code>, 这可能会使得线程A,B执行之初时size值相同, 导致元素总量小于预期.</p>
+<h3 id="IndexOutofBoundsException产生原因"><a href="#IndexOutofBoundsException产生原因" class="headerlink" title="IndexOutofBoundsException产生原因"></a>IndexOutofBoundsException产生原因</h3><p>ArrayList实际上也是一个数组, 只不过可以自动扩容, 出现<code>IndexOutofBoundsException</code>说明在某些情况下, 还未扩容, 就添加元素进去了.</p>
+<p>例如,线程A开始执行<code>add()</code>, 执行到<code>ensureExplicitCapacity(int minCapacity)</code>中的条件语句时, 如果此时添加的元素总数==数组的长度-1, 那么并不会执行扩容操作. 但是如果此时, 线程A中断, 线程B开始执行, 此时由于线程A还未添加元素, 元素总数仍==数组的长度-1, 添加元素, 此时若线程A恢复, 开始执行添加元素, 由于此时元素总数==数组的长度, 再向其中添加元素就会抛出<code>IndexOutofBoundsException</code>异常.</p>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><code>Vector</code>中关于<code>add(E e)</code>的相关源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">    modCount++;</div><div class="line">    ensureCapacityHelper(elementCount + <span class="number">1</span>);</div><div class="line">    elementData[elementCount++] = e;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;非线程安全&lt;/th&gt;
+&lt;th&gt;线程安全&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ArrayList&lt;/code&gt;&lt;br&gt; &lt;code&gt;LinkedList&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Vector&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;HashMap&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;HashTable&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;StringBuilder&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;StringBuffer&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
+    
+      <category term="oncurrency" scheme="https://ivyxjc.xyz/tags/oncurrency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/"/>
+    <id>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/</id>
+    <published>2016-10-24T16:00:00.000Z</published>
+    <updated>2016-10-26T12:20:09.282Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ensure a class has only one instance, and provide a global point of access to it.</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="最基本的实例"><a href="#最基本的实例" class="headerlink" title="最基本的实例"></a>最基本的实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Emperor</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Emperor emperor=<span class="keyword">new</span> Emperor();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Emperor</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Emperor <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> emperor;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Java Language Specification 中规定了一个类只会被初始化一次.所以该方法是<strong>线程安全</strong>的, 但是其在方法调用前就初始化了, 比较浪费资源.</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>只有一个实例, 节约内存空间, 减少了系统的性能开销, 如果某一个对象的产生需要比较多的资源时, 可以在启动时直接产生一个单例对象, 使其永驻内存.</li>
+<li>可以避免对资源的多重占用,</li>
+<li>可以在系统设置全局的访问点, 优化和共享资源访问.</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>单例模式一般没有接口, 扩展很困难, 除了修改代码基本上没有第二种途径可以实现</li>
+<li>单例模式不利于测试, 如果单例模式没有完成, 无法进行测试</li>
+<li>于单一职责原则相冲突.</li>
+</ol>
+<h3 id="其它实现方式"><a href="#其它实现方式" class="headerlink" title="其它实现方式"></a>其它实现方式</h3><h4 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)&#123;</div><div class="line">            instance=<span class="keyword">new</span> Singleton();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该实现只会在需要的时候才会进行初始化且是线程安全的, 但是每次调用<code>getInstance()</code>都会进行同步, 会浪费资源</p>
+<h4 id="Double-Check-Lock"><a href="#Double-Check-Lock" class="headerlink" title="Double Check Lock"></a>Double Check Lock</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonDCL</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDCL sInstance;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDCL</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDCL <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(sInstance==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">synchronized</span> (SingletonDCL.class)&#123;</div><div class="line">                <span class="keyword">if</span>(sInstance==<span class="keyword">null</span>)&#123;</div><div class="line">                    sInstance=<span class="keyword">new</span> SingletonDCL();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> sInstance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该实现只会在需要的时候才会进行初始化, 看似线程安全, 但实际并不是.</p>
+<p>假设线程A执行到<code>sInstance=new SingletonDCL()</code>, 这句代码并不是一个原子操作, 这句代码大致会被分为下面3个步骤来处理:</p>
+<ol>
+<li>给SingletonDCL的实例分配内存</li>
+<li>调用SingletonDCL的构造函数, 初始化成员字段</li>
+<li>将sInstance对象指向分配的内存空间 (此时sInstance就不是null了).</li>
+</ol>
+<p>如果这句代码严格按照这个顺序执行,该DCL单例模式便是线程安全的, 但是事实并非如此. 原因是JVM并没有保证上述第2和第3步的执行顺序.<br>也就是说执行步骤可能是1-3-2, 这种执行步骤就会出问题:</p>
+<p>当先执行第3步时, 另一个线程B开始执行<code>getInstance()</code>, 由于此时<code>sInstance</code>已经不是<code>null</code>了, 所以线程B会返回一个还未初始化的<code>sInstance</code>, 出现了错误.</p>
+<p>JVM1.5之后改善了这个问题, 在<code>sInstance</code>前加上<code>volatile</code>关键字可以确保线程安全.<br>即<code>private static volatile SingletonDCL sInstance;</code></p>
+<h4 id="静态内部类单例模式"><a href="#静态内部类单例模式" class="headerlink" title="静态内部类单例模式"></a>静态内部类单例模式</h4><p>DCL单例模式并不推荐使用,《Java并发编程实践》推荐使用下面这个方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonStatic</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonStatic</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonStatic <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> SingletonStaticHolder.sInstance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonStaticHolder</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonStatic sInstance=<span class="keyword">new</span> SingletonStatic();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一次加载时, 并不会初始化<code>sInstance</code>, 只在第一调用<code>getInstance()</code>时初始化, 且该方法是安全的.</p>
+<h4 id="枚举单例"><a href="#枚举单例" class="headerlink" title="枚举单例"></a>枚举单例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> SingletonEnum&#123;</div><div class="line">    INSTACNE;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;</div><div class="line">        StdOut.println(<span class="string">"doSomething..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>枚举单例模式有以下3个优点:</p>
+<ol>
+<li>线程安全, 任何时候都只有一个实例</li>
+<li>反序列化时, 都只会有一个实例</li>
+<li>可以防止反射攻击</li>
+</ol>
+<h3 id="选择哪一种实现方式"><a href="#选择哪一种实现方式" class="headerlink" title="选择哪一种实现方式"></a>选择哪一种实现方式</h3><p>无论采用哪一种实现方式, 都要确保线程安全, 防止反序列化导致重新生成实例对象等一些问题. 具体选择哪一种实现方式取决于项目本身.</p>
+<h3 id="关于序列化"><a href="#关于序列化" class="headerlink" title="关于序列化"></a>关于序列化</h3><p>除了枚举单例, 为了避免单例对象在被反序列化时重新生成对象, 必须加入以下方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="单例模式扩展"><a href="#单例模式扩展" class="headerlink" title="单例模式扩展"></a>单例模式扩展</h3><p>如果生成对象的数量不受限制, 可以直接使用<code>new</code>. 如果只要有一个对象, 使用单例模式即可, 若需要且只需要两个或者三个对象, 则可以按照下面的方法:</p>
+]]></content>
+    
+    <summary type="html">
+    
+      设计模式中的单例模式
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂方法模式</title>
+    <link href="https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/"/>
+    <id>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</id>
+    <published>2016-10-24T16:00:00.000Z</published>
+    <updated>2016-10-25T14:19:06.231Z</updated>
+    
+    <summary type="html">
+    
+      设计模式中的工厂方法模式
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象六大原则(下)</title>
+    <link href="https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/"/>
+    <id>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</id>
+    <published>2016-10-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
+<ol>
+<li>客户端不应该依赖它不需要的接口</li>
+<li>类似的依赖关系应该建立在最小的接口上</li>
+</ol>
+<p>接口应该细化, 不要使用过于臃肿的接口. 客户端需要什么接口就提供什么接口, 将不需要的接口剔除掉.<br>不要将太多的方法放在同一个接口之中.</p>
+<p>但是接口设计也要有度, 不可过度设计, 这个度往往根据经验和常识判断.</p>
+<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>Lswo of Demeter(LOD) , 最少知识f原则(Least Knowledge Principle))</p>
+<p>一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">朋友类: 出现在成员变量, 方法的输入输出参数中的类称为成员朋友类, 而出现在方法体内部的类不属于朋友类</div></pre></td></tr></table></figure>
+<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open Close Principle(OCP)</p>
+<p>一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBook</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NovelBook</span> <span class="keyword">implements</span> <span class="title">IBook</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;</div><div class="line">    <span class="keyword">private</span> String author;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NovelBook</span><span class="params">(String name, <span class="keyword">int</span> price, String author)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.name=name;</div><div class="line">        <span class="keyword">this</span>.price=price;</div><div class="line">        <span class="keyword">this</span>.author=author;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> price;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> author;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果将来要搞打折, 一般可能会用以下两个方法来解决:</p>
+<ol>
+<li>在接口中添加<code>getOffPrice()</code>方法. 但是这需要对每一个实现<code>IBook</code>接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.</li>
+<li>修改实现类, 直接在<code>getPrice()</code>中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.</li>
+<li>通过扩展实现</li>
+</ol>
+<p>添加一个子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">OffNovelBook</span> <span class="keyword">extends</span> <span class="title">NovelBook</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OffNovelBook</span><span class="params">(String name,<span class="keyword">int</span> price, String author)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(name,price,author);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> selfPrice=<span class="keyword">super</span>.getPrice();</div><div class="line">        <span class="keyword">int</span> offPrice=selfPrice*<span class="number">90</span>/<span class="number">100</span>;</div><div class="line">        <span class="keyword">return</span> offPrice;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      设计模式中的六大原则：接口隔离原则, 迪米特法则, 开闭原则
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面向对象六大原则(上)</title>
+    <link href="https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_1/"/>
+    <id>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_1/</id>
+    <published>2016-10-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>单一职责原则(Single Responsibility Principle,SRP)简而言之就是对于一个类或者接口, 引起其改变的应该只能有一个原因. 比如要将负责属性和行为的类分开.</p>
+<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><p>定义：所有引用基类的地方必须能透明地使用其子类的对象. 只要父类出现的地方, 子类就可以出现, 而且替换为子类不会产生任何错误或者一场. 但是反过来不一定可行.</p>
+<ol>
+<li>子类中可以增加自己特有的方法。</li>
+<li>当子类的方法重载父类的方法时，方法的前置条件（即方法的形参）要比父类方法的输入参数更宽松。</li>
+<li>当子类的方法实现父类的抽象方法时，方法的后置条件（即方法的返回值）要比父类更严格。</li>
+</ol>
+<h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><p>当子类的方法<strong>重载</strong>父类的方法时，方法的前置条件（即方法的形参）要比父类方法的输入参数更宽松。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Collection <span class="title">doSomething</span><span class="params">(HashMap map)</span></span>&#123;</div><div class="line">        StdOut.println(<span class="string">"父类被执行..."</span>);</div><div class="line">        <span class="keyword">return</span> map.values();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Collection <span class="title">doSomething</span><span class="params">(Map map)</span> </span>&#123;</div><div class="line">        StdOut.println(<span class="string">"子类被执行"</span>);</div><div class="line">        <span class="keyword">return</span> map.values();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>子类方法和父类方法, 方法名相同, 返回类型相同, 但是参数不同, 所以不是Override, 而是Overload. 在这种情况下, 如果传入<code>HashMap</code>, 子类的<code>doSomething()</code>不会被执行.<br>这是<strong>正确</strong>的, 因为子类并没有重写父类方法, 而是重载父类方法, 所以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    Father f=<span class="keyword">new</span> Father();</div><div class="line">    HashMap map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">父类被执行</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    <span class="comment">//父类出现的地方都可以被子类代替, 且不会改变逻辑</span></div><div class="line">    Son f=<span class="keyword">new</span> Son();</div><div class="line">    HashMap map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">父类被执行</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">   <span class="comment">//子类出现的地方, 父类不一定可以代替</span></div><div class="line">    Son f=<span class="keyword">new</span> Son();</div><div class="line">    Map map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">子类被执行</div></pre></td></tr></table></figure>
+<p>如果父类的前置条件(形参) 范围宽于子类则不正确.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Collection <span class="title">doSomething</span><span class="params">(Map map)</span></span>&#123;</div><div class="line">        StdOut.println(<span class="string">"父类被执行..."</span>);</div><div class="line">        <span class="keyword">return</span> map.values();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Collection <span class="title">doSomething</span><span class="params">(HashMap map)</span> </span>&#123;</div><div class="line">        StdOut.println(<span class="string">"子类被执行"</span>);</div><div class="line">        <span class="keyword">return</span> map.values();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    Father f=<span class="keyword">new</span> Father();</div><div class="line">    HashMap map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">父类被执行</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    <span class="comment">//父类出现的地方都可以用子类代替</span></div><div class="line">    Son f=<span class="keyword">new</span> Son();</div><div class="line">    HashMap map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">子类被执行</div></pre></td></tr></table></figure>
+<p>可以注意到, 此时子类方法被执行了, 而子类并没有重写父类的相应的方法, 而是重载了父类的方法.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    Son f=<span class="keyword">new</span> Son();</div><div class="line">    Map map=<span class="keyword">new</span> HashMap();</div><div class="line">    f.doSomething(map);</div><div class="line">&#125;</div><div class="line"></div><div class="line">父类被执行</div></pre></td></tr></table></figure>
+<h3 id="后置条件"><a href="#后置条件" class="headerlink" title="后置条件"></a>后置条件</h3><p>当子类的方法实现或覆写父类的抽象方法时，方法的后置条件（即方法的返回值）要比父类更严格或相同。</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
+<li>在类中调用其他类时务必使用其父类或者接口, 如果不能使用父类或者接口, 则说明类的设计已经违背了LSP原则.</li>
+<li>如果子类不能完整地实现父类的方法, 或者父类的一些方法在子类中完全和父类业务逻辑不同, 则建议不使用继承关系, 而是用依赖, 聚集, 组合等关系代替.</li>
+</ol>
+<h2 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h2><p>Dependence Inversion Principle</p>
+<ol>
+<li>高层模块不应该依赖低层模块</li>
+<li>抽象不应该依赖细节</li>
+<li>细节应依赖抽象</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高层模块</td>
+<td>原子逻辑再组装就是高层模块</td>
+</tr>
+<tr>
+<td>低层模块</td>
+<td>每一个逻辑的实现都由院子逻辑组成,不分割的原子逻辑就是低层模块</td>
+</tr>
+</tbody>
+</table>
+<p>对于Java来说.</p>
+<ol>
+<li>模块间的依赖通过抽象产生,实现类之间不发生直接依赖关系, 其依赖关系是通过接口或者抽象类产生的</li>
+<li>接口或这抽象类不依赖于实现类</li>
+<li>实现类依赖接口或抽象类</li>
+</ol>
+<p>这样也有利于并行开发, 即使只完成了一部分工作, 仍可以进行单元测试.</p>
+<p>这也符合现代开发的流程, 先写好单元测试类, 再写实现类.</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><ol>
+<li>每个类尽量都有接口或抽象类, 或者抽象类和接口都具备</li>
+<li>变量的表面类型尽量是接口或者是抽象类(如果使用类的clone方法, 就必须使用实现类)</li>
+<li>任何类都不应该从具体类中派生(如果实在需要继承自具体类, 尽量不要超过两层的继承)</li>
+<li>尽量不要覆写基类的方法</li>
+</ol>
+<p>总体而言, 依赖倒置原则是六大原则中最难实现的, 也是实现开闭原则的重要途径. 总体而言, 把握住<em>面向接口编程</em>即可.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      设计模式中的六大原则：单一职责原则, 里氏替换原则, 依赖倒置原则
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium + PhantomJS</title>
+    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/"/>
+    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-23-selenium/</id>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</div></pre></td></tr></table></figure>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</div><div class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></div><div class="line">        )</div><div class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      selenium可以调用浏览器来完成网页的读取
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="selenium" scheme="https://ivyxjc.xyz/tags/selenium/"/>
+    
+      <category term="PhantomJS" scheme="https://ivyxjc.xyz/tags/PhantomJS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ActionBar ShareActionProvider</title>
+    <link href="https://ivyxjc.xyz/2016/10/16/android/AndroidSamples/UI/2016-10-16-ActionBar-ShareActionProvider/"/>
+    <id>https://ivyxjc.xyz/2016/10/16/android/AndroidSamples/UI/2016-10-16-ActionBar-ShareActionProvider/</id>
+    <published>2016-10-15T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="添加share按钮"><a href="#添加share按钮" class="headerlink" title="添加share按钮"></a>添加share按钮</h2><p>添加share按钮的主要步骤:</p>
+<ol>
+<li>在ActionBar中添加share按钮</li>
+<li><p>从item中获取ShareActionProvider</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ShareActionProvider`&lt;br&gt; `mShareActionProvider=(ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);</div></pre></td></tr></table></figure>
+</li>
+<li><p>向<code>ShareActionProvider</code>中添加<code>itent</code></p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:support</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/share_item"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_share"</span></div><div class="line"></div><div class="line">        <span class="attr">support:actionProviderClass</span>=<span class="string">"android.support.v7.widget.ShareActionProvider"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"always"</span></div><div class="line">        /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">/MainActivity.java</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.main_menu,menu);</div><div class="line"></div><div class="line">    MenuItem shareItem=menu.findItem(R.id.share_item);</div><div class="line"></div><div class="line">    mShareActionProvider=(ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> currentViewPagerItem=((ViewPager)findViewById(R.id.viewPager)).getCurrentItem();</div><div class="line">    setShareItem(currentViewPagerItem);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onCreateOptionsMenu(menu);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setShareItem</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(mShareActionProvider!=<span class="keyword">null</span>)&#123;</div><div class="line">        ContentItem item=mItems.get(i);</div><div class="line"></div><div class="line">        Intent intent=item.getShareIntent(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">        mShareActionProvider.setShareIntent(intent);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Intent <span class="title">getShareIntent</span><span class="params">(Context context)</span></span>&#123;</div><div class="line">    Intent intent=<span class="keyword">new</span> Intent(Intent.ACTION_SEND);</div><div class="line"></div><div class="line">    <span class="keyword">switch</span> (contentType) &#123;</div><div class="line">        <span class="keyword">case</span> CONTENT_TYPE_IMAGE:</div><div class="line">            intent.setType(<span class="string">"image/jpg"</span>);</div><div class="line">            intent.putExtra(Intent.EXTRA_STREAM, getContentUri());</div><div class="line"></div><div class="line">            <span class="keyword">break</span>;</div><div class="line"></div><div class="line">        <span class="keyword">case</span> CONTENT_TYPE_TEXT:</div><div class="line">            intent.setType(<span class="string">"text/plain"</span>);</div><div class="line">            intent.putExtra(Intent.EXTRA_TEXT, context.getString(contentResourceId));</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">\<span class="function">ContentItem</span></div><div class="line"><span class="keyword">public</span> Uri <span class="title">getContentUri</span><span class="params">()</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!TextUtils.isEmpty(contentAssetFilePath))&#123;</div><div class="line">        <span class="keyword">return</span> Uri.parse(ShareProvider.CONTENT_URI+contentAssetFilePath);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><h3 id="确保ShareActionProvider和所在的ViewPager的CurrentItem-对应"><a href="#确保ShareActionProvider和所在的ViewPager的CurrentItem-对应" class="headerlink" title="确保ShareActionProvider和所在的ViewPager的CurrentItem()对应"></a>确保ShareActionProvider和所在的ViewPager的<code>CurrentItem()</code>对应</h3><p>很容易被<code>onCreateOptionsMenu()</code>中下列代码迷惑, 以为ShareActionProvider已经和<code>CurrentItem()</code>对应了.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> currentViewPagerItem=((ViewPager)findViewById(R.id.viewPager)).getCurrentItem();</div><div class="line">setShareItem(currentViewPagerItem);</div></pre></td></tr></table></figure>
+<p>事实上并没有, <code>onCreateOptionsMenu</code>方法只会在初始ActionBar时调用, 且也不会设置监听. 所以ShareActionProvider总是设置在了第一个item的intent中.</p>
+<p>所以需要添加以下代码, 确保切换页面后, ShareActionProvider和item仍是正确对应的.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mViewPager.setOnPageChangeListener(<span class="keyword">new</span> ViewPager.OnPageChangeListener() &#123;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset, <span class="keyword">int</span> positionOffsetPixels)</span> </span>&#123;</div><div class="line">      &#125;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">          setShareItem(position);</div><div class="line">      &#125;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h3 id="如何获取图片uri"><a href="#如何获取图片uri" class="headerlink" title="如何获取图片uri"></a>如何获取图片uri</h3><p>获取<code>/res/drawable</code>中图片的uri可以使用以下方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +</div><div class="line"> <span class="string">"://"</span> + getResources().getResourcePackageName(R.drawable.ic_launcher)</div><div class="line"> + <span class="string">'/'</span> + getResources().getResourceTypeName(R.drawable.ic_launcher) + <span class="string">'/'</span></div><div class="line"> +  getResources().getResourceEntryName(R.drawable.ic_launcher) );</div></pre></td></tr></table></figure>
+<p> 等价于</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Uri uri = Uri.parse(&quot;android.resource://your.package.here/drawable/image_name&quot;);</div></pre></td></tr></table></figure>
+<p>如果不正确,可以调用第一个方法,再使用Log自行查看准确的字符串.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      ShareActionProvider 可以非常方便地提供分享功能.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git相关命令及用法</title>
+    <link href="https://ivyxjc.xyz/2016/10/14/%E6%95%88%E7%8E%87/2016-10-14-git/"/>
+    <id>https://ivyxjc.xyz/2016/10/14/效率/2016-10-14-git/</id>
+    <published>2016-10-13T16:00:00.000Z</published>
+    <updated>2016-10-25T14:03:35.734Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="add-commit-push"><a href="#add-commit-push" class="headerlink" title="add commit push"></a>add commit push</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *</div><div class="line">git commit -m &quot;&quot;</div><div class="line">git push -u origin branch</div></pre></td></tr></table></figure>
+<p>在删除某一些文件时, 应使用<code>git add .</code>. 否则, 会出现<code>Changes not staged for commit: ...</code></p>
+<h2 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h2><p>子模块的操作必须非常小心, 因为其中有很多坑.</p>
+<h3 id="第一次添加子模块"><a href="#第一次添加子模块" class="headerlink" title="第一次添加子模块"></a>第一次添加子模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add git://github.com/chneukirchen/rack.git rack</div></pre></td></tr></table></figure>
+<h3 id="删除某个子模块"><a href="#删除某个子模块" class="headerlink" title="删除某个子模块"></a>删除某个子模块</h3><p><code>git rm --cached pathOfSubmodule</code></p>
+<p>然后删除_config.yml以及.git/config文件中相关记录</p>
+<h3 id="更改子模块后提交对子模块的修改"><a href="#更改子模块后提交对子模块的修改" class="headerlink" title="更改子模块后提交对子模块的修改"></a>更改子模块后提交对子模块的修改</h3><p>进入子模块所在目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add *</div><div class="line">git commit -m &quot;&quot;</div><div class="line">git push</div></pre></td></tr></table></figure>
+<h3 id="主项目提交"><a href="#主项目提交" class="headerlink" title="主项目提交"></a>主项目提交</h3><p>我们可以直接像正常git文件一样的流程进行提交, 但是如果我们忘记提交子模块的变动, 而新的项目和子模块的变动又相关. 那么其他人从远程仓库中clone的文件可能并不能正确运行(缺少必要的子模块变动).</p>
+<p>所有推荐使用以下两种方法：</p>
+<ol>
+<li><code>git push --recurse-submodules=check</code>. 若有子模块的变动没有推送, 那么该<code>push</code>会失败.</li>
+<li><code>git push --recurse-submodules=on-demand</code>. 若有子模块的变动没有推送, 那么它会先推送子模块的变动, 然后再推送主项目.</li>
+</ol>
+<h3 id="子模块的更新"><a href="#子模块的更新" class="headerlink" title="子模块的更新"></a>子模块的更新</h3><p>其他人如果对子模块进行了修改, 在<code>git pull</code>之后, 再调用以下<code>git submodule update</code>更新子模块.</p>
+<p>调用<code>git submodule update</code>也更新子模块的相关内容, 但是会将子模块留在一个称作 <code>detached HEAD</code>的状态. 这意味着没有本地工作分支（例如 “master”）跟踪改动。 所以你做的任何改动都不会被跟踪。即使你使用了commit提交了一些变动, 在你下一次使用<code>git submodule update</code>时, 这些变动会全部丢失.</p>
+<p>所以需要进入每一个你希望对其进行修改的子模块,<code>git checkout branchName</code>检出一个分支. 从远程仓库中更新本地文件时, 使用<code>git submodule update --remote --merge</code>, 也可以使用<code>--rebase</code>.</p>
+<p>如果忘记了<code>--rebase</code>或者<code>--merge</code>, git会将子模块更新为远程仓库上的状态, 而且该项目将再一次进入 <code>detached HEAD</code> 的状态. 解决方法：</p>
+<ol>
+<li>检出包含之前本地更改的分支</li>
+<li>然后手动的merge或者rebase任何一个远程分支即可.</li>
+</ol>
+<p>即使没有提交子模块的更改也某有问题, 此时git只会抓取更改, 而不会覆盖本地内容.</p>
+<h3 id="克隆一个带子模块的项目"><a href="#克隆一个带子模块的项目" class="headerlink" title="克隆一个带子模块的项目"></a>克隆一个带子模块的项目</h3><p>克隆一个包含子模块的项目.<code>git clone</code>下来之后, 该子模块并不会被clone下来.需要调用以下两个命令：</p>
+<ol>
+<li><code>git submodule init</code>来下载本地所需的子模块配置文件文件</li>
+<li><code>git submodule update</code>来下载主项目中列出的合适的子模块提交</li>
+</ol>
+<p>也可以使用<code>git clone --recursivegit clone --recursive https://github.com/...</code>自动地初始化并更新仓库中的每一个子模块.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      本文主要如何使用git, (1). 最基础的add,commit, push &lt;br&gt; (2). 如何在git文件中添加子模块
+    
+    </summary>
+    
+      <category term="效率" scheme="https://ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://ivyxjc.xyz/tags/faq/"/>
+    
+      <category term="git" scheme="https://ivyxjc.xyz/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 常用命令</title>
+    <link href="https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/"/>
+    <id>https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</id>
+    <published>2016-10-09T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><h3 id="解压-zip文件"><a href="#解压-zip文件" class="headerlink" title="解压.zip文件"></a>解压.zip文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip xxx.zip</div></pre></td></tr></table></figure>
+<h3 id="解压tar-gz文件"><a href="#解压tar-gz文件" class="headerlink" title="解压tar.gz文件"></a>解压tar.gz文件</h3><h2 id="文件相关操作"><a href="#文件相关操作" class="headerlink" title="文件相关操作"></a>文件相关操作</h2><h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>mv dir1 dir2</p>
+<h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="如何查看正在运行的进程"><a href="#如何查看正在运行的进程" class="headerlink" title="如何查看正在运行的进程"></a>如何查看正在运行的进程</h3><p><code>ps -A</code>:显示所有的进程<br><code>ps -a</code>:显示终端中包括其它用户的所有进程<br><code>ps -x</code>:显示无控制终端的进程</p>
+<h3 id="如何关闭正在运行的进程"><a href="#如何关闭正在运行的进程" class="headerlink" title="如何关闭正在运行的进程"></a>如何关闭正在运行的进程</h3><p><code>kill -9 xxx</code>:xxx是进程的PID</p>
+<h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>?pattern 光标下方查找<br>/pattern 光标上方查找</p>
+]]></content>
+    
+    <summary type="html">
+    
+      介绍与解压, 文件操作, vim操作, 进程等相关的bash命令.
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://ivyxjc.xyz/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="https://ivyxjc.xyz/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>numpy user guide</title>
+    <link href="https://ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/"/>
+    <id>https://ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</id>
+    <published>2016-10-03T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="numpy-tile-A-reprs"><a href="#numpy-tile-A-reprs" class="headerlink" title="numpy.tile(A,reprs)"></a>numpy.tile(A,reprs)</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html" target="_blank" rel="external">numpy.tile</a></p>
+<p><code>numpy.tile(A, reps)</code></p>
+<p>This method will return a <code>max( d, A.ndim)</code> dimension array( <code>d= len( reprs)</code>).</p>
+<p>if<code>d&gt; A.ndim</code>, it will return a d-dimension array by prepending new axes;<br><br>etc.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>))</div><div class="line"></div><div class="line">[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</div><div class="line"></div><div class="line"> [[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]</div></pre></td></tr></table></figure>
+<p>if <code>d&lt; A.ndim</code>, it will return an A.ndim-dimension array by prepending 1’s to it .<br>For example, for an shape of(1,2,2,3), a reps of (2,3) will be treated as (1,1,2,3)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;a = np.array([[[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">2</span>))</div><div class="line"></div><div class="line">[[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]]</div><div class="line"></div><div class="line">&gt;&gt;&gt;a = np.array([[[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]]])</div><div class="line">&gt;&gt;&gt;np.tile(a,(<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">[[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</div><div class="line"></div><div class="line">  [[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</div><div class="line">   [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]]</div></pre></td></tr></table></figure>
+<h2 id="numpy-sum"><a href="#numpy-sum" class="headerlink" title="numpy.sum()"></a>numpy.sum()</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html" target="_blank" rel="external">numpy.sum()</a></p>
+<p><code>numpy.sum(a, axis=None, dtype=None, out=None, keepdims=False)</code></p>
+<h2 id="axis"><a href="#axis" class="headerlink" title="axis"></a>axis</h2><p>This is a litte complex. <code>abs(axis)</code> must be less than <code>a.ndim</code>.</p>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/numpy_sum_1.jpg" alt=""><br><img src="http://oezmbgg4j.bkt.clouddn.com/numpy_sum_2.jpg" alt=""></p>
+<h3 id="dtype"><a href="#dtype" class="headerlink" title="dtype"></a>dtype</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>])</div><div class="line">&gt;&gt;&gt;print(b.sum(dtype=np.int32))</div><div class="line"></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<h3 id="keepdims"><a href="#keepdims" class="headerlink" title="keepdims"></a>keepdims</h3><p>If this parameter is assigned to True, the it will return an array as dimension with the size that input array is</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum())</div><div class="line"></div><div class="line"><span class="number">5.0</span></div><div class="line"></div><div class="line"></div><div class="line">&gt;&gt;&gt;b=np.array([[[<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.9</span>,<span class="number">1.5</span>,<span class="number">1.9</span>]]])</div><div class="line">&gt;&gt;&gt;print(b.sum(keepdims=<span class="keyword">True</span>))</div><div class="line"></div><div class="line">[[[ <span class="number">5.</span>]]]</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      numpy是常见的科学计算库. 本文介绍numpy库的一些常见操作,例如numpy.tile(A, reprs), numpy.sum(), axis,  dtye等相关知识.
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="numpy" scheme="https://ivyxjc.xyz/tags/numpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matplotlib绘制2D，3D散点图</title>
+    <link href="https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/"/>
+    <id>https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</id>
+    <published>2016-10-03T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#设置颜色</span></div><div class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</div><div class="line"><span class="comment">#各点大小的list</span></div><div class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</div><div class="line"><span class="comment"># print(sizeLab)</span></div><div class="line"></div><div class="line"><span class="comment">#设置横轴上下限</span></div><div class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置横轴标号</span></div><div class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></div><div class="line"></div><div class="line"><span class="comment">#设置记号的标签</span></div><div class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</div><div class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</div><div class="line"></div><div class="line"><span class="comment">#设置横纵坐标label</span></div><div class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</div><div class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</div><div class="line"></div><div class="line"></div><div class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">fig=plt.figure()</div><div class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置坐标</span></div><div class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</div><div class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</div><div class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</div><div class="line"></div><div class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</div><div class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</div><div class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</div><div class="line"></div><div class="line"><span class="comment">#设置图例</span></div><div class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      matplotlib是一个常见的绘图库. 本文介绍如何使用matplotlib 绘制2d散点图, 3d散点图.
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://ivyxjc.xyz/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ActionBarCompat</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">values/style</div><div class="line"></div><div class="line">## 布局文件中添加menu</div><div class="line"></div><div class="line">```xml</div><div class="line">menu_main.xml</div><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">      <span class="attr">xmlns:support</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_setting"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_settings"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_setting"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"never"</span>/&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_refresh"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_refresh"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_refresh"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"always"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Activity中添加menu"><a href="#Activity中添加menu" class="headerlink" title="Activity中添加menu"></a>Activity中添加menu</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">values/ids.xml</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"menu_location"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.menu_main,menu);</div><div class="line">    MenuItem location=menu.add(<span class="number">0</span>,R.id.menu_location,<span class="number">0</span>,<span class="string">"Location"</span>);</div><div class="line">    location.setIcon(R.mipmap.ic_action_location);</div><div class="line">    MenuItemCompat.setShowAsAction(location,MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</div><div class="line">        <span class="keyword">case</span> R.id.menu_setting:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_location:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_refresh:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="运行时更改菜单项"><a href="#运行时更改菜单项" class="headerlink" title="运行时更改菜单项"></a>运行时更改菜单项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mButtonForbidRefresh.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">               i++;</div><div class="line">               <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)</div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">true</span>);</div><div class="line">               <span class="keyword">else</span></div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">false</span>);</div><div class="line">               invalidateOptionsMenu();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPrepareOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">        menu.clear();</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        MenuItem item=menu.findItem(R.id.menu_refresh);</div><div class="line">        <span class="keyword">if</span>(mButtonForbidRefresh.isActivated())&#123;</div><div class="line">           item.setEnabled(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        MenuItem location = menu.add(<span class="number">0</span>, R.id.menu_location, Menu.CATEGORY_SECONDARY, <span class="string">"Location"</span>);</div><div class="line">        location.setIcon(R.mipmap.ic_action_location);</div><div class="line">        MenuItemCompat.setShowAsAction(location, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onPrepareOptionsMenu(menu);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>menu.findItem(int id)</code><br></p>
+<p><code>menu.getItem(int index)</code></p>
+<h3 id="onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别"><a href="#onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别" class="headerlink" title="onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别"></a>onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别</h3><p><code>onCreateOptionsMenu(Menu menu)</code>只在最初的时候会调用每次点击menu都会<br>调用一次<code>onPrepareOptionsMenu(Menu menu)</code>.使用<code>invalidateOptionsMenu()</code><br>会直接调用onPrepareOptionsMenu(Menu menu);</p>
+<h3 id="多个Activity共用相同ActionBar"><a href="#多个Activity共用相同ActionBar" class="headerlink" title="多个Activity共用相同ActionBar"></a>多个Activity共用相同ActionBar</h3><p>如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅<br>实现<code>onCreateOptionsMenu()</code> 和 <code>onOptionsItemSelected()</code>方法的 Activity。然后，<br>为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于<br>处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个<br>子级 Activity，请重写该 Activity 中的 <code>onCreateOptionsMenu()</code>。<br>调用 <code>super.onCreateOptionsMenu(menu)</code>，以便创建原始菜单项，<br>然后使用 <code>menu.add()</code> 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      如何添加菜单项, 以及如何在运行时更改菜单项.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义FloatingActionButtom</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-26T11:26:51.778Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="设置监听的最基本方式"><a href="#设置监听的最基本方式" class="headerlink" title="设置监听的最基本方式"></a>设置监听的最基本方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatingActionButton</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> <span class="keyword">implements</span> <span class="title">Checkable</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnCheckedChangeListener</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onCheckedChanged</span><span class="params">(FloatingActionButton fabView, <span class="keyword">boolean</span> isChecked)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> OnCheckedChangeListener mOnCheckedChangeListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnCheckedChangeListener</span><span class="params">(OnCheckedChangeListener listener)</span> </span>&#123;</div><div class="line">        mOnCheckedChangeListener = listener;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      如何自定义fab, 以及给其设置监听
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_control" scheme="https://ivyxjc.xyz/tags/android-control/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ActionBar PopuMenu</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</div><div class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</div><div class="line"></div><div class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</div><div class="line"></div><div class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</div><div class="line"></div><div class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</div><div class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</div><div class="line">                    <span class="keyword">case</span> R.id.menu_remove:</div><div class="line">                        adapter.remove(item);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        popup.show();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RecyclerView</title>
+    <link href="https://ivyxjc.xyz/2016/09/18/android/UI%E7%9B%B8%E5%85%B3/2016-09-18-RecyclerView/"/>
+    <id>https://ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</id>
+    <published>2016-09-17T16:00:00.000Z</published>
+    <updated>2016-10-26T11:26:51.793Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="RecyclerView-设置布局格式"><a href="#RecyclerView-设置布局格式" class="headerlink" title="RecyclerView 设置布局格式"></a>RecyclerView 设置布局格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mRecyclerView = (RecyclerView) v.findViewById(R.id.main_rv);</div><div class="line"><span class="comment">//类似ListView显示用</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(getActivity()));</div><div class="line"><span class="comment">//类似GridView显示</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> GridLayoutManager(getActivity(), <span class="number">3</span>));</div></pre></td></tr></table></figure>
+<h2 id="RecyclerView-添加适配器-以及设置item点击监听"><a href="#RecyclerView-添加适配器-以及设置item点击监听" class="headerlink" title="RecyclerView 添加适配器 以及设置item点击监听"></a>RecyclerView 添加适配器 以及设置item点击监听</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">MainFragment.java</div><div class="line"></div><div class="line">mRecyclerViewAdapter = <span class="keyword">new</span> RecyclerViewAdapter(getActivity(), mItems, <span class="keyword">false</span>);</div><div class="line">mRecyclerView.setAdapter(mRecyclerViewAdapter)</div><div class="line"></div><div class="line">mRecyclerViewAdapter.setOnItemClickListener(<span class="keyword">new</span> RecyclerViewAdapter.OnItemClickListenerCustom() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id, String title)</span> </span>&#123;</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"item is clicked "</span>);</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(getActivity(), MovieDetailActivity.class);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_ID, id);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_MOVIE_NAME, title);</div><div class="line">                startActivity(intent);</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"startactivity"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Context mContext;</div><div class="line">    <span class="keyword">private</span> List&lt;MainItem&gt; mData;</div><div class="line">    <span class="keyword">private</span> OnItemClickListenerCustom mCallback;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsComingMovie;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTotalCount;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListenerCustom</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id,String title)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter_Main</span><span class="params">(Context context, List&lt;MainItem&gt; data,</span></span></div><div class="line">                          <span class="keyword">boolean</span> isComingMovie) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.mContext = context;</div><div class="line">        <span class="keyword">this</span>.mData = data;</div><div class="line">        <span class="keyword">this</span>.mIsComingMovie=isComingMovie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">(ArrayList&lt;MainItem&gt; data)</span></span>&#123;</div><div class="line">        mData.addAll(data);</div><div class="line">        notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">        View view=LayoutInflater.from(mContext)</div><div class="line">                                .inflate(R.layout.item_movie_main,parent,<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ItemViewHolder(view);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        ((ItemViewHolder)holder).update();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mData.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnItemClickListener</span><span class="params">(OnItemClickListenerCustom listener)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.mCallback=listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ItemViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">        TextView textTitle;</div><div class="line">        MainItem mMainItem;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ItemViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(itemView);</div><div class="line">            <span class="comment">//初始化控件</span></div><div class="line">            itemView.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="comment">//填充控件</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(mCallback!=<span class="keyword">null</span>)&#123;</div><div class="line">                mCallback.onItemClick(mMainItem.getMovieId(),mMainItem.getTitle());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="RecyclerView上滑加载"><a href="#RecyclerView上滑加载" class="headerlink" title="RecyclerView上滑加载"></a>RecyclerView上滑加载</h2><p>要使FetchItemTask顺序执行, 否则当下滑触发loadMoreData时,会出现多个线程, 若这几个线程同时<br>进行,会导致数据重复加载, 这些Task顺序执行, 只需要在doInBackground执行时<br>检查star&lt;mRecyclerViewAdapter.getStart()<br>若true, 则说明该线程为重复线程 return null<br>否则, 执行之后的步骤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line">MainFragmentBase.java</div><div class="line">mRecyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> lastVisibleItem;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView,</span></span></div><div class="line">                                     <span class="keyword">int</span> newState) &#123;</div><div class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</div><div class="line">        <span class="keyword">if</span> (newState == SCROLL_STATE_IDLE</div><div class="line">                &amp;&amp; lastVisibleItem + <span class="number">1</span> &gt;= mRecyclerViewAdapter.getItemCount()</div><div class="line">                &amp;&amp; mRecyclerViewAdapter.getItemCount() &lt; mRecyclerViewAdapter.getTotalDataCount()) &#123;</div><div class="line">            loadMoreData(mRecyclerViewAdapter.getStart());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</div><div class="line">        LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();</div><div class="line">        lastVisibleItem = layoutManager.findLastVisibleItemPosition();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">MainFragment.java extentds MainFragmentBase.java</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">    <span class="keyword">new</span> FetchItemTask(<span class="number">0</span>).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">    <span class="keyword">new</span> FetchItemTask(start).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">FetchItemTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">ArrayList</span>&lt;<span class="title">MainItem</span>&gt;&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> start=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FetchItemTask</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">        start=s;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> ArrayList&lt;MainItem&gt; <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(start&lt;mRecyclerViewAdapter.getStart())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span></div><div class="line">        &#125;</div><div class="line">        DoubanFetchrMain df=<span class="keyword">new</span> DoubanFetchrMain(<span class="number">0</span>,start);</div><div class="line">        mRecyclerViewAdapter.setTotalCount(df.getTotalCount());</div><div class="line">        <span class="keyword">return</span> df.fetchItems_SubjectInTheaters();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(ArrayList&lt;MainItem&gt; galleryItems)</span></span>&#123;</div><div class="line">        mItems = galleryItems;</div><div class="line">        <span class="keyword">if</span>(mItems==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        mRecyclerViewAdapter.addMoreData(mItems,start);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>点击图片进入电影详细页面时, 如果在详细页面图片未加载时返回, 应用会crash.<br><br>应该是此时ImageView已经被销毁了, 所以就造成NullPointerException.</p>
+<p>官方说已经解决这个问题, 但是下面这写法还是会crash.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(getActivity())</div><div class="line">     .load(url)</div><div class="line">     .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">     .centerCrop()</div><div class="line">     .into(imageMovie);</div></pre></td></tr></table></figure>
+<p>更改为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">onCreate(...)&#123;</div><div class="line">mRequestManager=Glide.with(getActivity());</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line">mRequestManager</div><div class="line">           .load(url)</div><div class="line">           .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">           .centerCrop()</div><div class="line">           .into(imageMovie);</div></pre></td></tr></table></figure>
+<p>这样就不会出问题.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      如何使用RecyclerView
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+      <category term="android_RecyclerView" scheme="https://ivyxjc.xyz/tags/android-RecyclerView/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中ViewPager相关内容</title>
+    <link href="https://ivyxjc.xyz/2016/07/08/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-08-ViewPager/"/>
+    <id>https://ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/</id>
+    <published>2016-07-07T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="FragmenPagerAdapter和FragmenStatePagerAdapter"><a href="#FragmenPagerAdapter和FragmenStatePagerAdapter" class="headerlink" title="FragmenPagerAdapter和FragmenStatePagerAdapter"></a>FragmenPagerAdapter和FragmenStatePagerAdapter</h2><p>这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。</p>
+<p>使用FragmentStatePagerAdapter会销毁掉不需要的fragment。事务提交后，可以将fragment从activity的FragmentManager中彻底移除。该类名中的<code>state</code>表明在销毁fragment时，它会将<code>onSaveInstanceState(Bundle)</code>方法中的Bundle信息保存下来。用户切换回来时，保存的实例可用于回复生成新的fragment。</p>
+<p>FragmentPagerAdapter对于不再需要的fragment，FragmentManager选择调用事务的<code>detach(fragment)</code>方法，而非<code>remove(fragment)</code>方法，FragmentPagerAdapter只是销毁fragment的视图，但是仍将实例保留在FragmentManager中。FragmentPagerAdapter创建的fragment不会被销毁。</p>
+<p>由上可知:</p>
+<ol>
+<li>FragmentStatePagerAdapter更省内存，所以当有大量的fragment时，推荐使用FragmentStatePagerAdapter.</li>
+<li>但是当用户界面只有少量fragment时，推荐FragmentPagerAdapter。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      FragmenPagerAdapter和FragmenStatePagerAdapter这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_view_pager" scheme="https://ivyxjc.xyz/tags/android-view-pager/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简易计算器开发</title>
+    <link href="https://ivyxjc.xyz/2016/07/07/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91/2016-07-07-calculator/"/>
+    <id>https://ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/</id>
+    <published>2016-07-06T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="edittext按回车时操作"><a href="#edittext按回车时操作" class="headerlink" title="edittext按回车时操作"></a>edittext按回车时操作</h2><p>如果有多行，没一行有多个edittext时，按回车时，它会到下一行的edittext之中，而不是同一行的下一个editext。</p>
+<p>在xml文件中添加<code>imeOptions</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:inputType</span>=<span class="string">"numberDecimal"</span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/editText3"</span></div><div class="line">        <span class="attr">android:imeOptions</span>=<span class="string">"actionNext"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>但是最后一行按回车回跳到下一行最后一个而不是下一行第一个。</p>
+<h2 id="listfragment自己编写listadapter中button监听问题"><a href="#listfragment自己编写listadapter中button监听问题" class="headerlink" title="listfragment自己编写listadapter中button监听问题"></a>listfragment自己编写listadapter中button监听问题</h2><p>listfragment自己编写listadapter中button总是监听最后一个item中的数据。</p>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/listview_button_click.gif" alt=""></p>
+<p>无论点击哪一个button都是计算最后一行。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      一个简易计算器的开发中遇到的EditText相关问题.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_project" scheme="https://ivyxjc.xyz/tags/android-project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CriminalIntent程序中Fragment，Activity通信</title>
+    <link href="https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/"/>
+    <id>https://ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-Intent/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-26T11:26:51.821Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</div></pre></td></tr></table></figure>
+<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">FragmentCrime.java</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</div><div class="line">....</div><div class="line">....</div><div class="line">UUID crimeId=(UUID)getActivity()</div><div class="line">                .getIntent()</div><div class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</div></pre></td></tr></table></figure>
+<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
+<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ActivityCrime.java</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</div><div class="line">        UUID crimeId=(UUID)getIntent()</div><div class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">FragmentCrime.<span class="function">java</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> &#123;</div><div class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">     UUID crimeId=(UUID)getArguments()</div><div class="line">             .getSerializable(EXTRA_CRIME_ID);</div><div class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line"> &#125;</div><div class="line"></div><div class="line"></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</div><div class="line"></div><div class="line">     Bundle args=<span class="keyword">new</span> Bundle();</div><div class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</div><div class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</div><div class="line">     fragment.setArguments(args);</div><div class="line">     <span class="keyword">return</span> fragment;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      使用Intent在Fragment, Activity中进行通信.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
+    
+      <category term="android_activity" scheme="https://ivyxjc.xyz/tags/android-activity/"/>
+    
+      <category term="android_adapter" scheme="https://ivyxjc.xyz/tags/android-adapter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代理相关</title>
+    <link href="https://ivyxjc.xyz/2016/07/06/%E6%95%88%E7%8E%87/2016-07-06-proxy/"/>
+    <id>https://ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/</id>
+    <published>2016-07-05T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      各个服务使用代理的具体命令.
+    
+    </summary>
+    
+      <category term="效率" scheme="https://ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="faq" scheme="https://ivyxjc.xyz/tags/faq/"/>
+    
+  </entry>
+  
+</feed>
