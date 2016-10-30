@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ivyxjc.xyz/"/>
-  <updated>2016-10-26T11:51:11.278Z</updated>
+  <updated>2016-10-30T03:28:12.515Z</updated>
   <id>https://ivyxjc.xyz/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>爬取豆瓣--获取sitemap并解析</title>
+    <link href="https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/"/>
+    <id>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</id>
+    <published>2016-10-29T16:00:00.000Z</published>
+    <updated>2016-10-30T03:28:12.515Z</updated>
+    
+    <summary type="html">
+    
+      获取豆瓣sitemap的位置并下载至本地, 并将其中有关内容解析至mysql数据库中
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="xml" scheme="https://ivyxjc.xyz/tags/xml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java8默认方法</title>
+    <link href="https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/"/>
+    <id>https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/</id>
+    <published>2016-10-25T16:00:00.000Z</published>
+    <updated>2016-10-26T11:27:35.514Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法</a></p>
+<p>archive留存:</p>
+<p><a href="https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法法|archiver.org </a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Java8引入的新的语言特性--默认方法 (他人的博客存档)
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
+    
+      <category term="archive" scheme="https://ivyxjc.xyz/tags/archive/"/>
+    
+  </entry>
   
   <entry>
     <title>不同容器类是否线程安全</title>
@@ -103,33 +154,6 @@
       <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
     
       <category term="oncurrency" scheme="https://ivyxjc.xyz/tags/oncurrency/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8默认方法</title>
-    <link href="https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/"/>
-    <id>https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/</id>
-    <published>2016-10-25T16:00:00.000Z</published>
-    <updated>2016-10-26T11:27:35.514Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法</a></p>
-<p>archive留存:</p>
-<p><a href="https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法法|archiver.org </a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      Java8引入的新的语言特性--默认方法 (他人的博客存档)
-    
-    </summary>
-    
-      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
-    
-    
-      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
-    
-      <category term="archive" scheme="https://ivyxjc.xyz/tags/archive/"/>
     
   </entry>
   
@@ -375,6 +399,120 @@
   </entry>
   
   <entry>
+    <title>python socket边撤功能</title>
+    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-30-socket-basic/"/>
+    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-30-socket-basic/</id>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-10-30T07:01:22.689Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="socket编程基本思路"><a href="#socket编程基本思路" class="headerlink" title="socket编程基本思路"></a>socket编程基本思路</h2><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><ol>
+<li>创建socket, 绑定socket到本地IP, 端口 socket.socket(socket.AF_INET,socket.SOCK_STREAM), s.bind()</li>
+<li>开始监听连接  s.listen()</li>
+<li>进入循环，不断接受客户端的连接请求  s.accept()</li>
+<li>然后接收传来的数据，并发送给对方数据  s.recv() , s.sendall()</li>
+<li>传输完毕后，关闭socket  </li>
+</ol>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ol>
+<li>创建套接字，连接远端地址 #socket.socket(socket.AF_INET,socket.SOCK_STREAM), s.connect()</li>
+<li>连接后发送数据和接收数据 #s.sendall(), s.recv()</li>
+<li>传输完毕后，关闭套接字 #s.close()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 导入socket库:</span></div><div class="line"><span class="keyword">import</span> socket</div><div class="line"><span class="comment"># 创建一个socket:</span></div><div class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line"><span class="comment"># 建立连接:</span></div><div class="line">s.connect((<span class="string">'www.sina.com.cn'</span>, <span class="number">80</span>))</div></pre></td></tr></table></figure>
+<p>创建socket时, <code>socket.AF_INET</code>代表使用用IPv4协议, 如果要使用IPv6协议, 则指定<code>sockt.AF_INET6</code>, <code>SOCK_STREAM</code>指定使用面向流的TCP协议.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">s.send(<span class="string">b'GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 接收数据:</span></div><div class="line">buffer = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="comment"># 每次最多接收1k字节:</span></div><div class="line">    d = s.recv(<span class="number">1024</span>)</div><div class="line">    <span class="keyword">if</span> d:</div><div class="line">        buffer.append(d)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line">data = <span class="string">b''</span>.join(buffer)</div><div class="line"></div><div class="line"><span class="comment"># 关闭连接:</span></div><div class="line">s.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 处理数据</span></div><div class="line">header, html = response.split(<span class="string">b'\r\n\r\n'</span>, <span class="number">1</span>)</div><div class="line">print(header.decode(<span class="string">"utf-8"</span>))</div><div class="line">print(html.decode(<span class="string">'utf-8'</span>))</div></pre></td></tr></table></figure>
+<h2 id="socket-并发"><a href="#socket-并发" class="headerlink" title="socket 并发"></a>socket 并发</h2><p>socket默认是堵塞的, 当socket运行<code>connect()</code>,<code>recv()</code>方法时, 会堵塞直到运行完成.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sock = socket.socket()</div><div class="line"><span class="comment">#将socket设为非堵塞的self.</span></div><div class="line">sock.setblocking(<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<p>这样做会直接抛出一个<code>BlockingIOError</code>的异常, 详细内容<code>A non-blocking socket operation could not be completed immediately</code>,</p>
+<p><strong>解决方法</strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    sock.connect((<span class="string">'xkcd.com'</span>, <span class="number">80</span>))</div><div class="line"><span class="keyword">except</span> BlockingIOError:</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request = <span class="string">'GET &#123;&#125; HTTP/1.0\r\nHost: xkcd.com\r\n\r\n'</span>.format(url)</div><div class="line">encoded=request.encode(<span class="string">'ascii'</span>)</div><div class="line">sock.send(encoded)</div></pre></td></tr></table></figure>
+<p>也会抛出异常<code>OSError: A request to send or receive data was disallowed because the socket is not connected and (when sending on a datagram socket using a sendto call) no address was supplied</code></p>
+<p><strong>解决方法</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        sock.send(encoded)</div><div class="line">        <span class="keyword">break</span>  <span class="comment"># Done.</span></div><div class="line">    <span class="keyword">except</span> OSError <span class="keyword">as</span> e:</div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p>a</p>
+<p>n</p>
+]]></content>
+    
+    <summary type="html">
+    
+      利用socket获取网络内容
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="socket" scheme="https://ivyxjc.xyz/tags/socket/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用python解析xml, json</title>
+    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-29-xml-parse/"/>
+    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-29-xml-parse/</id>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-10-30T06:14:35.016Z</updated>
+    
+    <content type="html"><![CDATA[<p>##　ＸＭＬ</p>
+<p>需要到的库:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> xml.dom.minidom <span class="keyword">import</span> parse</div><div class="line"><span class="keyword">import</span> xml.dom.minidom</div></pre></td></tr></table></figure>
+<p>豆瓣sitemap_index.xml格式如下(2016-10-29):</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">sitemapindex</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sitemap</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">loc</span>&gt;</span>https://www.douban.com/sitemap3782.xml.gz<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">lastmod</span>&gt;</span>2016-10-19T10:36:31Z<span class="tag">&lt;/<span class="name">lastmod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">sitemap</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sitemap</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">loc</span>&gt;</span>https://www.douban.com/sitemap3783.xml.gz<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">lastmod</span>&gt;</span>2016-10-19T10:36:31Z<span class="tag">&lt;/<span class="name">lastmod</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">sitemap</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">sitemapindex</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>解析过程:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xml_str=douban.sitemap.xml</div><div class="line">DOMTree =xml.dom.minidom.parseString(xml_str)</div><div class="line">collection = DOMTree.documentElement</div><div class="line">elements=collection.getElementsByTagName(<span class="string">"sitemap"</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> elements:</div><div class="line">    a=i.getElementsByTagName(<span class="string">"loc"</span>)</div><div class="line">    print(a[<span class="number">0</span>].childNodes[<span class="number">0</span>].nodeValue)</div></pre></td></tr></table></figure>
+<p>##　Json</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">map=&#123;&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">3783</span>):</div><div class="line">    map[i]=<span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">"text\\sitemap_config.json"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">    json.dump(map,f)</div><div class="line"></div><div class="line">map=&#123;&#125;</div><div class="line"><span class="keyword">with</span> open(<span class="string">"text\\sitemap_config.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    map = json.load(f)</div><div class="line">print(map)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      以豆瓣sitemap.xml为例介绍利用python解析xml, json
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="xml" scheme="https://ivyxjc.xyz/tags/xml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos 64位更新glibc</title>
+    <link href="https://ivyxjc.xyz/2016/10/19/%E6%95%88%E7%8E%87/2016-10-29-centos-update-glibc/"/>
+    <id>https://ivyxjc.xyz/2016/10/19/效率/2016-10-29-centos-update-glibc/</id>
+    <published>2016-10-18T16:00:00.000Z</published>
+    <updated>2016-10-29T11:33:11.570Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载新版本glibc"><a href="#下载新版本glibc" class="headerlink" title="下载新版本glibc"></a>下载新版本glibc</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone git://sourceware.org/git/glibc.git</div><div class="line">cd glibc</div><div class="line">git checkout --track -b local_glibc-2.24 origin/release/2.24/master</div></pre></td></tr></table></figure>
+<h2 id="更新glibc"><a href="#更新glibc" class="headerlink" title="更新glibc"></a>更新glibc</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">../configure --prefix=/opt/glibc-2.24</div></pre></td></tr></table></figure>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="These-critical-programs-are-missing-or-too-old-as-ld"><a href="#These-critical-programs-are-missing-or-too-old-as-ld" class="headerlink" title="These critical programs are missing or too old: as ld"></a>These critical programs are missing or too old: as ld</h3><p>调用<code>ld -v</code>是2.20..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi ../configure</div></pre></td></tr></table></figure>
+<p>在文件中寻找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">case $ac_prog_version in</div><div class="line">&apos;&apos;) ac_prog_version=&quot;v. ?.??, bad&quot;; ac_verc_fail=yes;;</div><div class="line">2.1[3-9]*|2.2[0-9]*)</div></pre></td></tr></table></figure></p>
+<p><strong>|2.2[0-9]*</strong>是之后添加的, 因为该机的版本为2.20…, 意即该正则表达式要将本机的版本包括进去.</p>
+<h3 id="checking-installed-Linux-kernel-header-files…-missing-or-too-old"><a href="#checking-installed-Linux-kernel-header-files…-missing-or-too-old" class="headerlink" title="checking installed Linux kernel header files… missing or too old!"></a>checking installed Linux kernel header files… missing or too old!</h3>]]></content>
+    
+    <summary type="html">
+    
+      如何在centos中升级glibc
+    
+    </summary>
+    
+      <category term="效率" scheme="https://ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
+    
+    
+      <category term="linux" scheme="https://ivyxjc.xyz/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ActionBar ShareActionProvider</title>
     <link href="https://ivyxjc.xyz/2016/10/16/android/AndroidSamples/UI/2016-10-16-ActionBar-ShareActionProvider/"/>
     <id>https://ivyxjc.xyz/2016/10/16/android/AndroidSamples/UI/2016-10-16-ActionBar-ShareActionProvider/</id>
@@ -481,12 +619,13 @@
     <link href="https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/"/>
     <id>https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</id>
     <published>2016-10-09T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:22.000Z</updated>
+    <updated>2016-10-29T13:34:13.478Z</updated>
     
     <content type="html"><![CDATA[<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><h3 id="解压-zip文件"><a href="#解压-zip文件" class="headerlink" title="解压.zip文件"></a>解压.zip文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip xxx.zip</div></pre></td></tr></table></figure>
 <h3 id="解压tar-gz文件"><a href="#解压tar-gz文件" class="headerlink" title="解压tar.gz文件"></a>解压tar.gz文件</h3><h2 id="文件相关操作"><a href="#文件相关操作" class="headerlink" title="文件相关操作"></a>文件相关操作</h2><h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>mv dir1 dir2</p>
 <h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="如何查看正在运行的进程"><a href="#如何查看正在运行的进程" class="headerlink" title="如何查看正在运行的进程"></a>如何查看正在运行的进程</h3><p><code>ps -A</code>:显示所有的进程<br><code>ps -a</code>:显示终端中包括其它用户的所有进程<br><code>ps -x</code>:显示无控制终端的进程</p>
 <h3 id="如何关闭正在运行的进程"><a href="#如何关闭正在运行的进程" class="headerlink" title="如何关闭正在运行的进程"></a>如何关闭正在运行的进程</h3><p><code>kill -9 xxx</code>:xxx是进程的PID</p>
+<h3 id="显示端口占用情况"><a href="#显示端口占用情况" class="headerlink" title="显示端口占用情况"></a>显示端口占用情况</h3><p><code>lsof -i</code></p>
 <h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>?pattern 光标下方查找<br>/pattern 光标上方查找</p>
 ]]></content>
     
@@ -568,34 +707,6 @@
   </entry>
   
   <entry>
-    <title>ActionBar PopuMenu</title>
-    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/"/>
-    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</id>
-    <published>2016-09-23T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</div><div class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</div><div class="line"></div><div class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</div><div class="line"></div><div class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</div><div class="line"></div><div class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</div><div class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</div><div class="line">                    <span class="keyword">case</span> R.id.menu_remove:</div><div class="line">                        adapter.remove(item);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        popup.show();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
-    
-      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
-    
-  </entry>
-  
-  <entry>
     <title>自定义FloatingActionButtom</title>
     <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/"/>
     <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/</id>
@@ -654,6 +765,34 @@
   </entry>
   
   <entry>
+    <title>ActionBar PopuMenu</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</div><div class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</div><div class="line"></div><div class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</div><div class="line"></div><div class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</div><div class="line"></div><div class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</div><div class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</div><div class="line">                    <span class="keyword">case</span> R.id.menu_remove:</div><div class="line">                        adapter.remove(item);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        popup.show();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
+    
+  </entry>
+  
+  <entry>
     <title>RecyclerView</title>
     <link href="https://ivyxjc.xyz/2016/09/18/android/UI%E7%9B%B8%E5%85%B3/2016-09-18-RecyclerView/"/>
     <id>https://ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</id>
@@ -687,126 +826,6 @@
       <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
     
       <category term="android_RecyclerView" scheme="https://ivyxjc.xyz/tags/android-RecyclerView/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CriminalIntent程序中ViewPager相关内容</title>
-    <link href="https://ivyxjc.xyz/2016/07/08/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-08-ViewPager/"/>
-    <id>https://ivyxjc.xyz/2016/07/08/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-08-ViewPager/</id>
-    <published>2016-07-07T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="FragmenPagerAdapter和FragmenStatePagerAdapter"><a href="#FragmenPagerAdapter和FragmenStatePagerAdapter" class="headerlink" title="FragmenPagerAdapter和FragmenStatePagerAdapter"></a>FragmenPagerAdapter和FragmenStatePagerAdapter</h2><p>这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。</p>
-<p>使用FragmentStatePagerAdapter会销毁掉不需要的fragment。事务提交后，可以将fragment从activity的FragmentManager中彻底移除。该类名中的<code>state</code>表明在销毁fragment时，它会将<code>onSaveInstanceState(Bundle)</code>方法中的Bundle信息保存下来。用户切换回来时，保存的实例可用于回复生成新的fragment。</p>
-<p>FragmentPagerAdapter对于不再需要的fragment，FragmentManager选择调用事务的<code>detach(fragment)</code>方法，而非<code>remove(fragment)</code>方法，FragmentPagerAdapter只是销毁fragment的视图，但是仍将实例保留在FragmentManager中。FragmentPagerAdapter创建的fragment不会被销毁。</p>
-<p>由上可知:</p>
-<ol>
-<li>FragmentStatePagerAdapter更省内存，所以当有大量的fragment时，推荐使用FragmentStatePagerAdapter.</li>
-<li>但是当用户界面只有少量fragment时，推荐FragmentPagerAdapter。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      FragmenPagerAdapter和FragmenStatePagerAdapter这两者的区别主要在于卸载不再需要的fragment时采取的方法不同。
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_view_pager" scheme="https://ivyxjc.xyz/tags/android-view-pager/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简易计算器开发</title>
-    <link href="https://ivyxjc.xyz/2016/07/07/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91/2016-07-07-calculator/"/>
-    <id>https://ivyxjc.xyz/2016/07/07/android/开发实战/个人开发/2016-07-07-calculator/</id>
-    <published>2016-07-06T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="edittext按回车时操作"><a href="#edittext按回车时操作" class="headerlink" title="edittext按回车时操作"></a>edittext按回车时操作</h2><p>如果有多行，没一行有多个edittext时，按回车时，它会到下一行的edittext之中，而不是同一行的下一个editext。</p>
-<p>在xml文件中添加<code>imeOptions</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:inputType</span>=<span class="string">"numberDecimal"</span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/editText3"</span></div><div class="line">        <span class="attr">android:imeOptions</span>=<span class="string">"actionNext"</span>/&gt;</div></pre></td></tr></table></figure>
-<p>但是最后一行按回车回跳到下一行最后一个而不是下一行第一个。</p>
-<h2 id="listfragment自己编写listadapter中button监听问题"><a href="#listfragment自己编写listadapter中button监听问题" class="headerlink" title="listfragment自己编写listadapter中button监听问题"></a>listfragment自己编写listadapter中button监听问题</h2><p>listfragment自己编写listadapter中button总是监听最后一个item中的数据。</p>
-<p><img src="http://oezmbgg4j.bkt.clouddn.com/listview_button_click.gif" alt=""></p>
-<p>无论点击哪一个button都是计算最后一行。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      一个简易计算器的开发中遇到的EditText相关问题.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_project" scheme="https://ivyxjc.xyz/tags/android-project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代理相关</title>
-    <link href="https://ivyxjc.xyz/2016/07/06/%E6%95%88%E7%8E%87/2016-07-06-proxy/"/>
-    <id>https://ivyxjc.xyz/2016/07/06/效率/2016-07-06-proxy/</id>
-    <published>2016-07-05T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</div><div class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      各个服务使用代理的具体命令.
-    
-    </summary>
-    
-      <category term="效率" scheme="https://ivyxjc.xyz/categories/%E6%95%88%E7%8E%87/"/>
-    
-    
-      <category term="faq" scheme="https://ivyxjc.xyz/tags/faq/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CriminalIntent程序中ListFragment相关内容</title>
-    <link href="https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-ListFragment/"/>
-    <id>https://ivyxjc.xyz/2016/07/06/android/开发实战/AndroidBigNerdRanceGuide/CriminalIntent开发/2016-07-06-CriminalIntent-ListFragment/</id>
-    <published>2016-07-05T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="定制adapter"><a href="#定制adapter" class="headerlink" title="定制adapter"></a>定制adapter</h2><p>adapter负责：</p>
-<ol>
-<li>创建必要的视图对象</li>
-<li>用模型层数据填充视图对性爱那个</li>
-<li>将准备好的视图对象返回给ListView</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">内部类</div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Crime</span>&gt;</span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CrimeAdapter</span><span class="params">(ArrayList&lt;Crime&gt; crimes)</span></span>&#123;</div><div class="line">            <span class="keyword">super</span>(getActivity(),<span class="number">0</span>,crimes);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</div><div class="line">                convertView=getActivity()</div><div class="line">                        .getLayoutInflater()</div><div class="line">                        .inflate(R.layout.list_item_crime,<span class="keyword">null</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Crime c=(Crime)(getListAdapter()).getItem(position);</div><div class="line"></div><div class="line">            TextView titleTextView=(TextView)convertView.findViewById(R.id.list_item_crime_title_TextView);</div><div class="line">            TextView dateTextView=(TextView)convertView.findViewById(R.id.list_item_crime_date_TextView);</div><div class="line">            CheckBox solvedCheckBox=(CheckBox)convertView.findViewById(R.id.list_item_crime_isSolved_CheckBox);</div><div class="line"></div><div class="line">            solvedCheckBox.setChecked(c.isSolved());</div><div class="line">            <span class="keyword">return</span> convertView;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
-<p>注： 由于CheckBox默认是可聚焦的，也就是点击列表向会被解读为切换CheckBox的状态，因而无法触发<code>onListItemClick()</code>方法。解决方法：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/list_item_crime_isSolved_CheckBox"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line">    <span class="attr">android:focusable</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      如何使用ListFragment.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_adapter" scheme="https://ivyxjc.xyz/tags/android-adapter/"/>
     
   </entry>
   
