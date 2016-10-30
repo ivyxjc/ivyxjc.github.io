@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ivyxjc.xyz/"/>
-  <updated>2016-10-30T03:28:12.515Z</updated>
+  <updated>2016-10-30T08:47:19.614Z</updated>
   <id>https://ivyxjc.xyz/</id>
   
   <author>
@@ -16,11 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python 生成器函数</title>
+    <link href="https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/"/>
+    <id>https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/</id>
+    <published>2016-10-29T16:00:00.000Z</published>
+    <updated>2016-10-30T08:47:19.614Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><p>生成器函数是一个迭代器, 不过只能遍历其一次, 这是因为生成器并不将数据存储在内存之中, 生成完数据后并不保存下来.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">list=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>))</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</div><div class="line">    print(i)</div><div class="line"></div><div class="line">print(<span class="string">"---"</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</div><div class="line">    print(i)</div><div class="line"></div><div class="line">out:</div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">        <span class="keyword">yield</span> i*i</div><div class="line"></div><div class="line">gen=createGenerator()</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</div><div class="line">    print(i)</div><div class="line"></div><div class="line">print(<span class="string">"---"</span>)</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</div><div class="line">    print(i)</div><div class="line">out:</div><div class="line"></div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="number">9</span></div><div class="line"><span class="number">16</span></div><div class="line">---</div></pre></td></tr></table></figure>
+<p>另外, 生成器函数并不是再调用的时候就运行的, 而是在遍历的时候才运行, 在上述代码中, 意味着生成器函数是在执行<code>for i in gen:</code>时才运行的.</p>
+<p>解释器是如何知道其是生成器函数的呢? 当解释器发现<code>yield</code>时, 就知道该函数是个生成器函数, 它会设置一个标识来标记这一情况, 调用type也可以发现这一情况.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#生成器标志位在第5位</span></div><div class="line">generator_bit=<span class="number">1</span>&lt;&lt;<span class="number">5</span></div><div class="line">b=bool(createGenerator.__code__.co_flags &amp; generator_bit)</div><div class="line">print(b)</div><div class="line">print(type(createGenerator))</div><div class="line"></div><div class="line">out:</div><div class="line"><span class="keyword">True</span></div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generator</span>'&gt;</span></div></pre></td></tr></table></figure>
+<p>参考文章:</p>
+<p><a href="http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html" target="_blank" rel="external">A Web Crawler With asyncio Coroutines</a></p>
+<p><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do" target="_blank" rel="external">What does the yield keyword do</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      python中生成器函数
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="generators" scheme="https://ivyxjc.xyz/tags/generators/"/>
+    
+  </entry>
+  
+  <entry>
     <title>爬取豆瓣--获取sitemap并解析</title>
     <link href="https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/"/>
     <id>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</id>
     <published>2016-10-29T16:00:00.000Z</published>
-    <updated>2016-10-30T03:28:12.515Z</updated>
+    <updated>2016-10-30T12:52:12.286Z</updated>
     
     <summary type="html">
     
@@ -158,26 +191,6 @@
   </entry>
   
   <entry>
-    <title>工厂方法模式</title>
-    <link href="https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/"/>
-    <id>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</id>
-    <published>2016-10-24T16:00:00.000Z</published>
-    <updated>2016-10-25T14:19:06.231Z</updated>
-    
-    <summary type="html">
-    
-      设计模式中的工厂方法模式
-    
-    </summary>
-    
-      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
-    
-    
-      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>单例模式</title>
     <link href="https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/"/>
     <id>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/</id>
@@ -229,6 +242,26 @@
     <summary type="html">
     
       设计模式中的单例模式
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="设计模式" scheme="https://ivyxjc.xyz/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂方法模式</title>
+    <link href="https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/"/>
+    <id>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</id>
+    <published>2016-10-24T16:00:00.000Z</published>
+    <updated>2016-10-25T14:19:06.231Z</updated>
+    
+    <summary type="html">
+    
+      设计模式中的工厂方法模式
     
     </summary>
     
@@ -369,36 +402,6 @@
   </entry>
   
   <entry>
-    <title>selenium + PhantomJS</title>
-    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/"/>
-    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-23-selenium/</id>
-    <published>2016-10-22T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</div></pre></td></tr></table></figure>
-<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</div><div class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></div><div class="line">        )</div><div class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      selenium可以调用浏览器来完成网页的读取
-    
-    </summary>
-    
-      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
-    
-    
-      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
-    
-      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
-    
-      <category term="selenium" scheme="https://ivyxjc.xyz/tags/selenium/"/>
-    
-      <category term="PhantomJS" scheme="https://ivyxjc.xyz/tags/PhantomJS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python socket边撤功能</title>
     <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-30-socket-basic/"/>
     <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-30-socket-basic/</id>
@@ -446,6 +449,36 @@
       <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
     
       <category term="socket" scheme="https://ivyxjc.xyz/tags/socket/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium + PhantomJS</title>
+    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/"/>
+    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-23-selenium/</id>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</div></pre></td></tr></table></figure>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</div><div class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></div><div class="line">        )</div><div class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      selenium可以调用浏览器来完成网页的读取
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="selenium" scheme="https://ivyxjc.xyz/tags/selenium/"/>
+    
+      <category term="PhantomJS" scheme="https://ivyxjc.xyz/tags/PhantomJS/"/>
     
   </entry>
   
@@ -619,14 +652,16 @@
     <link href="https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/"/>
     <id>https://ivyxjc.xyz/2016/10/10/Linux/2016-10-10-linux-bash/</id>
     <published>2016-10-09T16:00:00.000Z</published>
-    <updated>2016-10-29T13:34:13.478Z</updated>
+    <updated>2016-10-30T14:49:55.921Z</updated>
     
     <content type="html"><![CDATA[<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><h3 id="解压-zip文件"><a href="#解压-zip文件" class="headerlink" title="解压.zip文件"></a>解压.zip文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip xxx.zip</div></pre></td></tr></table></figure>
-<h3 id="解压tar-gz文件"><a href="#解压tar-gz文件" class="headerlink" title="解压tar.gz文件"></a>解压tar.gz文件</h3><h2 id="文件相关操作"><a href="#文件相关操作" class="headerlink" title="文件相关操作"></a>文件相关操作</h2><h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>mv dir1 dir2</p>
+<h3 id="解压tar-gz文件"><a href="#解压tar-gz文件" class="headerlink" title="解压tar.gz文件"></a>解压tar.gz文件</h3><h2 id="文件相关操作"><a href="#文件相关操作" class="headerlink" title="文件相关操作"></a>文件相关操作</h2><h3 id="空间使用情况"><a href="#空间使用情况" class="headerlink" title="空间使用情况"></a>空间使用情况</h3><p><code>df -h</code>: 查看空间使用情况</p>
+<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>mv dir1 dir2</p>
 <h2 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h2><h3 id="如何查看正在运行的进程"><a href="#如何查看正在运行的进程" class="headerlink" title="如何查看正在运行的进程"></a>如何查看正在运行的进程</h3><p><code>ps -A</code>:显示所有的进程<br><code>ps -a</code>:显示终端中包括其它用户的所有进程<br><code>ps -x</code>:显示无控制终端的进程</p>
 <h3 id="如何关闭正在运行的进程"><a href="#如何关闭正在运行的进程" class="headerlink" title="如何关闭正在运行的进程"></a>如何关闭正在运行的进程</h3><p><code>kill -9 xxx</code>:xxx是进程的PID</p>
 <h3 id="显示端口占用情况"><a href="#显示端口占用情况" class="headerlink" title="显示端口占用情况"></a>显示端口占用情况</h3><p><code>lsof -i</code></p>
 <h2 id="vim相关操作"><a href="#vim相关操作" class="headerlink" title="vim相关操作"></a>vim相关操作</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>?pattern 光标下方查找<br>/pattern 光标上方查找</p>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p><code>crontab -l</code>:可以查看正在进行的定时任务<br><code>crontab -e</code>:可以进行修改<br><code>/etc/init.d/cron restart</code>: 重新该服务</p>
 ]]></content>
     
     <summary type="html">
@@ -732,6 +767,34 @@
   </entry>
   
   <entry>
+    <title>ActionBar PopuMenu</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</div><div class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</div><div class="line"></div><div class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</div><div class="line"></div><div class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</div><div class="line"></div><div class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</div><div class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</div><div class="line">                    <span class="keyword">case</span> R.id.menu_remove:</div><div class="line">                        adapter.remove(item);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        popup.show();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ActionBarCompat</title>
     <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
     <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
@@ -761,71 +824,6 @@
       <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
     
       <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ActionBar PopuMenu</title>
-    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/"/>
-    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</id>
-    <published>2016-09-23T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</div><div class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</div><div class="line"></div><div class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</div><div class="line"></div><div class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</div><div class="line"></div><div class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</div><div class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</div><div class="line">                    <span class="keyword">case</span> R.id.menu_remove:</div><div class="line">                        adapter.remove(item);</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        popup.show();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
-    
-      <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RecyclerView</title>
-    <link href="https://ivyxjc.xyz/2016/09/18/android/UI%E7%9B%B8%E5%85%B3/2016-09-18-RecyclerView/"/>
-    <id>https://ivyxjc.xyz/2016/09/18/android/UI相关/2016-09-18-RecyclerView/</id>
-    <published>2016-09-17T16:00:00.000Z</published>
-    <updated>2016-10-26T11:26:51.793Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="RecyclerView-设置布局格式"><a href="#RecyclerView-设置布局格式" class="headerlink" title="RecyclerView 设置布局格式"></a>RecyclerView 设置布局格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mRecyclerView = (RecyclerView) v.findViewById(R.id.main_rv);</div><div class="line"><span class="comment">//类似ListView显示用</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(getActivity()));</div><div class="line"><span class="comment">//类似GridView显示</span></div><div class="line">mRecyclerView.setLayoutManager(<span class="keyword">new</span> GridLayoutManager(getActivity(), <span class="number">3</span>));</div></pre></td></tr></table></figure>
-<h2 id="RecyclerView-添加适配器-以及设置item点击监听"><a href="#RecyclerView-添加适配器-以及设置item点击监听" class="headerlink" title="RecyclerView 添加适配器 以及设置item点击监听"></a>RecyclerView 添加适配器 以及设置item点击监听</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">MainFragment.java</div><div class="line"></div><div class="line">mRecyclerViewAdapter = <span class="keyword">new</span> RecyclerViewAdapter(getActivity(), mItems, <span class="keyword">false</span>);</div><div class="line">mRecyclerView.setAdapter(mRecyclerViewAdapter)</div><div class="line"></div><div class="line">mRecyclerViewAdapter.setOnItemClickListener(<span class="keyword">new</span> RecyclerViewAdapter.OnItemClickListenerCustom() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id, String title)</span> </span>&#123;</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"item is clicked "</span>);</div><div class="line">                Intent intent = <span class="keyword">new</span> Intent(getActivity(), MovieDetailActivity.class);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_ID, id);</div><div class="line">                intent.putExtra(TransferKeys.MAIN_MOVIE_DETAIL_MOVIE_NAME, title);</div><div class="line">                startActivity(intent);</div><div class="line">                Log.i(LogKeys.MAIN_FRAGMENT, <span class="string">"startactivity"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Context mContext;</div><div class="line">    <span class="keyword">private</span> List&lt;MainItem&gt; mData;</div><div class="line">    <span class="keyword">private</span> OnItemClickListenerCustom mCallback;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsComingMovie;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTotalCount;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListenerCustom</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(String id,String title)</span></span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RecyclerViewAdapter_Main</span><span class="params">(Context context, List&lt;MainItem&gt; data,</span></span></div><div class="line">                          <span class="keyword">boolean</span> isComingMovie) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.mContext = context;</div><div class="line">        <span class="keyword">this</span>.mData = data;</div><div class="line">        <span class="keyword">this</span>.mIsComingMovie=isComingMovie;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">(ArrayList&lt;MainItem&gt; data)</span></span>&#123;</div><div class="line">        mData.addAll(data);</div><div class="line">        notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">        View view=LayoutInflater.from(mContext)</div><div class="line">                                .inflate(R.layout.item_movie_main,parent,<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ItemViewHolder(view);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        ((ItemViewHolder)holder).update();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mData.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnItemClickListener</span><span class="params">(OnItemClickListenerCustom listener)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.mCallback=listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ItemViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">        TextView textTitle;</div><div class="line">        MainItem mMainItem;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ItemViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(itemView);</div><div class="line">            <span class="comment">//初始化控件</span></div><div class="line">            itemView.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="comment">//填充控件</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">            <span class="keyword">if</span>(mCallback!=<span class="keyword">null</span>)&#123;</div><div class="line">                mCallback.onItemClick(mMainItem.getMovieId(),mMainItem.getTitle());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="RecyclerView上滑加载"><a href="#RecyclerView上滑加载" class="headerlink" title="RecyclerView上滑加载"></a>RecyclerView上滑加载</h2><p>要使FetchItemTask顺序执行, 否则当下滑触发loadMoreData时,会出现多个线程, 若这几个线程同时<br>进行,会导致数据重复加载, 这些Task顺序执行, 只需要在doInBackground执行时<br>检查star&lt;mRecyclerViewAdapter.getStart()<br>若true, 则说明该线程为重复线程 return null<br>否则, 执行之后的步骤</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line">MainFragmentBase.java</div><div class="line">mRecyclerView.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> lastVisibleItem;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView,</span></span></div><div class="line">                                     <span class="keyword">int</span> newState) &#123;</div><div class="line">        <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</div><div class="line">        <span class="keyword">if</span> (newState == SCROLL_STATE_IDLE</div><div class="line">                &amp;&amp; lastVisibleItem + <span class="number">1</span> &gt;= mRecyclerViewAdapter.getItemCount()</div><div class="line">                &amp;&amp; mRecyclerViewAdapter.getItemCount() &lt; mRecyclerViewAdapter.getTotalDataCount()) &#123;</div><div class="line">            loadMoreData(mRecyclerViewAdapter.getStart());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</div><div class="line">        LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();</div><div class="line">        lastVisibleItem = layoutManager.findLastVisibleItemPosition();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">MainFragment.java extentds MainFragmentBase.java</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">    <span class="keyword">new</span> FetchItemTask(<span class="number">0</span>).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadMoreData</span><span class="params">(<span class="keyword">int</span> start)</span> </span>&#123;</div><div class="line">    <span class="keyword">new</span> FetchItemTask(start).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">FetchItemTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">ArrayList</span>&lt;<span class="title">MainItem</span>&gt;&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> start=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FetchItemTask</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">        start=s;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> ArrayList&lt;MainItem&gt; <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(start&lt;mRecyclerViewAdapter.getStart())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span></div><div class="line">        &#125;</div><div class="line">        DoubanFetchrMain df=<span class="keyword">new</span> DoubanFetchrMain(<span class="number">0</span>,start);</div><div class="line">        mRecyclerViewAdapter.setTotalCount(df.getTotalCount());</div><div class="line">        <span class="keyword">return</span> df.fetchItems_SubjectInTheaters();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(ArrayList&lt;MainItem&gt; galleryItems)</span></span>&#123;</div><div class="line">        mItems = galleryItems;</div><div class="line">        <span class="keyword">if</span>(mItems==<span class="keyword">null</span>)&#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        mRecyclerViewAdapter.addMoreData(mItems,start);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>点击图片进入电影详细页面时, 如果在详细页面图片未加载时返回, 应用会crash.<br><br>应该是此时ImageView已经被销毁了, 所以就造成NullPointerException.</p>
-<p>官方说已经解决这个问题, 但是下面这写法还是会crash.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Glide.with(getActivity())</div><div class="line">     .load(url)</div><div class="line">     .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">     .centerCrop()</div><div class="line">     .into(imageMovie);</div></pre></td></tr></table></figure>
-<p>更改为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">onCreate(...)&#123;</div><div class="line">mRequestManager=Glide.with(getActivity());</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line">mRequestManager</div><div class="line">           .load(url)</div><div class="line">           .diskCacheStrategy(DiskCacheStrategy.ALL)</div><div class="line">           .centerCrop()</div><div class="line">           .into(imageMovie);</div></pre></td></tr></table></figure>
-<p>这样就不会出问题.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      如何使用RecyclerView
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
-    
-      <category term="android_RecyclerView" scheme="https://ivyxjc.xyz/tags/android-RecyclerView/"/>
     
   </entry>
   
