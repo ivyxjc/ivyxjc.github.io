@@ -49,15 +49,15 @@
   </entry>
   
   <entry>
-    <title>爬取豆瓣--获取sitemap并解析</title>
+    <title>爬取豆瓣</title>
     <link href="https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/"/>
     <id>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</id>
     <published>2016-10-29T16:00:00.000Z</published>
-    <updated>2016-10-30T12:52:12.286Z</updated>
+    <updated>2016-11-05T09:41:11.031Z</updated>
     
     <summary type="html">
     
-      获取豆瓣sitemap的位置并下载至本地, 并将其中有关内容解析至mysql数据库中
+      获取豆瓣的内容并下载至本地, 并将其中有关内容解析至mysql数据库中
     
     </summary>
     
@@ -69,33 +69,6 @@
       <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
     
       <category term="xml" scheme="https://ivyxjc.xyz/tags/xml/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8默认方法</title>
-    <link href="https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/"/>
-    <id>https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/</id>
-    <published>2016-10-25T16:00:00.000Z</published>
-    <updated>2016-10-26T11:27:35.514Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法</a></p>
-<p>archive留存:</p>
-<p><a href="https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法法|archiver.org </a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      Java8引入的新的语言特性--默认方法 (他人的博客存档)
-    
-    </summary>
-    
-      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
-    
-    
-      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
-    
-      <category term="archive" scheme="https://ivyxjc.xyz/tags/archive/"/>
     
   </entry>
   
@@ -187,6 +160,33 @@
       <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
     
       <category term="oncurrency" scheme="https://ivyxjc.xyz/tags/oncurrency/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java8默认方法</title>
+    <link href="https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/"/>
+    <id>https://ivyxjc.xyz/2016/10/26/java/java8/2016-10-26-java8-default-method/</id>
+    <published>2016-10-25T16:00:00.000Z</published>
+    <updated>2016-10-26T11:27:35.514Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法</a></p>
+<p>archive留存:</p>
+<p><a href="https://web.archive.org/web/20161023233757/http://ebnbin.com/2015/12/20/java-8-default-methods/" target="_blank" rel="external">java8 默认方法法|archiver.org </a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      Java8引入的新的语言特性--默认方法 (他人的博客存档)
+    
+    </summary>
+    
+      <category term="OO" scheme="https://ivyxjc.xyz/categories/OO/"/>
+    
+    
+      <category term="Java" scheme="https://ivyxjc.xyz/tags/Java/"/>
+    
+      <category term="archive" scheme="https://ivyxjc.xyz/tags/archive/"/>
     
   </entry>
   
@@ -453,36 +453,6 @@
   </entry>
   
   <entry>
-    <title>selenium + PhantomJS</title>
-    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/"/>
-    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-23-selenium/</id>
-    <published>2016-10-22T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</div></pre></td></tr></table></figure>
-<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</div><div class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></div><div class="line">        )</div><div class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      selenium可以调用浏览器来完成网页的读取
-    
-    </summary>
-    
-      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
-    
-    
-      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
-    
-      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
-    
-      <category term="selenium" scheme="https://ivyxjc.xyz/tags/selenium/"/>
-    
-      <category term="PhantomJS" scheme="https://ivyxjc.xyz/tags/PhantomJS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用python解析xml, json</title>
     <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-29-xml-parse/"/>
     <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-29-xml-parse/</id>
@@ -514,6 +484,36 @@
       <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
     
       <category term="xml" scheme="https://ivyxjc.xyz/tags/xml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium + PhantomJS</title>
+    <link href="https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/"/>
+    <id>https://ivyxjc.xyz/2016/10/23/python/Spider/基础知识/2016-10-23-selenium/</id>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</div></pre></td></tr></table></figure>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</div><div class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></div><div class="line">        )</div><div class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      selenium可以调用浏览器来完成网页的读取
+    
+    </summary>
+    
+      <category term="Python" scheme="https://ivyxjc.xyz/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://ivyxjc.xyz/tags/python/"/>
+    
+      <category term="spider" scheme="https://ivyxjc.xyz/tags/spider/"/>
+    
+      <category term="selenium" scheme="https://ivyxjc.xyz/tags/selenium/"/>
+    
+      <category term="PhantomJS" scheme="https://ivyxjc.xyz/tags/PhantomJS/"/>
     
   </entry>
   
@@ -742,6 +742,39 @@
   </entry>
   
   <entry>
+    <title>ActionBarCompat</title>
+    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
+    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
+    <published>2016-09-23T16:00:00.000Z</published>
+    <updated>2016-10-25T09:03:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">values/style</div><div class="line"></div><div class="line">## 布局文件中添加menu</div><div class="line"></div><div class="line">```xml</div><div class="line">menu_main.xml</div><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">      <span class="attr">xmlns:support</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_setting"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_settings"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_setting"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"never"</span>/&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_refresh"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_refresh"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_refresh"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"always"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Activity中添加menu"><a href="#Activity中添加menu" class="headerlink" title="Activity中添加menu"></a>Activity中添加menu</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">values/ids.xml</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"menu_location"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.menu_main,menu);</div><div class="line">    MenuItem location=menu.add(<span class="number">0</span>,R.id.menu_location,<span class="number">0</span>,<span class="string">"Location"</span>);</div><div class="line">    location.setIcon(R.mipmap.ic_action_location);</div><div class="line">    MenuItemCompat.setShowAsAction(location,MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</div><div class="line">        <span class="keyword">case</span> R.id.menu_setting:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_location:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_refresh:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="运行时更改菜单项"><a href="#运行时更改菜单项" class="headerlink" title="运行时更改菜单项"></a>运行时更改菜单项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mButtonForbidRefresh.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">               i++;</div><div class="line">               <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)</div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">true</span>);</div><div class="line">               <span class="keyword">else</span></div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">false</span>);</div><div class="line">               invalidateOptionsMenu();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPrepareOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">        menu.clear();</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        MenuItem item=menu.findItem(R.id.menu_refresh);</div><div class="line">        <span class="keyword">if</span>(mButtonForbidRefresh.isActivated())&#123;</div><div class="line">           item.setEnabled(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        MenuItem location = menu.add(<span class="number">0</span>, R.id.menu_location, Menu.CATEGORY_SECONDARY, <span class="string">"Location"</span>);</div><div class="line">        location.setIcon(R.mipmap.ic_action_location);</div><div class="line">        MenuItemCompat.setShowAsAction(location, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onPrepareOptionsMenu(menu);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>menu.findItem(int id)</code><br></p>
+<p><code>menu.getItem(int index)</code></p>
+<h3 id="onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别"><a href="#onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别" class="headerlink" title="onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别"></a>onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别</h3><p><code>onCreateOptionsMenu(Menu menu)</code>只在最初的时候会调用每次点击menu都会<br>调用一次<code>onPrepareOptionsMenu(Menu menu)</code>.使用<code>invalidateOptionsMenu()</code><br>会直接调用onPrepareOptionsMenu(Menu menu);</p>
+<h3 id="多个Activity共用相同ActionBar"><a href="#多个Activity共用相同ActionBar" class="headerlink" title="多个Activity共用相同ActionBar"></a>多个Activity共用相同ActionBar</h3><p>如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅<br>实现<code>onCreateOptionsMenu()</code> 和 <code>onOptionsItemSelected()</code>方法的 Activity。然后，<br>为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于<br>处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个<br>子级 Activity，请重写该 Activity 中的 <code>onCreateOptionsMenu()</code>。<br>调用 <code>super.onCreateOptionsMenu(menu)</code>，以便创建原始菜单项，<br>然后使用 <code>menu.add()</code> 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      如何添加菜单项, 以及如何在运行时更改菜单项.
+    
+    </summary>
+    
+      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
+    
+    
+      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
+    
+      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>自定义FloatingActionButtom</title>
     <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/"/>
     <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/controls/2016-10-18-custom-button/</id>
@@ -791,39 +824,6 @@
       <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
     
       <category term="android_fragment" scheme="https://ivyxjc.xyz/tags/android-fragment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ActionBarCompat</title>
-    <link href="https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/"/>
-    <id>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-Basic/</id>
-    <published>2016-09-23T16:00:00.000Z</published>
-    <updated>2016-10-25T09:03:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">values/style</div><div class="line"></div><div class="line">## 布局文件中添加menu</div><div class="line"></div><div class="line">```xml</div><div class="line">menu_main.xml</div><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">      <span class="attr">xmlns:support</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_setting"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_settings"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_setting"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"never"</span>/&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_refresh"</span></div><div class="line">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_action_refresh"</span></div><div class="line">        <span class="attr">android:title</span>=<span class="string">"@string/menu_refresh"</span></div><div class="line">        <span class="attr">support:showAsAction</span>=<span class="string">"always"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="Activity中添加menu"><a href="#Activity中添加menu" class="headerlink" title="Activity中添加menu"></a>Activity中添加menu</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">values/ids.xml</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"menu_location"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">    getMenuInflater().inflate(R.menu.menu_main,menu);</div><div class="line">    MenuItem location=menu.add(<span class="number">0</span>,R.id.menu_location,<span class="number">0</span>,<span class="string">"Location"</span>);</div><div class="line">    location.setIcon(R.mipmap.ic_action_location);</div><div class="line">    MenuItemCompat.setShowAsAction(location,MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line">    <span class="keyword">switch</span> (item.getItemId())&#123;</div><div class="line">        <span class="keyword">case</span> R.id.menu_setting:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_location:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">case</span> R.id.menu_refresh:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="运行时更改菜单项"><a href="#运行时更改菜单项" class="headerlink" title="运行时更改菜单项"></a>运行时更改菜单项</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mButtonForbidRefresh.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">           <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">           <span class="meta">@Override</span></div><div class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">               i++;</div><div class="line">               <span class="keyword">if</span>(i%<span class="number">2</span>==<span class="number">1</span>)</div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">true</span>);</div><div class="line">               <span class="keyword">else</span></div><div class="line">                   mButtonForbidRefresh.setActivated(<span class="keyword">false</span>);</div><div class="line">               invalidateOptionsMenu();</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPrepareOptionsMenu</span><span class="params">(Menu menu)</span> </span>&#123;</div><div class="line">        menu.clear();</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        MenuItem item=menu.findItem(R.id.menu_refresh);</div><div class="line">        <span class="keyword">if</span>(mButtonForbidRefresh.isActivated())&#123;</div><div class="line">           item.setEnabled(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        MenuItem location = menu.add(<span class="number">0</span>, R.id.menu_location, Menu.CATEGORY_SECONDARY, <span class="string">"Location"</span>);</div><div class="line">        location.setIcon(R.mipmap.ic_action_location);</div><div class="line">        MenuItemCompat.setShowAsAction(location, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onPrepareOptionsMenu(menu);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><code>menu.findItem(int id)</code><br></p>
-<p><code>menu.getItem(int index)</code></p>
-<h3 id="onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别"><a href="#onPrepareOptionsMenu-Menu-menu-和onCreateOptionsMenu-Menu-menu-区别" class="headerlink" title="onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别"></a>onPrepareOptionsMenu(Menu menu)和onCreateOptionsMenu(Menu menu)区别</h3><p><code>onCreateOptionsMenu(Menu menu)</code>只在最初的时候会调用每次点击menu都会<br>调用一次<code>onPrepareOptionsMenu(Menu menu)</code>.使用<code>invalidateOptionsMenu()</code><br>会直接调用onPrepareOptionsMenu(Menu menu);</p>
-<h3 id="多个Activity共用相同ActionBar"><a href="#多个Activity共用相同ActionBar" class="headerlink" title="多个Activity共用相同ActionBar"></a>多个Activity共用相同ActionBar</h3><p>如果应用包含多个 Activity，且其中某些 Activity 提供相同的选项菜单，则可考虑创建一个仅<br>实现<code>onCreateOptionsMenu()</code> 和 <code>onOptionsItemSelected()</code>方法的 Activity。然后，<br>为每个应共享相同选项菜单的 Activity 扩展此类。 通过这种方式，您可以管理一个用于<br>处理菜单操作的代码集，且每个子级类均会继承菜单行为。若要将菜单项添加到一个<br>子级 Activity，请重写该 Activity 中的 <code>onCreateOptionsMenu()</code>。<br>调用 <code>super.onCreateOptionsMenu(menu)</code>，以便创建原始菜单项，<br>然后使用 <code>menu.add()</code> 添加新菜单项。此外，您还可以替代各个菜单项的超类行为。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      如何添加菜单项, 以及如何在运行时更改菜单项.
-    
-    </summary>
-    
-      <category term="Android" scheme="https://ivyxjc.xyz/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://ivyxjc.xyz/tags/android/"/>
-    
-      <category term="android_UI" scheme="https://ivyxjc.xyz/tags/android-UI/"/>
     
   </entry>
   
