@@ -760,6 +760,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Builder]]></title>
+      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
+      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
+<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
+<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>场景类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> OO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> callback </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[观察者模式]]></title>
       <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-observer/</url>
       <content type="html"><![CDATA[<h3 id="被观察者"><a href="#被观察者" class="headerlink" title="被观察者"></a>被观察者</h3><p>所有被观察者都继承Observable接口 ( java标准库中<code>Observable</code>是一个抽象类)</p>
@@ -786,33 +813,6 @@
         <tags>
             
             <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Builder]]></title>
-      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
-      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
-<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
-<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>场景类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> callback </tag>
             
         </tags>
         
@@ -908,41 +908,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[爬取豆瓣]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
-      <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
-<p>最初还是没有准备使用框架写, 还是准备利用<code>requests</code>获取网页内容然后分析, 后来觉得这么写有点浪费时间, 而且<code>requests</code>是阻塞的, 不便于写多线程的. 另一方面, python爬虫框架Scrapy大名鼎鼎, 不学习一下有点亏, 就决定使用Scrapy来写这个爬虫.</p>
-<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>利用Scrapy来写爬虫还是比较方便简单的, 主要的代码都在<code>douban_spider</code>中, 后续处理的代码在<code>pipeline</code>中, <code>setting</code>中还可以设置爬取速率, 是否遵循robot.txt, middleware等内容.</p>
-<h2 id="获取的豆瓣信息"><a href="#获取的豆瓣信息" class="headerlink" title="获取的豆瓣信息"></a>获取的豆瓣信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'casts'</span>: &#123;<span class="string">'1004780'</span>: <span class="string">'雷诺·维尔森'</span>,</span><br><span class="line">           <span class="string">'1017898'</span>: <span class="string">'约翰·古德曼'</span>,</span><br><span class="line">           <span class="string">'1018140'</span>: <span class="string">'马克·瑞安'</span>,</span><br><span class="line">           <span class="string">'1025212'</span>: <span class="string">'彼特·库伦'</span>,</span><br><span class="line">           <span class="string">'1025213'</span>: <span class="string">'托马斯·列农'</span>,</span><br><span class="line">           <span class="string">'1027181'</span>: <span class="string">'渡边谦'</span>,</span><br><span class="line">           <span class="string">'1031825'</span>: <span class="string">'弗兰克·维尔克'</span>,</span><br><span class="line">           <span class="string">'1031847'</span>: <span class="string">'凯尔希·格兰莫'</span>,</span><br><span class="line">           <span class="string">'1031869'</span>: <span class="string">'索非亚·迈尔斯'</span>,</span><br><span class="line">           <span class="string">'1035674'</span>: <span class="string">'马克·沃尔伯格'</span>,</span><br><span class="line">           <span class="string">'1037706'</span>: <span class="string">'吕良伟'</span>,</span><br><span class="line">           <span class="string">'1040517'</span>: <span class="string">'斯坦利·图齐'</span>,</span><br><span class="line">           <span class="string">'1040990'</span>: <span class="string">'李冰冰'</span>,</span><br><span class="line">           <span class="string">'1041214'</span>: <span class="string">'罗伯特·福克沃斯'</span>,</span><br><span class="line">           <span class="string">'1049627'</span>: <span class="string">'约翰·迪·玛吉欧'</span>,</span><br><span class="line">           <span class="string">'1162139'</span>: <span class="string">'王敏德 '</span>,</span><br><span class="line">           <span class="string">'1165630'</span>: <span class="string">'提图斯·维里沃'</span>,</span><br><span class="line">           <span class="string">'1248294'</span>: <span class="string">'T·J·米勒'</span>,</span><br><span class="line">           <span class="string">'1274253'</span>: <span class="string">'妮可拉·佩尔茨'</span>,</span><br><span class="line">           <span class="string">'1275106'</span>: <span class="string">'纪培慧'</span>,</span><br><span class="line">           <span class="string">'1275667'</span>: <span class="string">'韩庚'</span>,</span><br><span class="line">           <span class="string">'1312271'</span>: <span class="string">'巫刚'</span>,</span><br><span class="line">           <span class="string">'1326135'</span>: <span class="string">'杰克·莱诺'</span>,</span><br><span class="line">           <span class="string">'1340189'</span>: <span class="string">'阿比盖尔·克莱恩'</span>,</span><br><span class="line">           <span class="string">'1340928'</span>: <span class="string">'邹市明'</span>&#125;,</span><br><span class="line"> <span class="string">'directors'</span>: &#123;<span class="string">'1027776'</span>: <span class="string">'迈克尔·贝'</span>&#125;,</span><br><span class="line"> <span class="string">'writers'</span>: &#123;<span class="string">'1027468'</span>: <span class="string">'伊伦·克鲁格'</span>&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"> <span class="string">'rating_better_than'</span>: &#123;<span class="string">'动作片'</span>: <span class="string">'46'</span>, <span class="string">'科幻片'</span>: <span class="string">'44'</span>&#125;,</span><br><span class="line"> <span class="string">'release_date'</span>: &#123;<span class="string">'美国/中国大陆'</span>: <span class="string">'2014-06-27'</span>, <span class="string">'香港首映'</span>: <span class="string">'2014-06-19'</span>&#125;,</span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_aka'</span>: [<span class="string">'变形金刚：歼灭世纪(港)'</span>, <span class="string">'变形金刚4：灭绝时代'</span>, <span class="string">'变形金刚4'</span>, <span class="string">'变4'</span>, <span class="string">'Transformers4'</span>],</span><br><span class="line">  <span class="string">'movie_tags'</span>: [<span class="string">'变形金刚'</span>, <span class="string">'科幻'</span>, <span class="string">'美国'</span>, <span class="string">'动作'</span>, <span class="string">'2014'</span>, <span class="string">'美国电影'</span>, <span class="string">'Transformers'</span>, <span class="string">'电影'</span>],</span><br><span class="line"> <span class="string">'movie_country'</span>: [<span class="string">'美国'</span>, <span class="string">'中国大陆'</span>],</span><br><span class="line"> <span class="string">'movie_genre'</span>: [<span class="string">'动作'</span>, <span class="string">'科幻'</span>],</span><br><span class="line">  <span class="string">'movie_language'</span>: [ <span class="string">'英语'</span>,<span class="string">'汉语普通话'</span>, <span class="string">'粤语'</span>],</span><br><span class="line">  <span class="string">'movie_similar'</span>: [<span class="string">'3610047'</span>,</span><br><span class="line">                    <span class="string">'6082518'</span>,</span><br><span class="line">                    <span class="string">'10741834'</span>,</span><br><span class="line">                    <span class="string">'2063914'</span>,</span><br><span class="line">                    <span class="string">'3718424'</span>,</span><br><span class="line">                    <span class="string">'3231742'</span>,</span><br><span class="line">                    <span class="string">'6390823'</span>,</span><br><span class="line">                    <span class="string">'24404677'</span>,</span><br><span class="line">                    <span class="string">'6560058'</span>,</span><br><span class="line">                    <span class="string">'3217149'</span>],</span><br><span class="line"> <span class="comment">#----------          </span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_id'</span>: <span class="string">'7054604'</span>,</span><br><span class="line"> <span class="string">'movie_imdb_id'</span>: <span class="string">'tt2109248'</span>,</span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_length'</span>: <span class="string">'166'</span>,</span><br><span class="line"> <span class="string">'movie_name'</span>: <span class="string">'变形金刚4：绝迹重生 Transformers: Age of Extinction'</span>,</span><br><span class="line"> <span class="string">'movie_rating'</span>: <span class="string">'6.6'</span>,</span><br><span class="line"> <span class="string">'movie_rating_distribute'</span>: [<span class="string">'11.0'</span>, <span class="string">'28.4'</span>, <span class="string">'43.5'</span>, <span class="string">'13.1'</span>, <span class="string">'4.1'</span>],</span><br><span class="line"> <span class="string">'movie_rating_people_num'</span>: <span class="string">'178399'</span>,</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>以变形金刚四为例, 数据根据格式主要分成四类:</p>
-<ol>
-<li>导演, 编剧, 演员</li>
-<li>数据格式为map的数据</li>
-<li>数据格式为list的数据</li>
-<li>数据格式为str的数据</li>
-</ol>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> spider </tag>
-            
-            <tag> xml </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[python socket编程功能]]></title>
       <url>https://ivyxjc.xyz/2016/10/30/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-30-socket-basic/</url>
       <content type="html"><![CDATA[<h2 id="socket编程基本思路"><a href="#socket编程基本思路" class="headerlink" title="socket编程基本思路"></a>socket编程基本思路</h2><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><ol>
@@ -984,6 +949,41 @@
             <tag> spider </tag>
             
             <tag> socket </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[爬取豆瓣]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
+      <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
+<p>最初还是没有准备使用框架写, 还是准备利用<code>requests</code>获取网页内容然后分析, 后来觉得这么写有点浪费时间, 而且<code>requests</code>是阻塞的, 不便于写多线程的. 另一方面, python爬虫框架Scrapy大名鼎鼎, 不学习一下有点亏, 就决定使用Scrapy来写这个爬虫.</p>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>利用Scrapy来写爬虫还是比较方便简单的, 主要的代码都在<code>douban_spider</code>中, 后续处理的代码在<code>pipeline</code>中, <code>setting</code>中还可以设置爬取速率, 是否遵循robot.txt, middleware等内容.</p>
+<h2 id="获取的豆瓣信息"><a href="#获取的豆瓣信息" class="headerlink" title="获取的豆瓣信息"></a>获取的豆瓣信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'casts'</span>: &#123;<span class="string">'1004780'</span>: <span class="string">'雷诺·维尔森'</span>,</span><br><span class="line">           <span class="string">'1017898'</span>: <span class="string">'约翰·古德曼'</span>,</span><br><span class="line">           <span class="string">'1018140'</span>: <span class="string">'马克·瑞安'</span>,</span><br><span class="line">           <span class="string">'1025212'</span>: <span class="string">'彼特·库伦'</span>,</span><br><span class="line">           <span class="string">'1025213'</span>: <span class="string">'托马斯·列农'</span>,</span><br><span class="line">           <span class="string">'1027181'</span>: <span class="string">'渡边谦'</span>,</span><br><span class="line">           <span class="string">'1031825'</span>: <span class="string">'弗兰克·维尔克'</span>,</span><br><span class="line">           <span class="string">'1031847'</span>: <span class="string">'凯尔希·格兰莫'</span>,</span><br><span class="line">           <span class="string">'1031869'</span>: <span class="string">'索非亚·迈尔斯'</span>,</span><br><span class="line">           <span class="string">'1035674'</span>: <span class="string">'马克·沃尔伯格'</span>,</span><br><span class="line">           <span class="string">'1037706'</span>: <span class="string">'吕良伟'</span>,</span><br><span class="line">           <span class="string">'1040517'</span>: <span class="string">'斯坦利·图齐'</span>,</span><br><span class="line">           <span class="string">'1040990'</span>: <span class="string">'李冰冰'</span>,</span><br><span class="line">           <span class="string">'1041214'</span>: <span class="string">'罗伯特·福克沃斯'</span>,</span><br><span class="line">           <span class="string">'1049627'</span>: <span class="string">'约翰·迪·玛吉欧'</span>,</span><br><span class="line">           <span class="string">'1162139'</span>: <span class="string">'王敏德 '</span>,</span><br><span class="line">           <span class="string">'1165630'</span>: <span class="string">'提图斯·维里沃'</span>,</span><br><span class="line">           <span class="string">'1248294'</span>: <span class="string">'T·J·米勒'</span>,</span><br><span class="line">           <span class="string">'1274253'</span>: <span class="string">'妮可拉·佩尔茨'</span>,</span><br><span class="line">           <span class="string">'1275106'</span>: <span class="string">'纪培慧'</span>,</span><br><span class="line">           <span class="string">'1275667'</span>: <span class="string">'韩庚'</span>,</span><br><span class="line">           <span class="string">'1312271'</span>: <span class="string">'巫刚'</span>,</span><br><span class="line">           <span class="string">'1326135'</span>: <span class="string">'杰克·莱诺'</span>,</span><br><span class="line">           <span class="string">'1340189'</span>: <span class="string">'阿比盖尔·克莱恩'</span>,</span><br><span class="line">           <span class="string">'1340928'</span>: <span class="string">'邹市明'</span>&#125;,</span><br><span class="line"> <span class="string">'directors'</span>: &#123;<span class="string">'1027776'</span>: <span class="string">'迈克尔·贝'</span>&#125;,</span><br><span class="line"> <span class="string">'writers'</span>: &#123;<span class="string">'1027468'</span>: <span class="string">'伊伦·克鲁格'</span>&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"> <span class="string">'rating_better_than'</span>: &#123;<span class="string">'动作片'</span>: <span class="string">'46'</span>, <span class="string">'科幻片'</span>: <span class="string">'44'</span>&#125;,</span><br><span class="line"> <span class="string">'release_date'</span>: &#123;<span class="string">'美国/中国大陆'</span>: <span class="string">'2014-06-27'</span>, <span class="string">'香港首映'</span>: <span class="string">'2014-06-19'</span>&#125;,</span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_aka'</span>: [<span class="string">'变形金刚：歼灭世纪(港)'</span>, <span class="string">'变形金刚4：灭绝时代'</span>, <span class="string">'变形金刚4'</span>, <span class="string">'变4'</span>, <span class="string">'Transformers4'</span>],</span><br><span class="line">  <span class="string">'movie_tags'</span>: [<span class="string">'变形金刚'</span>, <span class="string">'科幻'</span>, <span class="string">'美国'</span>, <span class="string">'动作'</span>, <span class="string">'2014'</span>, <span class="string">'美国电影'</span>, <span class="string">'Transformers'</span>, <span class="string">'电影'</span>],</span><br><span class="line"> <span class="string">'movie_country'</span>: [<span class="string">'美国'</span>, <span class="string">'中国大陆'</span>],</span><br><span class="line"> <span class="string">'movie_genre'</span>: [<span class="string">'动作'</span>, <span class="string">'科幻'</span>],</span><br><span class="line">  <span class="string">'movie_language'</span>: [ <span class="string">'英语'</span>,<span class="string">'汉语普通话'</span>, <span class="string">'粤语'</span>],</span><br><span class="line">  <span class="string">'movie_similar'</span>: [<span class="string">'3610047'</span>,</span><br><span class="line">                    <span class="string">'6082518'</span>,</span><br><span class="line">                    <span class="string">'10741834'</span>,</span><br><span class="line">                    <span class="string">'2063914'</span>,</span><br><span class="line">                    <span class="string">'3718424'</span>,</span><br><span class="line">                    <span class="string">'3231742'</span>,</span><br><span class="line">                    <span class="string">'6390823'</span>,</span><br><span class="line">                    <span class="string">'24404677'</span>,</span><br><span class="line">                    <span class="string">'6560058'</span>,</span><br><span class="line">                    <span class="string">'3217149'</span>],</span><br><span class="line"> <span class="comment">#----------          </span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_id'</span>: <span class="string">'7054604'</span>,</span><br><span class="line"> <span class="string">'movie_imdb_id'</span>: <span class="string">'tt2109248'</span>,</span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_length'</span>: <span class="string">'166'</span>,</span><br><span class="line"> <span class="string">'movie_name'</span>: <span class="string">'变形金刚4：绝迹重生 Transformers: Age of Extinction'</span>,</span><br><span class="line"> <span class="string">'movie_rating'</span>: <span class="string">'6.6'</span>,</span><br><span class="line"> <span class="string">'movie_rating_distribute'</span>: [<span class="string">'11.0'</span>, <span class="string">'28.4'</span>, <span class="string">'43.5'</span>, <span class="string">'13.1'</span>, <span class="string">'4.1'</span>],</span><br><span class="line"> <span class="string">'movie_rating_people_num'</span>: <span class="string">'178399'</span>,</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>以变形金刚四为例, 数据根据格式主要分成四类:</p>
+<ol>
+<li>导演, 编剧, 演员</li>
+<li>数据格式为map的数据</li>
+<li>数据格式为list的数据</li>
+<li>数据格式为str的数据</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+            <tag> xml </tag>
             
         </tags>
         
@@ -1088,6 +1088,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[工厂方法模式]]></title>
+      <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</url>
+      <content type="html"><![CDATA[<h2 id="工厂方法的通用源码"><a href="#工厂方法的通用源码" class="headerlink" title="工厂方法的通用源码"></a>工厂方法的通用源码</h2><h3 id="抽象产品类"><a href="#抽象产品类" class="headerlink" title="抽象产品类"></a>抽象产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="具体产品类"><a href="#具体产品类" class="headerlink" title="具体产品类"></a>具体产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="抽象工厂类"><a href="#抽象工厂类" class="headerlink" title="抽象工厂类"></a>抽象工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="具体工厂类"><a href="#具体工厂类" class="headerlink" title="具体工厂类"></a>具体工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">    Product product=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      product=(Product)Class.forName(c.getName()).newInstance();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      ....</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (T)product;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>简单工厂模式去掉了抽象工厂类, 并且<code>createProduct()</code>方法添加了<code>static</code>. 该模式调用过程更为简单, 方便理解. 但是扩展较为困难, 不符合开闭原则.</p>
+<h2 id="多工厂模式"><a href="#多工厂模式" class="headerlink" title="多工厂模式"></a>多工厂模式</h2><h2 id="利用工厂模式生成单例"><a href="#利用工厂模式生成单例" class="headerlink" title="利用工厂模式生成单例"></a>利用工厂模式生成单例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorySingle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton sSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class cl=Class.forName(Singleton.class.getName());</span><br><span class="line">            Constructor constructor=cl.getDeclaredConstructor();</span><br><span class="line">            constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            sSingleton=(Singleton)constructor.newInstance();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>为创建一组相关或者是相互依赖的对象提供一个接口, 而不需要制定它们的具体类.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> OO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[单例模式]]></title>
       <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/</url>
       <content type="html"><![CDATA[<p>Ensure a class has only one instance, and provide a global point of access to it.</p>
@@ -1148,69 +1175,22 @@
     </entry>
     
     <entry>
-      <title><![CDATA[工厂方法模式]]></title>
-      <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</url>
-      <content type="html"><![CDATA[<h2 id="工厂方法的通用源码"><a href="#工厂方法的通用源码" class="headerlink" title="工厂方法的通用源码"></a>工厂方法的通用源码</h2><h3 id="抽象产品类"><a href="#抽象产品类" class="headerlink" title="抽象产品类"></a>抽象产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="具体产品类"><a href="#具体产品类" class="headerlink" title="具体产品类"></a>具体产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="抽象工厂类"><a href="#抽象工厂类" class="headerlink" title="抽象工厂类"></a>抽象工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="具体工厂类"><a href="#具体工厂类" class="headerlink" title="具体工厂类"></a>具体工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">    Product product=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      product=(Product)Class.forName(c.getName()).newInstance();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      ....</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (T)product;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>简单工厂模式去掉了抽象工厂类, 并且<code>createProduct()</code>方法添加了<code>static</code>. 该模式调用过程更为简单, 方便理解. 但是扩展较为困难, 不符合开闭原则.</p>
-<h2 id="多工厂模式"><a href="#多工厂模式" class="headerlink" title="多工厂模式"></a>多工厂模式</h2><h2 id="利用工厂模式生成单例"><a href="#利用工厂模式生成单例" class="headerlink" title="利用工厂模式生成单例"></a>利用工厂模式生成单例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorySingle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton sSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class cl=Class.forName(Singleton.class.getName());</span><br><span class="line">            Constructor constructor=cl.getDeclaredConstructor();</span><br><span class="line">            constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            sSingleton=(Singleton)constructor.newInstance();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>为创建一组相关或者是相互依赖的对象提供一个接口, 而不需要制定它们的具体类.</p>
+      <title><![CDATA[mysql基本命令]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
+      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
+<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
 ]]></content>
       
         <categories>
             
-            <category> OO </category>
+            <category> database </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[面向对象六大原则(下)]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</url>
-      <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
-<ol>
-<li>客户端不应该依赖它不需要的接口</li>
-<li>类似的依赖关系应该建立在最小的接口上</li>
-</ol>
-<p>接口应该细化, 不要使用过于臃肿的接口. 客户端需要什么接口就提供什么接口, 将不需要的接口剔除掉.<br>不要将太多的方法放在同一个接口之中.</p>
-<p>但是接口设计也要有度, 不可过度设计, 这个度往往根据经验和常识判断.</p>
-<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>Law of Demeter(LOD) , 最少知识原则(Least Knowledge Principle))</p>
-<p>一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">朋友类: 出现在成员变量, 方法的输入输出参数中的类称为成员朋友类, 而出现在方法体内部的类不属于朋友类</span><br></pre></td></tr></table></figure>
-<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open Close Principle(OCP)</p>
-<p>一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NovelBook</span> <span class="keyword">implements</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NovelBook</span><span class="params">(String name, <span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.price=price;</span><br><span class="line">        <span class="keyword">this</span>.author=author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果将来要搞打折, 一般可能会用以下两个方法来解决:</p>
-<ol>
-<li>在接口中添加<code>getOffPrice()</code>方法. 但是这需要对每一个实现<code>IBook</code>接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.</li>
-<li>修改实现类, 直接在<code>getPrice()</code>中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.</li>
-<li>通过扩展实现</li>
-</ol>
-<p>添加一个子类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OffNovelBook</span> <span class="keyword">extends</span> <span class="title">NovelBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OffNovelBook</span><span class="params">(String name,<span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name,price,author);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> selfPrice=<span class="keyword">super</span>.getPrice();</span><br><span class="line">        <span class="keyword">int</span> offPrice=selfPrice*<span class="number">90</span>/<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">return</span> offPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg" alt=""></p>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 设计模式 </tag>
+            <tag> database </tag>
             
         </tags>
         
@@ -1299,22 +1279,70 @@
     </entry>
     
     <entry>
-      <title><![CDATA[mysql基本命令]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
-      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
-<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
+      <title><![CDATA[面向对象六大原则(下)]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</url>
+      <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
+<ol>
+<li>客户端不应该依赖它不需要的接口</li>
+<li>类似的依赖关系应该建立在最小的接口上</li>
+</ol>
+<p>接口应该细化, 不要使用过于臃肿的接口. 客户端需要什么接口就提供什么接口, 将不需要的接口剔除掉.<br>不要将太多的方法放在同一个接口之中.</p>
+<p>但是接口设计也要有度, 不可过度设计, 这个度往往根据经验和常识判断.</p>
+<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>Law of Demeter(LOD) , 最少知识原则(Least Knowledge Principle))</p>
+<p>一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">朋友类: 出现在成员变量, 方法的输入输出参数中的类称为成员朋友类, 而出现在方法体内部的类不属于朋友类</span><br></pre></td></tr></table></figure>
+<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open Close Principle(OCP)</p>
+<p>一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NovelBook</span> <span class="keyword">implements</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NovelBook</span><span class="params">(String name, <span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.price=price;</span><br><span class="line">        <span class="keyword">this</span>.author=author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果将来要搞打折, 一般可能会用以下两个方法来解决:</p>
+<ol>
+<li>在接口中添加<code>getOffPrice()</code>方法. 但是这需要对每一个实现<code>IBook</code>接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.</li>
+<li>修改实现类, 直接在<code>getPrice()</code>中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.</li>
+<li>通过扩展实现</li>
+</ol>
+<p>添加一个子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OffNovelBook</span> <span class="keyword">extends</span> <span class="title">NovelBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OffNovelBook</span><span class="params">(String name,<span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name,price,author);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> selfPrice=<span class="keyword">super</span>.getPrice();</span><br><span class="line">        <span class="keyword">int</span> offPrice=selfPrice*<span class="number">90</span>/<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">return</span> offPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg" alt=""></p>
 ]]></content>
       
         <categories>
             
-            <category> database </category>
+            <category> OO </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> database </tag>
+            <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[selenium + PhantomJS]]></title>
+      <url>https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/</url>
+      <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</span><br><span class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</span><br><span class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></span><br><span class="line">        )</span><br><span class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+            <tag> selenium </tag>
+            
+            <tag> PhantomJS </tag>
             
         </tags>
         
@@ -1348,34 +1376,6 @@
             <tag> spider </tag>
             
             <tag> xml </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[selenium + PhantomJS]]></title>
-      <url>https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/</url>
-      <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</span><br><span class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</span><br><span class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></span><br><span class="line">        )</span><br><span class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> spider </tag>
-            
-            <tag> selenium </tag>
-            
-            <tag> PhantomJS </tag>
             
         </tags>
         
@@ -1537,30 +1537,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[matplotlib绘制2D，3D散点图]]></title>
-      <url>https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</url>
-      <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置颜色</span></span><br><span class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</span><br><span class="line"><span class="comment">#各点大小的list</span></span><br><span class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</span><br><span class="line"><span class="comment"># print(sizeLab)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴上下限</span></span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴标号</span></span><br><span class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置记号的标签</span></span><br><span class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</span><br><span class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横纵坐标label</span></span><br><span class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fig=plt.figure()</span><br><span class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置坐标</span></span><br><span class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</span><br><span class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</span><br><span class="line"></span><br><span class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</span><br><span class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</span><br><span class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置图例</span></span><br><span class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> matplotlib </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[numpy user guide]]></title>
       <url>https://ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</url>
       <content type="html"><![CDATA[<h2 id="numpy-tile-A-reprs"><a href="#numpy-tile-A-reprs" class="headerlink" title="numpy.tile(A,reprs)"></a>numpy.tile(A,reprs)</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html" target="_blank" rel="noopener">numpy.tile</a></p>
@@ -1597,26 +1573,24 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ActionBar PopuMenu]]></title>
-      <url>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</url>
-      <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</span><br><span class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</span><br><span class="line"></span><br><span class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</span><br><span class="line"></span><br><span class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</span><br><span class="line"></span><br><span class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</span><br><span class="line">                    <span class="keyword">case</span> R.id.menu_remove:</span><br><span class="line">                        adapter.remove(item);</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        popup.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[matplotlib绘制2D，3D散点图]]></title>
+      <url>https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</url>
+      <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置颜色</span></span><br><span class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</span><br><span class="line"><span class="comment">#各点大小的list</span></span><br><span class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</span><br><span class="line"><span class="comment"># print(sizeLab)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴上下限</span></span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴标号</span></span><br><span class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置记号的标签</span></span><br><span class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</span><br><span class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横纵坐标label</span></span><br><span class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fig=plt.figure()</span><br><span class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置坐标</span></span><br><span class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</span><br><span class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</span><br><span class="line"></span><br><span class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</span><br><span class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</span><br><span class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置图例</span></span><br><span class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
             
-            <category> Android </category>
+            <category> Python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> android </tag>
+            <tag> python </tag>
             
-            <tag> android_UI </tag>
-            
-            <tag> android_fragment </tag>
+            <tag> matplotlib </tag>
             
         </tags>
         
@@ -1648,6 +1622,32 @@
             <tag> android </tag>
             
             <tag> android_UI </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ActionBar PopuMenu]]></title>
+      <url>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</url>
+      <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</span><br><span class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</span><br><span class="line"></span><br><span class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</span><br><span class="line"></span><br><span class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</span><br><span class="line"></span><br><span class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</span><br><span class="line">                    <span class="keyword">case</span> R.id.menu_remove:</span><br><span class="line">                        adapter.remove(item);</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        popup.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_UI </tag>
+            
+            <tag> android_fragment </tag>
             
         </tags>
         
@@ -1771,32 +1771,22 @@
     </entry>
     
     <entry>
-      <title><![CDATA[CriminalIntent程序中Fragment，Activity通信]]></title>
-      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/</url>
-      <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</span><br></pre></td></tr></table></figure>
-<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</span><br><span class="line">....</span><br><span class="line">....</span><br><span class="line">UUID crimeId=(UUID)getActivity()</span><br><span class="line">                .getIntent()</span><br><span class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</span><br></pre></td></tr></table></figure>
-<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
-<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ActivityCrime.java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        UUID crimeId=(UUID)getIntent()</span><br><span class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     UUID crimeId=(UUID)getArguments()</span><br><span class="line">             .getSerializable(EXTRA_CRIME_ID);</span><br><span class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     Bundle args=<span class="keyword">new</span> Bundle();</span><br><span class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</span><br><span class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</span><br><span class="line">     fragment.setArguments(args);</span><br><span class="line">     <span class="keyword">return</span> fragment;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[代理相关]]></title>
+      <url>https://ivyxjc.xyz/2016/07/06/%E6%95%88%E7%8E%87/2016-07-06-proxy/</url>
+      <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</span><br><span class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
             
-            <category> Android </category>
+            <category> 效率 </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> android </tag>
-            
-            <tag> android_fragment </tag>
-            
-            <tag> android_adapter </tag>
-            
-            <tag> android_activity </tag>
+            <tag> faq </tag>
             
         </tags>
         
@@ -1834,22 +1824,32 @@
     </entry>
     
     <entry>
-      <title><![CDATA[代理相关]]></title>
-      <url>https://ivyxjc.xyz/2016/07/06/%E6%95%88%E7%8E%87/2016-07-06-proxy/</url>
-      <content type="html"><![CDATA[<h2 id="github使用代理"><a href="#github使用代理" class="headerlink" title="github使用代理"></a>github使用代理</h2><p>git添加代理：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &apos;http://127.0.0.1:1080&apos;</span><br><span class="line">git config --global https.proxy &apos;http://127.0.0.1:1080&apos;</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[CriminalIntent程序中Fragment，Activity通信]]></title>
+      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/</url>
+      <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</span><br></pre></td></tr></table></figure>
+<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</span><br><span class="line">....</span><br><span class="line">....</span><br><span class="line">UUID crimeId=(UUID)getActivity()</span><br><span class="line">                .getIntent()</span><br><span class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</span><br></pre></td></tr></table></figure>
+<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
+<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ActivityCrime.java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        UUID crimeId=(UUID)getIntent()</span><br><span class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     UUID crimeId=(UUID)getArguments()</span><br><span class="line">             .getSerializable(EXTRA_CRIME_ID);</span><br><span class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     Bundle args=<span class="keyword">new</span> Bundle();</span><br><span class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</span><br><span class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</span><br><span class="line">     fragment.setArguments(args);</span><br><span class="line">     <span class="keyword">return</span> fragment;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
             
-            <category> 效率 </category>
+            <category> Android </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> faq </tag>
+            <tag> android </tag>
+            
+            <tag> android_fragment </tag>
+            
+            <tag> android_activity </tag>
+            
+            <tag> android_adapter </tag>
             
         </tags>
         
@@ -1924,28 +1924,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
-      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
-      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
-<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Sunshine开发实战:测试]]></title>
       <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-android-test/</url>
       <content type="html"><![CDATA[<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPractice</span> <span class="keyword">extends</span> <span class="title">AndroidTestCase</span> </span>&#123;</span><br><span class="line">    <span class="comment">//测试前进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.setUp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//所有测试的类必须以test开头</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThatDemonstratesAssertations</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> b=<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> c=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> d=<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        assertEquals(<span class="string">"X should be equal"</span>,a,c);</span><br><span class="line">        assertTrue(<span class="string">"Y should be true"</span>,d&gt;a);</span><br><span class="line">        assertFalse(<span class="string">"Z should be false"</span>,a==b);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//测试之后进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.tearDown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1964,6 +1942,28 @@
             <tag> android </tag>
             
             <tag> android_test </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
+      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
+      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
             
         </tags>
         
@@ -2139,28 +2139,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
-      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
-      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Algorithm </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> recursion </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[283 将0移到数组末尾]]></title>
       <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-move-zeroes/</url>
       <content type="html"><![CDATA[<p>将数组中的0移动数组尾部，其它数字顺序不变。<br>必须就地完成</p>
@@ -2188,6 +2166,28 @@
             <tag> array </tag>
             
             <tag> twoPointer </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
+      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
+      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Algorithm </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> recursion </tag>
             
         </tags>
         
@@ -2225,37 +2225,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[LeetCode 343,122 整数拆分求积 递增区间寻找]]></title>
-      <url>https://ivyxjc.xyz/2016/04/21/algorithm/oj/LeetCode/2016-04-21-medium-343-122/</url>
-      <content type="html"><![CDATA[<h2 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122 Best Time to Buy and Sell Stock II"></a>122 Best Time to Buy and Sell Stock II</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<p>已知物品每天的价格，讨论通过买卖可以赚到的最多利润。卖之前必须买，再一次买之前必须卖掉。</p>
-<p>寻找所有递增区间，区间尾头之差即单次利润。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxProfit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prices.length;)&#123;</span><br><span class="line">        <span class="keyword">int</span> plus=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i+plus&lt;prices.length&amp;&amp;prices[i+plus-<span class="number">1</span>]&lt;prices[i+plus])&#123;</span><br><span class="line">            plus+=<span class="number">1</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            maxProfit+=prices[i+plus-<span class="number">1</span>]-prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        i+=plus;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="343-Integer-Break"><a href="#343-Integer-Break" class="headerlink" title="343 Integer Break"></a>343 Integer Break</h2><p>给一个自然数n，把它拆分为若干个数的和，记这若干个数的乘积为M，求M的最大值。</p>
-<p>方法：尽可能将这个数拆分成3，原因下方解释。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mod=n%<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    res=(<span class="keyword">int</span>)Math.pow(<span class="number">3</span>,n/<span class="number">3</span>);</span><br><span class="line">    System.out.println(res);</span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">1</span>)&#123;</span><br><span class="line">        res=res/<span class="number">3</span>*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">2</span>)&#123;</span><br><span class="line">        res=res*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>因为有不等式<br>$$\sqrt[k]{x_1x_2x_3x_4…x_k}\leq \frac{x_1x_2x_3x_4…x_k}{k}$$</p>
-<p>设$$$n=x_1+x_2+x_3+x_4+x_5+…+x_k$$$，$$$P=x_1x_2x_3x_4x_5+…x_k$$$。</p>
-<p>所以有$$$P \leq (\frac{n}{k})^k$$$</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Algorithm </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> oj </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[LeetCode SingleNum 136,127,260]]></title>
       <url>https://ivyxjc.xyz/2016/04/21/algorithm/oj/LeetCode/2016-04-21-medium-SingleNum/</url>
       <content type="html"><![CDATA[<p>这三题题意基本一样。<br>1.136 题：每个数字出现两遍，一个数字例外。找出这个数字。<br>2.137 题：每个数字出现三遍，一个数字例外。找出这个数字。<br>3.260 题：每个数字出现两遍，两个数字例外。找出这个数字。</p>
@@ -2287,6 +2256,37 @@
             <tag> sort </tag>
             
             <tag> bit manipulation </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[LeetCode 343,122 整数拆分求积 递增区间寻找]]></title>
+      <url>https://ivyxjc.xyz/2016/04/21/algorithm/oj/LeetCode/2016-04-21-medium-343-122/</url>
+      <content type="html"><![CDATA[<h2 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122 Best Time to Buy and Sell Stock II"></a>122 Best Time to Buy and Sell Stock II</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>已知物品每天的价格，讨论通过买卖可以赚到的最多利润。卖之前必须买，再一次买之前必须卖掉。</p>
+<p>寻找所有递增区间，区间尾头之差即单次利润。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxProfit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prices.length;)&#123;</span><br><span class="line">        <span class="keyword">int</span> plus=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i+plus&lt;prices.length&amp;&amp;prices[i+plus-<span class="number">1</span>]&lt;prices[i+plus])&#123;</span><br><span class="line">            plus+=<span class="number">1</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            maxProfit+=prices[i+plus-<span class="number">1</span>]-prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        i+=plus;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="343-Integer-Break"><a href="#343-Integer-Break" class="headerlink" title="343 Integer Break"></a>343 Integer Break</h2><p>给一个自然数n，把它拆分为若干个数的和，记这若干个数的乘积为M，求M的最大值。</p>
+<p>方法：尽可能将这个数拆分成3，原因下方解释。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mod=n%<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    res=(<span class="keyword">int</span>)Math.pow(<span class="number">3</span>,n/<span class="number">3</span>);</span><br><span class="line">    System.out.println(res);</span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">1</span>)&#123;</span><br><span class="line">        res=res/<span class="number">3</span>*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">2</span>)&#123;</span><br><span class="line">        res=res*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>因为有不等式<br>$$\sqrt[k]{x_1x_2x_3x_4…x_k}\leq \frac{x_1x_2x_3x_4…x_k}{k}$$</p>
+<p>设$$$n=x_1+x_2+x_3+x_4+x_5+…+x_k$$$，$$$P=x_1x_2x_3x_4x_5+…x_k$$$。</p>
+<p>所以有$$$P \leq (\frac{n}{k})^k$$$</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Algorithm </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> oj </tag>
             
         </tags>
         
