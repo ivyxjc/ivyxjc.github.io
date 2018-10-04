@@ -54,8 +54,55 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Java11 的新特性(下)]]></title>
+      <url>https://ivyxjc.xyz/2018/10/04/java/java11/2018-10-04-java11-examples-2/</url>
+      <content type="html"><![CDATA[<h2 id="JEP-309-Dynamic-Class-File-Constants"><a href="#JEP-309-Dynamic-Class-File-Constants" class="headerlink" title="JEP 309 Dynamic Class-File Constants"></a>JEP 309 Dynamic Class-File Constants</h2><p>JVM规范中在常量池中添加一个新的类型 CONSTANT_Dynamic</p>
+<h2 id="JEP-315-Improve-Aarch64-Intrinsics"><a href="#JEP-315-Improve-Aarch64-Intrinsics" class="headerlink" title="JEP 315 Improve Aarch64 Intrinsics"></a>JEP 315 Improve Aarch64 Intrinsics</h2><h2 id="JEP-318-Epsilon-A-No-Op-Garbage-Collector"><a href="#JEP-318-Epsilon-A-No-Op-Garbage-Collector" class="headerlink" title="JEP 318 Epsilon: A No-Op Garbage Collector"></a>JEP 318 Epsilon: A No-Op Garbage Collector</h2><p>一个新的垃圾收集器，在GC时并不执行任何操作。<br>主要有一下几的目的：</p>
+<ol>
+<li>性能测试。便于在性能测试的时候排除GC的影响</li>
+<li>内存压力测试</li>
+<li>VM接口测试。</li>
+<li>短生命周期任务。 短生命周期的任务希望能够非常快速地得到响应，对于no-op GC，可以排除GC对此造成的影响。</li>
+<li>Last-drop latency improvements </li>
+<li>Last-drop throughput improvements. </li>
+</ol>
+<h2 id="JEP-327-Uincode-10"><a href="#JEP-327-Uincode-10" class="headerlink" title="JEP 327 Uincode 10"></a>JEP 327 Uincode 10</h2><p>支持最新的Unicode</p>
+<h2 id="JEP-328-Flight-Recorder"><a href="#JEP-328-Flight-Recorder" class="headerlink" title="JEP 328 Flight Recorder"></a>JEP 328 Flight Recorder</h2><h2 id="JEP-330-Launch-Single-File-Source-Code-Programs"><a href="#JEP-330-Launch-Single-File-Source-Code-Programs" class="headerlink" title="JEP 330 Launch Single-File Source-Code Programs"></a>JEP 330 Launch Single-File Source-Code Programs</h2><p>合并之前的javac以及javap。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javac A.java</span><br><span class="line">java A 1 2</span><br><span class="line"></span><br><span class="line">Java 11:</span><br><span class="line">java A.java 1 2</span><br></pre></td></tr></table></figure>
+<h2 id="JEP-332-Transport-Layer-Security-TLS-1-3"><a href="#JEP-332-Transport-Layer-Security-TLS-1-3" class="headerlink" title="JEP 332 Transport Layer Security (TLS) 1.3"></a>JEP 332 Transport Layer Security (TLS) 1.3</h2><p>实现了RFC 8446中的TLS1.3</p>
+<h2 id="JEP-333-ZGC-A-Scalable-Low-Latency-Garbage-Collector-Experimental"><a href="#JEP-333-ZGC-A-Scalable-Low-Latency-Garbage-Collector-Experimental" class="headerlink" title="JEP 333 ZGC: A Scalable Low-Latency Garbage Collector (Experimental)"></a>JEP 333 ZGC: A Scalable Low-Latency Garbage Collector (Experimental)</h2><p>引入ZGC垃圾收集器，主要实现了以下几个目标：</p>
+<ol>
+<li>停顿时间不超过10ms</li>
+<li>能够处理小(几百兆)的到非常大(几TB)的heap大小</li>
+<li>相比于G1垃圾收集器，不超过15%的吞吐量下降</li>
+<li>为将来的GC收集器奠定基础</li>
+</ol>
+<h2 id="remove-and-deprecate"><a href="#remove-and-deprecate" class="headerlink" title="remove and deprecate"></a>remove and deprecate</h2><h3 id="JEP-320-Remove-the-Java-EE-and-CORBA-Modules"><a href="#JEP-320-Remove-the-Java-EE-and-CORBA-Modules" class="headerlink" title="JEP 320 Remove the Java EE and CORBA Modules"></a>JEP 320 Remove the Java EE and CORBA Modules</h3><p>删除Java9已经标记为Deprecate的Java EE以及CORBA模块。主要包括</p>
+<ol>
+<li>JAX-WS: Java API for XML-Based Web Service</li>
+<li>JAXB: Java Architecture for XML Binding</li>
+<li>JAF: JavaBeans Activation Frameword</li>
+</ol>
+<h3 id="JEP-335-Deprecate-the-Nashorn-JavaScript-Engine"><a href="#JEP-335-Deprecate-the-Nashorn-JavaScript-Engine" class="headerlink" title="JEP 335 Deprecate the Nashorn JavaScript Engine"></a>JEP 335 Deprecate the Nashorn JavaScript Engine</h3><h3 id="JEP-336-Deprecate-the-Pack200-Tools-and-API"><a href="#JEP-336-Deprecate-the-Pack200-Tools-and-API" class="headerlink" title="JEP 336 Deprecate the Pack200 Tools and API"></a>JEP 336 Deprecate the Pack200 Tools and API</h3>]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java11 的新特性]]></title>
-      <url>https://ivyxjc.xyz/2018/10/04/java/java11/2018-10-04-java11-examples/</url>
+      <url>https://ivyxjc.xyz/2018/10/04/java/java11/2018-10-04-java11-examples-1/</url>
       <content type="html"><![CDATA[<h2 id="JEP-181-Nest-Based-Acess-Control"><a href="#JEP-181-Nest-Based-Acess-Control" class="headerlink" title="JEP 181 Nest-Based Acess Control"></a>JEP 181 Nest-Based Acess Control</h2><p>这一提案是为了增强自Java 1.1即引入的嵌套类设计。</p>
 <p>嵌套类主要有两个用处。</p>
 <p>第一是因为其只使用于很短的代码块中，在Java8之前，这主要依靠实现一个匿名类来完成。Java8之后，这种用法可以被lambda表达取代。</p>
@@ -639,6 +686,22 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Glide源码分析 二]]></title>
+      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
+      <content type="html"></content>
+      
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> project </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Glide源码分析 一]]></title>
       <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-11-30-Glide-source_1/</url>
       <content type="html"><![CDATA[<h2 id="从Glide入口开始"><a href="#从Glide入口开始" class="headerlink" title="从Glide入口开始"></a>从Glide入口开始</h2><p>Glide最简单的用法如下所示</p>
@@ -672,22 +735,6 @@
 <h4 id="ManifestParser"><a href="#ManifestParser" class="headerlink" title="ManifestParser"></a>ManifestParser</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">ManifestParser.java</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GLIDE_MODULE_VALUE = <span class="string">"GlideModule"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;GlideModule&gt; <span class="title">parse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;GlideModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;GlideModule&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//根据PackageName获取metadata信息</span></span><br><span class="line">        ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(</span><br><span class="line">                context.getPackageName(), PackageManager.GET_META_DATA);</span><br><span class="line">        <span class="comment">//若有metadata信息</span></span><br><span class="line">        <span class="keyword">if</span> (appInfo.metaData != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//遍历metadata</span></span><br><span class="line">            <span class="keyword">for</span> (String key : appInfo.metaData.keySet()) &#123;</span><br><span class="line">                <span class="comment">//将key和GLIDE_MODULE_VALUE相等的全部加入modules 之中</span></span><br><span class="line">                <span class="keyword">if</span> (GLIDE_MODULE_VALUE.equals(appInfo.metaData.get(key))) &#123;</span><br><span class="line">                    modules.add(parseModule(key));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to find metadata to parse GlideModules"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> modules;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过反射获取GlideModule实例</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> GlideModule <span class="title">parseModule</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">    Class&lt;?&gt; clazz;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        clazz = Class.forName(className);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Unable to find GlideModule implementation"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Object <span class="keyword">module</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">module</span> = clazz.newInstance();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">module</span> <span class="keyword">instanceof</span> GlideModule)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Expected instanceof GlideModule, but found: "</span> + <span class="keyword">module</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (GlideModule) <span class="keyword">module</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过反射的方式获取在Manifest.xml中自定义的GlideModule对象, 获得之后遍历ArrayList<glidemodule>, 对每一个GlideModuled调用相应的applyOptions()和registerComponents()方法.</glidemodule></p>
 ]]></content>
-      
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> project </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Glide源码分析 二]]></title>
-      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
-      <content type="html"></content>
       
         
         <tags>
@@ -962,19 +1009,16 @@
     </entry>
     
     <entry>
-      <title><![CDATA[爬取豆瓣]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
-      <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
-<p>最初还是没有准备使用框架写, 还是准备利用<code>requests</code>获取网页内容然后分析, 后来觉得这么写有点浪费时间, 而且<code>requests</code>是阻塞的, 不便于写多线程的. 另一方面, python爬虫框架Scrapy大名鼎鼎, 不学习一下有点亏, 就决定使用Scrapy来写这个爬虫.</p>
-<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>利用Scrapy来写爬虫还是比较方便简单的, 主要的代码都在<code>douban_spider</code>中, 后续处理的代码在<code>pipeline</code>中, <code>setting</code>中还可以设置爬取速率, 是否遵循robot.txt, middleware等内容.</p>
-<h2 id="获取的豆瓣信息"><a href="#获取的豆瓣信息" class="headerlink" title="获取的豆瓣信息"></a>获取的豆瓣信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'casts'</span>: &#123;<span class="string">'1004780'</span>: <span class="string">'雷诺·维尔森'</span>,</span><br><span class="line">           <span class="string">'1017898'</span>: <span class="string">'约翰·古德曼'</span>,</span><br><span class="line">           <span class="string">'1018140'</span>: <span class="string">'马克·瑞安'</span>,</span><br><span class="line">           <span class="string">'1025212'</span>: <span class="string">'彼特·库伦'</span>,</span><br><span class="line">           <span class="string">'1025213'</span>: <span class="string">'托马斯·列农'</span>,</span><br><span class="line">           <span class="string">'1027181'</span>: <span class="string">'渡边谦'</span>,</span><br><span class="line">           <span class="string">'1031825'</span>: <span class="string">'弗兰克·维尔克'</span>,</span><br><span class="line">           <span class="string">'1031847'</span>: <span class="string">'凯尔希·格兰莫'</span>,</span><br><span class="line">           <span class="string">'1031869'</span>: <span class="string">'索非亚·迈尔斯'</span>,</span><br><span class="line">           <span class="string">'1035674'</span>: <span class="string">'马克·沃尔伯格'</span>,</span><br><span class="line">           <span class="string">'1037706'</span>: <span class="string">'吕良伟'</span>,</span><br><span class="line">           <span class="string">'1040517'</span>: <span class="string">'斯坦利·图齐'</span>,</span><br><span class="line">           <span class="string">'1040990'</span>: <span class="string">'李冰冰'</span>,</span><br><span class="line">           <span class="string">'1041214'</span>: <span class="string">'罗伯特·福克沃斯'</span>,</span><br><span class="line">           <span class="string">'1049627'</span>: <span class="string">'约翰·迪·玛吉欧'</span>,</span><br><span class="line">           <span class="string">'1162139'</span>: <span class="string">'王敏德 '</span>,</span><br><span class="line">           <span class="string">'1165630'</span>: <span class="string">'提图斯·维里沃'</span>,</span><br><span class="line">           <span class="string">'1248294'</span>: <span class="string">'T·J·米勒'</span>,</span><br><span class="line">           <span class="string">'1274253'</span>: <span class="string">'妮可拉·佩尔茨'</span>,</span><br><span class="line">           <span class="string">'1275106'</span>: <span class="string">'纪培慧'</span>,</span><br><span class="line">           <span class="string">'1275667'</span>: <span class="string">'韩庚'</span>,</span><br><span class="line">           <span class="string">'1312271'</span>: <span class="string">'巫刚'</span>,</span><br><span class="line">           <span class="string">'1326135'</span>: <span class="string">'杰克·莱诺'</span>,</span><br><span class="line">           <span class="string">'1340189'</span>: <span class="string">'阿比盖尔·克莱恩'</span>,</span><br><span class="line">           <span class="string">'1340928'</span>: <span class="string">'邹市明'</span>&#125;,</span><br><span class="line"> <span class="string">'directors'</span>: &#123;<span class="string">'1027776'</span>: <span class="string">'迈克尔·贝'</span>&#125;,</span><br><span class="line"> <span class="string">'writers'</span>: &#123;<span class="string">'1027468'</span>: <span class="string">'伊伦·克鲁格'</span>&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"> <span class="string">'rating_better_than'</span>: &#123;<span class="string">'动作片'</span>: <span class="string">'46'</span>, <span class="string">'科幻片'</span>: <span class="string">'44'</span>&#125;,</span><br><span class="line"> <span class="string">'release_date'</span>: &#123;<span class="string">'美国/中国大陆'</span>: <span class="string">'2014-06-27'</span>, <span class="string">'香港首映'</span>: <span class="string">'2014-06-19'</span>&#125;,</span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_aka'</span>: [<span class="string">'变形金刚：歼灭世纪(港)'</span>, <span class="string">'变形金刚4：灭绝时代'</span>, <span class="string">'变形金刚4'</span>, <span class="string">'变4'</span>, <span class="string">'Transformers4'</span>],</span><br><span class="line">  <span class="string">'movie_tags'</span>: [<span class="string">'变形金刚'</span>, <span class="string">'科幻'</span>, <span class="string">'美国'</span>, <span class="string">'动作'</span>, <span class="string">'2014'</span>, <span class="string">'美国电影'</span>, <span class="string">'Transformers'</span>, <span class="string">'电影'</span>],</span><br><span class="line"> <span class="string">'movie_country'</span>: [<span class="string">'美国'</span>, <span class="string">'中国大陆'</span>],</span><br><span class="line"> <span class="string">'movie_genre'</span>: [<span class="string">'动作'</span>, <span class="string">'科幻'</span>],</span><br><span class="line">  <span class="string">'movie_language'</span>: [ <span class="string">'英语'</span>,<span class="string">'汉语普通话'</span>, <span class="string">'粤语'</span>],</span><br><span class="line">  <span class="string">'movie_similar'</span>: [<span class="string">'3610047'</span>,</span><br><span class="line">                    <span class="string">'6082518'</span>,</span><br><span class="line">                    <span class="string">'10741834'</span>,</span><br><span class="line">                    <span class="string">'2063914'</span>,</span><br><span class="line">                    <span class="string">'3718424'</span>,</span><br><span class="line">                    <span class="string">'3231742'</span>,</span><br><span class="line">                    <span class="string">'6390823'</span>,</span><br><span class="line">                    <span class="string">'24404677'</span>,</span><br><span class="line">                    <span class="string">'6560058'</span>,</span><br><span class="line">                    <span class="string">'3217149'</span>],</span><br><span class="line"> <span class="comment">#----------          </span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_id'</span>: <span class="string">'7054604'</span>,</span><br><span class="line"> <span class="string">'movie_imdb_id'</span>: <span class="string">'tt2109248'</span>,</span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_length'</span>: <span class="string">'166'</span>,</span><br><span class="line"> <span class="string">'movie_name'</span>: <span class="string">'变形金刚4：绝迹重生 Transformers: Age of Extinction'</span>,</span><br><span class="line"> <span class="string">'movie_rating'</span>: <span class="string">'6.6'</span>,</span><br><span class="line"> <span class="string">'movie_rating_distribute'</span>: [<span class="string">'11.0'</span>, <span class="string">'28.4'</span>, <span class="string">'43.5'</span>, <span class="string">'13.1'</span>, <span class="string">'4.1'</span>],</span><br><span class="line"> <span class="string">'movie_rating_people_num'</span>: <span class="string">'178399'</span>,</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>以变形金刚四为例, 数据根据格式主要分成四类:</p>
+      <title><![CDATA[Raspberry安装]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
+      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
 <ol>
-<li>导演, 编剧, 演员</li>
-<li>数据格式为map的数据</li>
-<li>数据格式为list的数据</li>
-<li>数据格式为str的数据</li>
+<li><code>/etc/apt/source.list</code></li>
+<li><code>/etc/apt/source.list.d/raspi.list</code></li>
 </ol>
+<p>将其中的网址换掉即可.</p>
+<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
+<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
 ]]></content>
       
         <categories>
@@ -988,9 +1032,7 @@
             
             <tag> python </tag>
             
-            <tag> spider </tag>
-            
-            <tag> xml </tag>
+            <tag> generators </tag>
             
         </tags>
         
@@ -1028,16 +1070,19 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Raspberry安装]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
-      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
+      <title><![CDATA[爬取豆瓣]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
+      <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
+<p>最初还是没有准备使用框架写, 还是准备利用<code>requests</code>获取网页内容然后分析, 后来觉得这么写有点浪费时间, 而且<code>requests</code>是阻塞的, 不便于写多线程的. 另一方面, python爬虫框架Scrapy大名鼎鼎, 不学习一下有点亏, 就决定使用Scrapy来写这个爬虫.</p>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>利用Scrapy来写爬虫还是比较方便简单的, 主要的代码都在<code>douban_spider</code>中, 后续处理的代码在<code>pipeline</code>中, <code>setting</code>中还可以设置爬取速率, 是否遵循robot.txt, middleware等内容.</p>
+<h2 id="获取的豆瓣信息"><a href="#获取的豆瓣信息" class="headerlink" title="获取的豆瓣信息"></a>获取的豆瓣信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'casts'</span>: &#123;<span class="string">'1004780'</span>: <span class="string">'雷诺·维尔森'</span>,</span><br><span class="line">           <span class="string">'1017898'</span>: <span class="string">'约翰·古德曼'</span>,</span><br><span class="line">           <span class="string">'1018140'</span>: <span class="string">'马克·瑞安'</span>,</span><br><span class="line">           <span class="string">'1025212'</span>: <span class="string">'彼特·库伦'</span>,</span><br><span class="line">           <span class="string">'1025213'</span>: <span class="string">'托马斯·列农'</span>,</span><br><span class="line">           <span class="string">'1027181'</span>: <span class="string">'渡边谦'</span>,</span><br><span class="line">           <span class="string">'1031825'</span>: <span class="string">'弗兰克·维尔克'</span>,</span><br><span class="line">           <span class="string">'1031847'</span>: <span class="string">'凯尔希·格兰莫'</span>,</span><br><span class="line">           <span class="string">'1031869'</span>: <span class="string">'索非亚·迈尔斯'</span>,</span><br><span class="line">           <span class="string">'1035674'</span>: <span class="string">'马克·沃尔伯格'</span>,</span><br><span class="line">           <span class="string">'1037706'</span>: <span class="string">'吕良伟'</span>,</span><br><span class="line">           <span class="string">'1040517'</span>: <span class="string">'斯坦利·图齐'</span>,</span><br><span class="line">           <span class="string">'1040990'</span>: <span class="string">'李冰冰'</span>,</span><br><span class="line">           <span class="string">'1041214'</span>: <span class="string">'罗伯特·福克沃斯'</span>,</span><br><span class="line">           <span class="string">'1049627'</span>: <span class="string">'约翰·迪·玛吉欧'</span>,</span><br><span class="line">           <span class="string">'1162139'</span>: <span class="string">'王敏德 '</span>,</span><br><span class="line">           <span class="string">'1165630'</span>: <span class="string">'提图斯·维里沃'</span>,</span><br><span class="line">           <span class="string">'1248294'</span>: <span class="string">'T·J·米勒'</span>,</span><br><span class="line">           <span class="string">'1274253'</span>: <span class="string">'妮可拉·佩尔茨'</span>,</span><br><span class="line">           <span class="string">'1275106'</span>: <span class="string">'纪培慧'</span>,</span><br><span class="line">           <span class="string">'1275667'</span>: <span class="string">'韩庚'</span>,</span><br><span class="line">           <span class="string">'1312271'</span>: <span class="string">'巫刚'</span>,</span><br><span class="line">           <span class="string">'1326135'</span>: <span class="string">'杰克·莱诺'</span>,</span><br><span class="line">           <span class="string">'1340189'</span>: <span class="string">'阿比盖尔·克莱恩'</span>,</span><br><span class="line">           <span class="string">'1340928'</span>: <span class="string">'邹市明'</span>&#125;,</span><br><span class="line"> <span class="string">'directors'</span>: &#123;<span class="string">'1027776'</span>: <span class="string">'迈克尔·贝'</span>&#125;,</span><br><span class="line"> <span class="string">'writers'</span>: &#123;<span class="string">'1027468'</span>: <span class="string">'伊伦·克鲁格'</span>&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"> <span class="string">'rating_better_than'</span>: &#123;<span class="string">'动作片'</span>: <span class="string">'46'</span>, <span class="string">'科幻片'</span>: <span class="string">'44'</span>&#125;,</span><br><span class="line"> <span class="string">'release_date'</span>: &#123;<span class="string">'美国/中国大陆'</span>: <span class="string">'2014-06-27'</span>, <span class="string">'香港首映'</span>: <span class="string">'2014-06-19'</span>&#125;,</span><br><span class="line"> <span class="comment">#----------</span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_aka'</span>: [<span class="string">'变形金刚：歼灭世纪(港)'</span>, <span class="string">'变形金刚4：灭绝时代'</span>, <span class="string">'变形金刚4'</span>, <span class="string">'变4'</span>, <span class="string">'Transformers4'</span>],</span><br><span class="line">  <span class="string">'movie_tags'</span>: [<span class="string">'变形金刚'</span>, <span class="string">'科幻'</span>, <span class="string">'美国'</span>, <span class="string">'动作'</span>, <span class="string">'2014'</span>, <span class="string">'美国电影'</span>, <span class="string">'Transformers'</span>, <span class="string">'电影'</span>],</span><br><span class="line"> <span class="string">'movie_country'</span>: [<span class="string">'美国'</span>, <span class="string">'中国大陆'</span>],</span><br><span class="line"> <span class="string">'movie_genre'</span>: [<span class="string">'动作'</span>, <span class="string">'科幻'</span>],</span><br><span class="line">  <span class="string">'movie_language'</span>: [ <span class="string">'英语'</span>,<span class="string">'汉语普通话'</span>, <span class="string">'粤语'</span>],</span><br><span class="line">  <span class="string">'movie_similar'</span>: [<span class="string">'3610047'</span>,</span><br><span class="line">                    <span class="string">'6082518'</span>,</span><br><span class="line">                    <span class="string">'10741834'</span>,</span><br><span class="line">                    <span class="string">'2063914'</span>,</span><br><span class="line">                    <span class="string">'3718424'</span>,</span><br><span class="line">                    <span class="string">'3231742'</span>,</span><br><span class="line">                    <span class="string">'6390823'</span>,</span><br><span class="line">                    <span class="string">'24404677'</span>,</span><br><span class="line">                    <span class="string">'6560058'</span>,</span><br><span class="line">                    <span class="string">'3217149'</span>],</span><br><span class="line"> <span class="comment">#----------          </span></span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_id'</span>: <span class="string">'7054604'</span>,</span><br><span class="line"> <span class="string">'movie_imdb_id'</span>: <span class="string">'tt2109248'</span>,</span><br><span class="line"></span><br><span class="line"> <span class="string">'movie_length'</span>: <span class="string">'166'</span>,</span><br><span class="line"> <span class="string">'movie_name'</span>: <span class="string">'变形金刚4：绝迹重生 Transformers: Age of Extinction'</span>,</span><br><span class="line"> <span class="string">'movie_rating'</span>: <span class="string">'6.6'</span>,</span><br><span class="line"> <span class="string">'movie_rating_distribute'</span>: [<span class="string">'11.0'</span>, <span class="string">'28.4'</span>, <span class="string">'43.5'</span>, <span class="string">'13.1'</span>, <span class="string">'4.1'</span>],</span><br><span class="line"> <span class="string">'movie_rating_people_num'</span>: <span class="string">'178399'</span>,</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>以变形金刚四为例, 数据根据格式主要分成四类:</p>
 <ol>
-<li><code>/etc/apt/source.list</code></li>
-<li><code>/etc/apt/source.list.d/raspi.list</code></li>
+<li>导演, 编剧, 演员</li>
+<li>数据格式为map的数据</li>
+<li>数据格式为list的数据</li>
+<li>数据格式为str的数据</li>
 </ol>
-<p>将其中的网址换掉即可.</p>
-<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
-<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
 ]]></content>
       
         <categories>
@@ -1051,7 +1096,9 @@
             
             <tag> python </tag>
             
-            <tag> generators </tag>
+            <tag> spider </tag>
+            
+            <tag> xml </tag>
             
         </tags>
         
@@ -1126,33 +1173,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[工厂方法模式]]></title>
-      <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</url>
-      <content type="html"><![CDATA[<h2 id="工厂方法的通用源码"><a href="#工厂方法的通用源码" class="headerlink" title="工厂方法的通用源码"></a>工厂方法的通用源码</h2><h3 id="抽象产品类"><a href="#抽象产品类" class="headerlink" title="抽象产品类"></a>抽象产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="具体产品类"><a href="#具体产品类" class="headerlink" title="具体产品类"></a>具体产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="抽象工厂类"><a href="#抽象工厂类" class="headerlink" title="抽象工厂类"></a>抽象工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="具体工厂类"><a href="#具体工厂类" class="headerlink" title="具体工厂类"></a>具体工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">    Product product=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      product=(Product)Class.forName(c.getName()).newInstance();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      ....</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (T)product;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>简单工厂模式去掉了抽象工厂类, 并且<code>createProduct()</code>方法添加了<code>static</code>. 该模式调用过程更为简单, 方便理解. 但是扩展较为困难, 不符合开闭原则.</p>
-<h2 id="多工厂模式"><a href="#多工厂模式" class="headerlink" title="多工厂模式"></a>多工厂模式</h2><h2 id="利用工厂模式生成单例"><a href="#利用工厂模式生成单例" class="headerlink" title="利用工厂模式生成单例"></a>利用工厂模式生成单例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorySingle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton sSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class cl=Class.forName(Singleton.class.getName());</span><br><span class="line">            Constructor constructor=cl.getDeclaredConstructor();</span><br><span class="line">            constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            sSingleton=(Singleton)constructor.newInstance();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>为创建一组相关或者是相互依赖的对象提供一个接口, 而不需要制定它们的具体类.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[单例模式]]></title>
       <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-singleton/</url>
       <content type="html"><![CDATA[<p>Ensure a class has only one instance, and provide a global point of access to it.</p>
@@ -1213,22 +1233,27 @@
     </entry>
     
     <entry>
-      <title><![CDATA[mysql基本命令]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
-      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
-<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
+      <title><![CDATA[工厂方法模式]]></title>
+      <url>https://ivyxjc.xyz/2016/10/25/design_pattern/2016-10-25-factory-pattern/</url>
+      <content type="html"><![CDATA[<h2 id="工厂方法的通用源码"><a href="#工厂方法的通用源码" class="headerlink" title="工厂方法的通用源码"></a>工厂方法的通用源码</h2><h3 id="抽象产品类"><a href="#抽象产品类" class="headerlink" title="抽象产品类"></a>抽象产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="具体产品类"><a href="#具体产品类" class="headerlink" title="具体产品类"></a>具体产品类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="抽象工厂类"><a href="#抽象工厂类" class="headerlink" title="抽象工厂类"></a>抽象工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="具体工厂类"><a href="#具体工厂类" class="headerlink" title="具体工厂类"></a>具体工厂类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteCreator</span> <span class="keyword">extends</span> <span class="title">Creator</span></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T extends Product&gt; <span class="function">T <span class="title">createProduct</span><span class="params">(Class&lt;T&gt; c)</span></span>&#123;</span><br><span class="line">    Product product=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      product=(Product)Class.forName(c.getName()).newInstance();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      ....</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (T)product;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>简单工厂模式去掉了抽象工厂类, 并且<code>createProduct()</code>方法添加了<code>static</code>. 该模式调用过程更为简单, 方便理解. 但是扩展较为困难, 不符合开闭原则.</p>
+<h2 id="多工厂模式"><a href="#多工厂模式" class="headerlink" title="多工厂模式"></a>多工厂模式</h2><h2 id="利用工厂模式生成单例"><a href="#利用工厂模式生成单例" class="headerlink" title="利用工厂模式生成单例"></a>利用工厂模式生成单例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorySingle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton sSingleton;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class cl=Class.forName(Singleton.class.getName());</span><br><span class="line">            Constructor constructor=cl.getDeclaredConstructor();</span><br><span class="line">            constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            sSingleton=(Singleton)constructor.newInstance();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sSingleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>为创建一组相关或者是相互依赖的对象提供一个接口, 而不需要制定它们的具体类.</p>
 ]]></content>
       
         <categories>
             
-            <category> database </category>
+            <category> OO </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> database </tag>
+            <tag> 设计模式 </tag>
             
         </tags>
         
@@ -1271,6 +1296,28 @@
         <tags>
             
             <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mysql基本命令]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
+      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
+<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> database </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> database </tag>
             
         </tags>
         
@@ -1575,30 +1622,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[matplotlib绘制2D，3D散点图]]></title>
-      <url>https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</url>
-      <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置颜色</span></span><br><span class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</span><br><span class="line"><span class="comment">#各点大小的list</span></span><br><span class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</span><br><span class="line"><span class="comment"># print(sizeLab)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴上下限</span></span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴标号</span></span><br><span class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置记号的标签</span></span><br><span class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</span><br><span class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横纵坐标label</span></span><br><span class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fig=plt.figure()</span><br><span class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置坐标</span></span><br><span class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</span><br><span class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</span><br><span class="line"></span><br><span class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</span><br><span class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</span><br><span class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置图例</span></span><br><span class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> matplotlib </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[numpy user guide]]></title>
       <url>https://ivyxjc.xyz/2016/10/04/python/numpy/2016-10-04-numpy-basic/</url>
       <content type="html"><![CDATA[<h2 id="numpy-tile-A-reprs"><a href="#numpy-tile-A-reprs" class="headerlink" title="numpy.tile(A,reprs)"></a>numpy.tile(A,reprs)</h2><p><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.tile.html" target="_blank" rel="noopener">numpy.tile</a></p>
@@ -1635,26 +1658,24 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ActionBar PopuMenu]]></title>
-      <url>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</url>
-      <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</span><br><span class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</span><br><span class="line"></span><br><span class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</span><br><span class="line"></span><br><span class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</span><br><span class="line"></span><br><span class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</span><br><span class="line">                    <span class="keyword">case</span> R.id.menu_remove:</span><br><span class="line">                        adapter.remove(item);</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        popup.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[matplotlib绘制2D，3D散点图]]></title>
+      <url>https://ivyxjc.xyz/2016/10/04/python/matplotlib/2016-10-04-matplotlib-basic/</url>
+      <content type="html"><![CDATA[<h2 id="2d散点图"><a href="#2d散点图" class="headerlink" title="2d散点图"></a>2d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置颜色</span></span><br><span class="line">colors = [<span class="string">'#0000FF'</span>,<span class="string">'#3CB371'</span>]</span><br><span class="line"><span class="comment">#各点大小的list</span></span><br><span class="line">sizeLab=np.add(sizeLab,<span class="number">20</span>)</span><br><span class="line"><span class="comment"># print(sizeLab)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴上下限</span></span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">25</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横轴标号</span></span><br><span class="line"><span class="comment"># plt.xticks(np.linspace(0,15,5,endpoint=True))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置记号的标签</span></span><br><span class="line">plt.xticks([<span class="number">2</span>*np.pi, <span class="number">4</span>*np.pi, <span class="number">0</span>, np.pi/<span class="number">2</span>, np.pi],</span><br><span class="line">       [<span class="string">r'$2\pi$'</span>, <span class="string">r'$4\pi$'</span>, <span class="string">r'$0$'</span>, <span class="string">r'$\pi/2$'</span>, <span class="string">r'$\pi$'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置横纵坐标label</span></span><br><span class="line">plt.xlabel(<span class="string">"x 轴label"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y 轴label"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.scatter(datingDataMat[:,<span class="number">1</span>],datingDataMat[:,<span class="number">2</span>],s=sizeLab, c=colors)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="3d散点图"><a href="#3d散点图" class="headerlink" title="3d散点图"></a>3d散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">fig=plt.figure()</span><br><span class="line">ax=fig.add_subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置坐标</span></span><br><span class="line">ax.set_xlabel(<span class="string">"飞行里程数"</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">"游戏时间百分比"</span>)</span><br><span class="line">ax.set_zlabel(<span class="string">"冰激凌消耗量"</span>)</span><br><span class="line"></span><br><span class="line">type1=ax.scatter(dataDidnlike[:,<span class="number">0</span>], dataDidnlike[:,<span class="number">1</span>], dataDidnlike[:,<span class="number">2</span>], c=<span class="string">'#3c345b'</span>)</span><br><span class="line">type2=ax.scatter(dataSmallDoses[:,<span class="number">0</span>], dataSmallDoses[:,<span class="number">1</span>],dataSmallDoses[:,<span class="number">2</span>],c=<span class="string">"#4576f7"</span>)</span><br><span class="line">type3=ax.scatter(dataLargeDoses[:,<span class="number">0</span>], dataLargeDoses[:,<span class="number">1</span>], dataLargeDoses[:,<span class="number">2</span>],c=<span class="string">"#43ff1a"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置图例</span></span><br><span class="line">ax.legend((type1, type2, type3), (<span class="string">u'不喜欢'</span>, <span class="string">u'魅力一般'</span>, <span class="string">u'极具魅力'</span>), loc=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
             
-            <category> Android </category>
+            <category> Python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> android </tag>
+            <tag> python </tag>
             
-            <tag> android_UI </tag>
-            
-            <tag> android_fragment </tag>
+            <tag> matplotlib </tag>
             
         </tags>
         
@@ -1678,6 +1699,32 @@
             <tag> android </tag>
             
             <tag> android_control </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ActionBar PopuMenu]]></title>
+      <url>https://ivyxjc.xyz/2016/09/24/android/AndroidSamples/UI/2016-09-24-ActionBar-PopupMenu/</url>
+      <content type="html"><![CDATA[<h2 id="PopupMenu"><a href="#PopupMenu" class="headerlink" title="PopupMenu"></a>PopupMenu</h2><p>popupmenu可以非常方便得实现在指定view下弹出一个菜单,实现类似ActionBar中的效果.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPopupMenu</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> PopupAdapter adapter = (PopupAdapter) getListAdapter();</span><br><span class="line">        <span class="keyword">final</span> String item = (String) view.getTag();</span><br><span class="line"></span><br><span class="line">        PopupMenu popup = <span class="keyword">new</span> PopupMenu(getActivity(), view);</span><br><span class="line"></span><br><span class="line">        popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());</span><br><span class="line"></span><br><span class="line">        popup.setOnMenuItemClickListener(<span class="keyword">new</span> PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem menuItem)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">switch</span> (menuItem.getItemId())&#123;</span><br><span class="line">                    <span class="keyword">case</span> R.id.menu_remove:</span><br><span class="line">                        adapter.remove(item);</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        popup.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_UI </tag>
+            
+            <tag> android_fragment </tag>
             
         </tags>
         
@@ -1962,28 +2009,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
-      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
-      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
-<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Sunshine开发实战:测试]]></title>
       <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-android-test/</url>
       <content type="html"><![CDATA[<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPractice</span> <span class="keyword">extends</span> <span class="title">AndroidTestCase</span> </span>&#123;</span><br><span class="line">    <span class="comment">//测试前进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.setUp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//所有测试的类必须以test开头</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThatDemonstratesAssertations</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> b=<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> c=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> d=<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        assertEquals(<span class="string">"X should be equal"</span>,a,c);</span><br><span class="line">        assertTrue(<span class="string">"Y should be true"</span>,d&gt;a);</span><br><span class="line">        assertFalse(<span class="string">"Z should be false"</span>,a==b);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//测试之后进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.tearDown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2008,11 +2033,10 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Sunshine开发实战:数据持久化]]></title>
-      <url>https://ivyxjc.xyz/2016/06/02/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-02-data-persistence/</url>
-      <content type="html"><![CDATA[<p>##　Sunshine应用数据存储总体框架<br><img src="http://oezmbgg4j.bkt.clouddn.com/sunshine_data_persistence.png" alt=""></p>
-<h2 id="WeatherContract"><a href="#WeatherContract" class="headerlink" title="WeatherContract"></a>WeatherContract</h2><p>A contract is an agreement between the data model, storeage, and views, presentation, describing how information is accessed.<br>事实上就是在一个类中规定好所有相关的数据表中相应的表名,列名等等.</p>
-<h2 id="WeatherDBHelper"><a href="#WeatherDBHelper" class="headerlink" title="WeatherDBHelper"></a>WeatherDBHelper</h2><p>创建数据库并进行初始化</p>
+      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
+      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
+      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
 ]]></content>
       
         <categories>
@@ -2025,8 +2049,6 @@
         <tags>
             
             <tag> android </tag>
-            
-            <tag> android_data </tag>
             
         </tags>
         
@@ -2065,6 +2087,31 @@
             <tag> android </tag>
             
             <tag> android_lifecycle </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Sunshine开发实战:数据持久化]]></title>
+      <url>https://ivyxjc.xyz/2016/06/02/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-02-data-persistence/</url>
+      <content type="html"><![CDATA[<p>##　Sunshine应用数据存储总体框架<br><img src="http://oezmbgg4j.bkt.clouddn.com/sunshine_data_persistence.png" alt=""></p>
+<h2 id="WeatherContract"><a href="#WeatherContract" class="headerlink" title="WeatherContract"></a>WeatherContract</h2><p>A contract is an agreement between the data model, storeage, and views, presentation, describing how information is accessed.<br>事实上就是在一个类中规定好所有相关的数据表中相应的表名,列名等等.</p>
+<h2 id="WeatherDBHelper"><a href="#WeatherDBHelper" class="headerlink" title="WeatherDBHelper"></a>WeatherDBHelper</h2><p>创建数据库并进行初始化</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_data </tag>
             
         </tags>
         
@@ -2177,6 +2224,28 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
+      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
+      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Algorithm </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> recursion </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[数根]]></title>
       <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-add-digits/</url>
       <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>数根就是指将一个数的各位数字相加之后得到一个数字，若该数大于等于10则继续该运算所得到的那个数。</p>
@@ -2241,10 +2310,19 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
-      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
-      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[LeetCode 343,122 整数拆分求积 递增区间寻找]]></title>
+      <url>https://ivyxjc.xyz/2016/04/21/algorithm/oj/LeetCode/2016-04-21-medium-343-122/</url>
+      <content type="html"><![CDATA[<h2 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122 Best Time to Buy and Sell Stock II"></a>122 Best Time to Buy and Sell Stock II</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<p>已知物品每天的价格，讨论通过买卖可以赚到的最多利润。卖之前必须买，再一次买之前必须卖掉。</p>
+<p>寻找所有递增区间，区间尾头之差即单次利润。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxProfit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prices.length;)&#123;</span><br><span class="line">        <span class="keyword">int</span> plus=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i+plus&lt;prices.length&amp;&amp;prices[i+plus-<span class="number">1</span>]&lt;prices[i+plus])&#123;</span><br><span class="line">            plus+=<span class="number">1</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            maxProfit+=prices[i+plus-<span class="number">1</span>]-prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        i+=plus;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="343-Integer-Break"><a href="#343-Integer-Break" class="headerlink" title="343 Integer Break"></a>343 Integer Break</h2><p>给一个自然数n，把它拆分为若干个数的和，记这若干个数的乘积为M，求M的最大值。</p>
+<p>方法：尽可能将这个数拆分成3，原因下方解释。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mod=n%<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    res=(<span class="keyword">int</span>)Math.pow(<span class="number">3</span>,n/<span class="number">3</span>);</span><br><span class="line">    System.out.println(res);</span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">1</span>)&#123;</span><br><span class="line">        res=res/<span class="number">3</span>*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">2</span>)&#123;</span><br><span class="line">        res=res*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>因为有不等式<br>$$\sqrt[k]{x_1x_2x_3x_4…x_k}\leq \frac{x_1x_2x_3x_4…x_k}{k}$$</p>
+<p>设$$$n=x_1+x_2+x_3+x_4+x_5+…+x_k$$$，$$$P=x_1x_2x_3x_4x_5+…x_k$$$。</p>
+<p>所以有$$$P \leq (\frac{n}{k})^k$$$</p>
 ]]></content>
       
         <categories>
@@ -2256,7 +2334,7 @@
         
         <tags>
             
-            <tag> recursion </tag>
+            <tag> oj </tag>
             
         </tags>
         
@@ -2294,37 +2372,6 @@
             <tag> sort </tag>
             
             <tag> bit manipulation </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[LeetCode 343,122 整数拆分求积 递增区间寻找]]></title>
-      <url>https://ivyxjc.xyz/2016/04/21/algorithm/oj/LeetCode/2016-04-21-medium-343-122/</url>
-      <content type="html"><![CDATA[<h2 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122 Best Time to Buy and Sell Stock II"></a>122 Best Time to Buy and Sell Stock II</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<p>已知物品每天的价格，讨论通过买卖可以赚到的最多利润。卖之前必须买，再一次买之前必须卖掉。</p>
-<p>寻找所有递增区间，区间尾头之差即单次利润。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxProfit=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prices.length;)&#123;</span><br><span class="line">        <span class="keyword">int</span> plus=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i+plus&lt;prices.length&amp;&amp;prices[i+plus-<span class="number">1</span>]&lt;prices[i+plus])&#123;</span><br><span class="line">            plus+=<span class="number">1</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">            maxProfit+=prices[i+plus-<span class="number">1</span>]-prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        i+=plus;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="343-Integer-Break"><a href="#343-Integer-Break" class="headerlink" title="343 Integer Break"></a>343 Integer Break</h2><p>给一个自然数n，把它拆分为若干个数的和，记这若干个数的乘积为M，求M的最大值。</p>
-<p>方法：尽可能将这个数拆分成3，原因下方解释。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mod=n%<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    res=(<span class="keyword">int</span>)Math.pow(<span class="number">3</span>,n/<span class="number">3</span>);</span><br><span class="line">    System.out.println(res);</span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">1</span>)&#123;</span><br><span class="line">        res=res/<span class="number">3</span>*<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(mod==<span class="number">2</span>)&#123;</span><br><span class="line">        res=res*<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>因为有不等式<br>$$\sqrt[k]{x_1x_2x_3x_4…x_k}\leq \frac{x_1x_2x_3x_4…x_k}{k}$$</p>
-<p>设$$$n=x_1+x_2+x_3+x_4+x_5+…+x_k$$$，$$$P=x_1x_2x_3x_4x_5+…x_k$$$。</p>
-<p>所以有$$$P \leq (\frac{n}{k})^k$$$</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Algorithm </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> oj </tag>
             
         </tags>
         
@@ -2623,40 +2670,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[跨程序共享数据]]></title>
-      <url>https://ivyxjc.xyz/2016/03/26/android/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/2016-03-26-content-provider/</url>
-      <content type="html"><![CDATA[<p>可以利用<code>getContentResolver()</code>获取<code>ContentResolver</code>. <code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br><a id="more"></a></p>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>通过<code>getContentResolver()</code>获取<code>ContentResolver</code>的实例，<code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br>其中<br> 1.insert() 用于添加<br> 2.update() 用于更新<br> 3.delete() 用于删除<br> 4.query()  用于查询</p>
-<h3 id="内容URI及用法"><a href="#内容URI及用法" class="headerlink" title="内容URI及用法"></a>内容URI及用法</h3><p><code>ContentResolver</code>中的CRUD操作是不接受表名参数的，而是使用一个<code>Uri</code>参数代替。该参数被称为内容<code>URI</code>，由两部分组成：authority和path。<br>内容<code>URI</code>标准写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content://com.example.app.provider/table1</span><br></pre></td></tr></table></figure>
-<p>需要将内容<code>URI</code>解析成<code>Uri</code>对象才可以作为参数传入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri uri=Uri.parse(<span class="string">"content://com.example.app.provider/table1"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,orderBy);</span><br></pre></td></tr></table></figure>
-<p>其它操作与之类似，也和SQLite中的操作相像。<br><img src="/assets/img/posts/content_provider_query.png" alt=""></p>
-<h2 id="自定义ContentProvider"><a href="#自定义ContentProvider" class="headerlink" title="自定义ContentProvider"></a>自定义ContentProvider</h2><p>可以<code>extends ContentProvider</code>，需要覆盖父类的6个方法.</p>
-<p> 1.<code>public boolean onCreate()</code>:初始化ContentProvider时调用，完成对数据库的创建和升级，返回true则表示ContentProvider初始化成功，返回false表示失败。<strong>注意：只有存在<code>ContentResolver</code>尝试访问该程序中的而数据时，ContentProvider才会初始化</strong>。<br> 2.<code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code>：从ContentProvider中查询数据。使用<code>uri</code>参数来确定查询哪一张表，<code>projection</code>用于确定查询哪些列，<code>selection</code>和<code>selectionArgs</code>用来约束查询内容，<code>sordOreder</code>参数用于对结果进行排序，查询结果放在<code>Cursor</code>中返回。<br> 3.<code>public Uri insert(Uri uri, ContentValues values)</code>：向<code>ContentProvider</code>中添加一条数据。<br> 4.<code>public int delete(Uri uri, String selection, String[] selectionArgs)</code>：从<code>ContentProvider</code>中删除数据。<br> 5.<code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code>：更新数据<br> 6.<code>public String getType(Uri uri)</code>:根据传入的内容URI来返回相对应的MIME类型。</p>
-<p>一个内容URI对应的MIME字符串由三部分组成：<br> 1.必须以vnd开头。<br> 2.如果内容URI以路径结尾，则后街<code>androi.cursor.dir/</code>,如果内容URI以id结尾，则后接<code>android.cursor.item/</code>。<br> 3.最后街上<code>vnd.&lt;authority&gt;.&lt;path&gt;</code></p>
-<h2 id="安全性保证"><a href="#安全性保证" class="headerlink" title="安全性保证"></a>安全性保证</h2><p>因为所有的CRUD操作都一定要匹配到相应的内容URI格式才能进行，所以我们可以控制外部程序能够获得的存储内容。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_data </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Notification初步]]></title>
       <url>https://ivyxjc.xyz/2016/03/26/android/%E6%8E%A7%E4%BB%B6/Notification/2016-03-26-Notification-basic/</url>
       <content type="html"><![CDATA[<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">MainActivity.java</span><br><span class="line"></span><br><span class="line">NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);</span><br><span class="line"></span><br><span class="line">Notification.Builder builder=<span class="keyword">new</span> Notification.Builder(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置点击通知进入NotificationActivity</span></span><br><span class="line">Intent intent=<span class="keyword">new</span> Intent(<span class="keyword">this</span>,NotificationActivity.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二个参数int requestCode相同，表示是同一个pendingIntent</span></span><br><span class="line">PendingIntent pi=PendingIntent.getActivity(<span class="keyword">this</span>,<span class="number">0</span>,intent,PendingIntent.FLAG_CANCEL_CURRENT);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置通知栏 布局，内容等...</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);</span><br><span class="line">builder.setContentTitle(<span class="string">"Notification Title"</span>);</span><br><span class="line">builder.setContentText(<span class="string">"Notification text"</span>);</span><br><span class="line">builder.setContentIntent(pi);</span><br><span class="line"></span><br><span class="line"><span class="comment">//第一个参数在应用中是唯一的，代表这个通知</span></span><br><span class="line">notificationManager.notify(<span class="number">11</span>, builder.build());</span><br></pre></td></tr></table></figure>
@@ -2685,6 +2698,40 @@
         <tags>
             
             <tag> android </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[跨程序共享数据]]></title>
+      <url>https://ivyxjc.xyz/2016/03/26/android/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/2016-03-26-content-provider/</url>
+      <content type="html"><![CDATA[<p>可以利用<code>getContentResolver()</code>获取<code>ContentResolver</code>. <code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br><a id="more"></a></p>
+<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>通过<code>getContentResolver()</code>获取<code>ContentResolver</code>的实例，<code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br>其中<br> 1.insert() 用于添加<br> 2.update() 用于更新<br> 3.delete() 用于删除<br> 4.query()  用于查询</p>
+<h3 id="内容URI及用法"><a href="#内容URI及用法" class="headerlink" title="内容URI及用法"></a>内容URI及用法</h3><p><code>ContentResolver</code>中的CRUD操作是不接受表名参数的，而是使用一个<code>Uri</code>参数代替。该参数被称为内容<code>URI</code>，由两部分组成：authority和path。<br>内容<code>URI</code>标准写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content://com.example.app.provider/table1</span><br></pre></td></tr></table></figure>
+<p>需要将内容<code>URI</code>解析成<code>Uri</code>对象才可以作为参数传入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri uri=Uri.parse(<span class="string">"content://com.example.app.provider/table1"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,orderBy);</span><br></pre></td></tr></table></figure>
+<p>其它操作与之类似，也和SQLite中的操作相像。<br><img src="/assets/img/posts/content_provider_query.png" alt=""></p>
+<h2 id="自定义ContentProvider"><a href="#自定义ContentProvider" class="headerlink" title="自定义ContentProvider"></a>自定义ContentProvider</h2><p>可以<code>extends ContentProvider</code>，需要覆盖父类的6个方法.</p>
+<p> 1.<code>public boolean onCreate()</code>:初始化ContentProvider时调用，完成对数据库的创建和升级，返回true则表示ContentProvider初始化成功，返回false表示失败。<strong>注意：只有存在<code>ContentResolver</code>尝试访问该程序中的而数据时，ContentProvider才会初始化</strong>。<br> 2.<code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code>：从ContentProvider中查询数据。使用<code>uri</code>参数来确定查询哪一张表，<code>projection</code>用于确定查询哪些列，<code>selection</code>和<code>selectionArgs</code>用来约束查询内容，<code>sordOreder</code>参数用于对结果进行排序，查询结果放在<code>Cursor</code>中返回。<br> 3.<code>public Uri insert(Uri uri, ContentValues values)</code>：向<code>ContentProvider</code>中添加一条数据。<br> 4.<code>public int delete(Uri uri, String selection, String[] selectionArgs)</code>：从<code>ContentProvider</code>中删除数据。<br> 5.<code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code>：更新数据<br> 6.<code>public String getType(Uri uri)</code>:根据传入的内容URI来返回相对应的MIME类型。</p>
+<p>一个内容URI对应的MIME字符串由三部分组成：<br> 1.必须以vnd开头。<br> 2.如果内容URI以路径结尾，则后街<code>androi.cursor.dir/</code>,如果内容URI以id结尾，则后接<code>android.cursor.item/</code>。<br> 3.最后街上<code>vnd.&lt;authority&gt;.&lt;path&gt;</code></p>
+<h2 id="安全性保证"><a href="#安全性保证" class="headerlink" title="安全性保证"></a>安全性保证</h2><p>因为所有的CRUD操作都一定要匹配到相应的内容URI格式才能进行，所以我们可以控制外部程序能够获得的存储内容。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_data </tag>
             
         </tags>
         
