@@ -57,6 +57,7 @@
       <title><![CDATA[i++ 的线程安全性]]></title>
       <url>https://ivyxjc.xyz/2018/10/09/java/concurrency/2018-10-09-count++-thread-safe/</url>
       <content type="html"><![CDATA[<p>众所周知，++操作并不是线程安全的。这篇文章主要讲述其非线程安全的原因以及相关问题。</p>
+<a id="more"></a>
 <h2 id="使用volatile修饰仍不是线程安全的原因"><a href="#使用volatile修饰仍不是线程安全的原因" class="headerlink" title="使用volatile修饰仍不是线程安全的原因"></a>使用volatile修饰仍不是线程安全的原因</h2><p><code>i++</code>分为以下3步：</p>
 <ol>
 <li>从内存中读取到count</li>
@@ -98,7 +99,9 @@
     <entry>
       <title><![CDATA[Java 11 的新特性(上)]]></title>
       <url>https://ivyxjc.xyz/2018/10/04/java/java11/2018-10-04-java11-examples-1/</url>
-      <content type="html"><![CDATA[<h2 id="JEP-181-Nest-Based-Acess-Control"><a href="#JEP-181-Nest-Based-Acess-Control" class="headerlink" title="JEP 181 Nest-Based Acess Control"></a>JEP 181 Nest-Based Acess Control</h2><p>这一提案是为了增强自Java 1.1即引入的嵌套类设计。</p>
+      <content type="html"><![CDATA[<p>Java 11中的新特性（上）</p>
+<a id="more"></a>
+<h2 id="JEP-181-Nest-Based-Acess-Control"><a href="#JEP-181-Nest-Based-Acess-Control" class="headerlink" title="JEP 181 Nest-Based Acess Control"></a>JEP 181 Nest-Based Acess Control</h2><p>这一提案是为了增强自Java 1.1即引入的嵌套类设计。</p>
 <p>嵌套类主要有两个用处。</p>
 <p>第一是因为其只使用于很短的代码块中，在Java8之前，这主要依靠实现一个匿名类来完成。Java8之后，这种用法可以被lambda表达取代。</p>
 <p>另一种用法是因为需要访问另一个类的内部。嵌套类具有和成员变量以及成员方法相同的访问权限。</p>
@@ -136,7 +139,9 @@
     <entry>
       <title><![CDATA[Java 11 的新特性(下)]]></title>
       <url>https://ivyxjc.xyz/2018/10/04/java/java11/2018-10-04-java11-examples-2/</url>
-      <content type="html"><![CDATA[<h2 id="JEP-309-Dynamic-Class-File-Constants"><a href="#JEP-309-Dynamic-Class-File-Constants" class="headerlink" title="JEP 309 Dynamic Class-File Constants"></a>JEP 309 Dynamic Class-File Constants</h2><p>JVM规范中在常量池中添加一个新的类型 CONSTANT_Dynamic</p>
+      <content type="html"><![CDATA[<p>Java 11中的新特性（下）</p>
+<a id="more"></a>
+<h2 id="JEP-309-Dynamic-Class-File-Constants"><a href="#JEP-309-Dynamic-Class-File-Constants" class="headerlink" title="JEP 309 Dynamic Class-File Constants"></a>JEP 309 Dynamic Class-File Constants</h2><p>JVM规范中在常量池中添加一个新的类型 CONSTANT_Dynamic</p>
 <h2 id="JEP-315-Improve-Aarch64-Intrinsics"><a href="#JEP-315-Improve-Aarch64-Intrinsics" class="headerlink" title="JEP 315 Improve Aarch64 Intrinsics"></a>JEP 315 Improve Aarch64 Intrinsics</h2><h2 id="JEP-318-Epsilon-A-No-Op-Garbage-Collector"><a href="#JEP-318-Epsilon-A-No-Op-Garbage-Collector" class="headerlink" title="JEP 318 Epsilon: A No-Op Garbage Collector"></a>JEP 318 Epsilon: A No-Op Garbage Collector</h2><p>一个新的垃圾收集器，在GC时并不执行任何操作。<br>主要有一下几的目的：</p>
 <ol>
 <li>性能测试。便于在性能测试的时候排除GC的影响</li>
@@ -183,7 +188,8 @@
     <entry>
       <title><![CDATA[Docker相关命令]]></title>
       <url>https://ivyxjc.xyz/2018/08/09/Linux/2018-04-28-docker-basic/</url>
-      <content type="html"><![CDATA[<h2 id="运行docker"><a href="#运行docker" class="headerlink" title="运行docker"></a>运行docker</h2><h3 id="映射端口"><a href="#映射端口" class="headerlink" title="映射端口"></a>映射端口</h3><p><code>docker run -p 8080:8080 image_name</code></p>
+      <content type="html"><![CDATA[<p>Docker的相关命令<br><a id="more"></a></p>
+<h2 id="运行docker"><a href="#运行docker" class="headerlink" title="运行docker"></a>运行docker</h2><h3 id="映射端口"><a href="#映射端口" class="headerlink" title="映射端口"></a>映射端口</h3><p><code>docker run -p 8080:8080 image_name</code></p>
 <h3 id="映射文件"><a href="#映射文件" class="headerlink" title="映射文件"></a>映射文件</h3><p><code>docker run -v /logs:/var/log/ -p 5000:80 image_name</code></p>
 <p>将宿主<code>/logs</code>目录加载到container中的<code>/var/log</code></p>
 <h3 id="–add-host"><a href="#–add-host" class="headerlink" title="–add-host"></a>–add-host</h3><p><code>docker run -it --add-host db-static:1.1.1.1 ubuntu cat /etc/hosts1</code></p>
@@ -209,7 +215,7 @@
     <entry>
       <title><![CDATA[centos7 LNMP配置]]></title>
       <url>https://ivyxjc.xyz/2018/08/09/Linux/2018-03-17-centos7-init/</url>
-      <content type="html"><![CDATA[<p>centos7环境搭建及相关配置。</p>
+      <content type="html"><![CDATA[<p>centos7环境搭建及相关配置。介绍如何开启SSH，安装Java，MySql，Python，Git，Docker。<br><a id="more"></a></p>
 <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><h2 id="更改ssh端口以及防火墙开放端口"><a href="#更改ssh端口以及防火墙开放端口" class="headerlink" title="更改ssh端口以及防火墙开放端口"></a>更改ssh端口以及防火墙开放端口</h2><p><a href="https://sebastianblade.com/how-to-modify-ssh-port-in-centos7/" target="_blank" rel="noopener">怎样修改 CentOS 7 SSH 端口</a>(<a href="https://web.archive.org/web/20180317035653/https://sebastianblade.com/how-to-modify-ssh-port-in-centos7/" target="_blank" rel="noopener">archive存档</a>)</p>
 <h2 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h2><p>直接wget下载地址并不能成功下载。使用下面的方式可以成功下载jdk-8u162.rpm.<br>使用<code>rpm -qa | grep &#39;jdk&#39;</code>查找已安装的jdk，使用<code>rpm -e jdk**</code>来删除。之后使用<code>rpm -ivh jdk**</code>来安装新的jdk.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.rpm?AuthParam=1521257408_9aefdf6daa3472d09007c0abd24832e1&quot;</span><br></pre></td></tr></table></figure>
@@ -248,7 +254,7 @@
     <entry>
       <title><![CDATA[Kafka 认证配置]]></title>
       <url>https://ivyxjc.xyz/2018/05/05/%E6%95%88%E7%8E%87/2018-05-05-build-Kafka/</url>
-      <content type="html"><![CDATA[<p>Kafka支持多种安全验证方式，本文主要介绍使用用户名/密码的方式的方式认证Kafka。</p>
+      <content type="html"><![CDATA[<p>Kafka支持多种安全验证方式，本文主要介绍使用用户名/密码的方式的方式认证Kafka。<br><a id="more"></a></p>
 <h3 id="Zookeeper-相关更改"><a href="#Zookeeper-相关更改" class="headerlink" title="Zookeeper 相关更改"></a>Zookeeper 相关更改</h3><p><code>zookeeper-server-start.bat</code>（win）<br>添加</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">IF</span> ["<span class="variable">%KAFKA_SASL_OPTS%</span>"] <span class="keyword">EQU</span> [""] (</span><br><span class="line">    <span class="built_in">set</span> KAFKA_SASL_OPTS=-Djava.security.auth.login.config=filepath\kafka_2.<span class="number">11</span>-<span class="number">1</span>.<span class="number">1</span>.<span class="number">0</span>\kafka_zoo_jaas.conf</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><code>kafka_zoo_jaas.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Server &#123;  </span><br><span class="line">  org.apache.kafka.common.security.plain.PlainLoginModule required  </span><br><span class="line">    username=&quot;zoo-admin&quot;</span><br><span class="line">    password=&quot;zoo-admin-pass&quot;</span><br><span class="line">    user_zooUser=&quot;zooUser-pass&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
@@ -286,7 +292,8 @@
       <url>https://ivyxjc.xyz/2018/03/26/java/2018-03-26-how-to-get-resource/</url>
       <content type="html"><![CDATA[<p>使用<code>*.class.getResouce()</code>和<code>*.class.getClassLoader.getResource()</code>是有一定的区别的。</p>
 <p>在maven，gradle等构建工具构建的项目，resouces文件夹下的内容默认在classpath下面。</p>
-<p>所以可以直接用<code>this.class.getClassLoader.getResource(...)</code>来获取对应的文件</p>
+<p>所以可以直接用<code>this.class.getClassLoader.getResource(...)</code>来获取对应的文件。</p>
+<a id="more"></a>
 <h2 id="Class与ClassLoader-getResource-之间的区别"><a href="#Class与ClassLoader-getResource-之间的区别" class="headerlink" title="Class与ClassLoader.getResource()之间的区别"></a>Class与ClassLoader.getResource()之间的区别</h2><p>使用<code>*.class.getResouce()</code>和<code>*.class.getClassLoader.getResource()</code>是有一定的区别的。</p>
 <p><code>*.class.getResouce()</code>先会<code>resolveName(name)</code>然后在委托给<code>classLoader</code>来处理。所以区别主要在于<code>resolveName(name)</code>。 <code>resolveName(name)</code>主要是功能是：若<code>name</code>以<code>/</code>开头，那么则直接调用<code>classLoader</code>来处理。若没有以<code>/</code>开头，则会将类全名中的点替换成<code>/</code>作为路径再加上name委托给<code>classLoader</code>来处理。</p>
 <p>所以要获取<code>resources</code>文件夹下的内容，<code>*.class.getResouce(name)</code>中的<code>name</code>要以<code>/</code>开头。而<code>this.class.getClassLoader.getResource(...)</code>不需要。</p>
@@ -728,22 +735,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Glide源码分析 二]]></title>
-      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
-      <content type="html"></content>
-      
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> project </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Glide源码分析 一]]></title>
       <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-11-30-Glide-source_1/</url>
       <content type="html"><![CDATA[<h2 id="从Glide入口开始"><a href="#从Glide入口开始" class="headerlink" title="从Glide入口开始"></a>从Glide入口开始</h2><p>Glide最简单的用法如下所示</p>
@@ -777,6 +768,22 @@
 <h4 id="ManifestParser"><a href="#ManifestParser" class="headerlink" title="ManifestParser"></a>ManifestParser</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">ManifestParser.java</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GLIDE_MODULE_VALUE = <span class="string">"GlideModule"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;GlideModule&gt; <span class="title">parse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;GlideModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;GlideModule&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//根据PackageName获取metadata信息</span></span><br><span class="line">        ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(</span><br><span class="line">                context.getPackageName(), PackageManager.GET_META_DATA);</span><br><span class="line">        <span class="comment">//若有metadata信息</span></span><br><span class="line">        <span class="keyword">if</span> (appInfo.metaData != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//遍历metadata</span></span><br><span class="line">            <span class="keyword">for</span> (String key : appInfo.metaData.keySet()) &#123;</span><br><span class="line">                <span class="comment">//将key和GLIDE_MODULE_VALUE相等的全部加入modules 之中</span></span><br><span class="line">                <span class="keyword">if</span> (GLIDE_MODULE_VALUE.equals(appInfo.metaData.get(key))) &#123;</span><br><span class="line">                    modules.add(parseModule(key));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to find metadata to parse GlideModules"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> modules;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过反射获取GlideModule实例</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> GlideModule <span class="title">parseModule</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">    Class&lt;?&gt; clazz;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        clazz = Class.forName(className);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Unable to find GlideModule implementation"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Object <span class="keyword">module</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">module</span> = clazz.newInstance();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">module</span> <span class="keyword">instanceof</span> GlideModule)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Expected instanceof GlideModule, but found: "</span> + <span class="keyword">module</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (GlideModule) <span class="keyword">module</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过反射的方式获取在Manifest.xml中自定义的GlideModule对象, 获得之后遍历ArrayList<glidemodule>, 对每一个GlideModuled调用相应的applyOptions()和registerComponents()方法.</glidemodule></p>
 ]]></content>
+      
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> project </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Glide源码分析 二]]></title>
+      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
+      <content type="html"></content>
       
         
         <tags>
@@ -887,6 +894,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Builder]]></title>
+      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
+      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
+<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
+<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>场景类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> OO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> callback </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[观察者模式]]></title>
       <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-observer/</url>
       <content type="html"><![CDATA[<h3 id="被观察者"><a href="#被观察者" class="headerlink" title="被观察者"></a>被观察者</h3><p>所有被观察者都继承Observable接口 ( java标准库中<code>Observable</code>是一个抽象类)</p>
@@ -913,33 +947,6 @@
         <tags>
             
             <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Builder]]></title>
-      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
-      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
-<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
-<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>场景类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> callback </tag>
             
         </tags>
         
@@ -1004,37 +1011,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[python 生成器函数]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/</url>
-      <content type="html"><![CDATA[<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><p>生成器函数是一个迭代器, 不过只能遍历其一次, 这是因为生成器并不将数据存储在内存之中, 生成完数据后并不保存下来.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">list=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">yield</span> i*i</span><br><span class="line"></span><br><span class="line">gen=createGenerator()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line">out:</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>另外, 生成器函数并不是再调用的时候就运行的, 而是在遍历的时候才运行, 在上述代码中, 意味着生成器函数是在执行<code>for i in gen:</code>时才运行的.</p>
-<p>解释器是如何知道其是生成器函数的呢? 当解释器发现<code>yield</code>时, 就知道该函数是个生成器函数, 它会设置一个标识来标记这一情况, 调用type也可以发现这一情况.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成器标志位在第5位</span></span><br><span class="line">generator_bit=<span class="number">1</span>&lt;&lt;<span class="number">5</span></span><br><span class="line">b=bool(createGenerator.__code__.co_flags &amp; generator_bit)</span><br><span class="line">print(b)</span><br><span class="line">print(type(createGenerator))</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generator</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>参考文章:</p>
-<p><a href="http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html" target="_blank" rel="noopener">A Web Crawler With asyncio Coroutines</a></p>
-<p><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do" target="_blank" rel="noopener">What does the yield keyword do</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> generators </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[爬取豆瓣]]></title>
       <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
       <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
@@ -1064,36 +1040,6 @@
             <tag> spider </tag>
             
             <tag> xml </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Raspberry安装]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
-      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
-<ol>
-<li><code>/etc/apt/source.list</code></li>
-<li><code>/etc/apt/source.list.d/raspi.list</code></li>
-</ol>
-<p>将其中的网址换掉即可.</p>
-<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
-<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> generators </tag>
             
         </tags>
         
@@ -1141,6 +1087,67 @@
             <tag> spider </tag>
             
             <tag> socket </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python 生成器函数]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/</url>
+      <content type="html"><![CDATA[<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><p>生成器函数是一个迭代器, 不过只能遍历其一次, 这是因为生成器并不将数据存储在内存之中, 生成完数据后并不保存下来.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">list=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">yield</span> i*i</span><br><span class="line"></span><br><span class="line">gen=createGenerator()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line">out:</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>另外, 生成器函数并不是再调用的时候就运行的, 而是在遍历的时候才运行, 在上述代码中, 意味着生成器函数是在执行<code>for i in gen:</code>时才运行的.</p>
+<p>解释器是如何知道其是生成器函数的呢? 当解释器发现<code>yield</code>时, 就知道该函数是个生成器函数, 它会设置一个标识来标记这一情况, 调用type也可以发现这一情况.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成器标志位在第5位</span></span><br><span class="line">generator_bit=<span class="number">1</span>&lt;&lt;<span class="number">5</span></span><br><span class="line">b=bool(createGenerator.__code__.co_flags &amp; generator_bit)</span><br><span class="line">print(b)</span><br><span class="line">print(type(createGenerator))</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generator</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考文章:</p>
+<p><a href="http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html" target="_blank" rel="noopener">A Web Crawler With asyncio Coroutines</a></p>
+<p><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do" target="_blank" rel="noopener">What does the yield keyword do</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> generators </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Raspberry安装]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
+      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
+<ol>
+<li><code>/etc/apt/source.list</code></li>
+<li><code>/etc/apt/source.list.d/raspi.list</code></li>
+</ol>
+<p>将其中的网址换掉即可.</p>
+<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
+<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> generators </tag>
             
         </tags>
         
@@ -1304,70 +1311,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[面向对象六大原则(下)]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</url>
-      <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
-<ol>
-<li>客户端不应该依赖它不需要的接口</li>
-<li>类似的依赖关系应该建立在最小的接口上</li>
-</ol>
-<p>接口应该细化, 不要使用过于臃肿的接口. 客户端需要什么接口就提供什么接口, 将不需要的接口剔除掉.<br>不要将太多的方法放在同一个接口之中.</p>
-<p>但是接口设计也要有度, 不可过度设计, 这个度往往根据经验和常识判断.</p>
-<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>Law of Demeter(LOD) , 最少知识原则(Least Knowledge Principle))</p>
-<p>一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">朋友类: 出现在成员变量, 方法的输入输出参数中的类称为成员朋友类, 而出现在方法体内部的类不属于朋友类</span><br></pre></td></tr></table></figure>
-<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open Close Principle(OCP)</p>
-<p>一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NovelBook</span> <span class="keyword">implements</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NovelBook</span><span class="params">(String name, <span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.price=price;</span><br><span class="line">        <span class="keyword">this</span>.author=author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果将来要搞打折, 一般可能会用以下两个方法来解决:</p>
-<ol>
-<li>在接口中添加<code>getOffPrice()</code>方法. 但是这需要对每一个实现<code>IBook</code>接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.</li>
-<li>修改实现类, 直接在<code>getPrice()</code>中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.</li>
-<li>通过扩展实现</li>
-</ol>
-<p>添加一个子类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OffNovelBook</span> <span class="keyword">extends</span> <span class="title">NovelBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OffNovelBook</span><span class="params">(String name,<span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name,price,author);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> selfPrice=<span class="keyword">super</span>.getPrice();</span><br><span class="line">        <span class="keyword">int</span> offPrice=selfPrice*<span class="number">90</span>/<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">return</span> offPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg" alt=""></p>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[mysql基本命令]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
-      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
-<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
-]]></content>
-      
-        <categories>
-            
-            <category> database </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> database </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[面向对象六大原则(上)]]></title>
       <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_1/</url>
       <content type="html"><![CDATA[<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>单一职责原则(Single Responsibility Principle,SRP)简而言之就是对于一个类或者接口, 引起其改变的应该只能有一个原因. 比如要将负责属性和行为的类分开.</p>
@@ -1432,6 +1375,70 @@
 <li>尽量不要覆写基类的方法</li>
 </ol>
 <p>总体而言, 依赖倒置原则是六大原则中最难实现的, 也是实现开闭原则的重要途径. 总体而言, 把握住<em>面向接口编程</em>即可.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> OO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mysql基本命令]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
+      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
+<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> database </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> database </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[面向对象六大原则(下)]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</url>
+      <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
+<ol>
+<li>客户端不应该依赖它不需要的接口</li>
+<li>类似的依赖关系应该建立在最小的接口上</li>
+</ol>
+<p>接口应该细化, 不要使用过于臃肿的接口. 客户端需要什么接口就提供什么接口, 将不需要的接口剔除掉.<br>不要将太多的方法放在同一个接口之中.</p>
+<p>但是接口设计也要有度, 不可过度设计, 这个度往往根据经验和常识判断.</p>
+<h2 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h2><p>Law of Demeter(LOD) , 最少知识原则(Least Knowledge Principle))</p>
+<p>一个对象应该对其它对象有最少的了解, 另一个解释是只与直接的朋友通信.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">朋友类: 出现在成员变量, 方法的输入输出参数中的类称为成员朋友类, 而出现在方法体内部的类不属于朋友类</span><br></pre></td></tr></table></figure>
+<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open Close Principle(OCP)</p>
+<p>一个软件实体如类, 模块和函数等应该对扩展开放, 对修改关闭.</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NovelBook</span> <span class="keyword">implements</span> <span class="title">IBook</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NovelBook</span><span class="params">(String name, <span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.price=price;</span><br><span class="line">        <span class="keyword">this</span>.author=author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAuthor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果将来要搞打折, 一般可能会用以下两个方法来解决:</p>
+<ol>
+<li>在接口中添加<code>getOffPrice()</code>方法. 但是这需要对每一个实现<code>IBook</code>接口的实现类都添加该方法, 工作繁琐. 且接口应该是稳定且可靠的, 不应该经常发生变化.</li>
+<li>修改实现类, 直接在<code>getPrice()</code>中实现打折处理, 但是如果仍需要知道原价是多少, 就会出问题.</li>
+<li>通过扩展实现</li>
+</ol>
+<p>添加一个子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OffNovelBook</span> <span class="keyword">extends</span> <span class="title">NovelBook</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OffNovelBook</span><span class="params">(String name,<span class="keyword">int</span> price, String author)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name,price,author);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> selfPrice=<span class="keyword">super</span>.getPrice();</span><br><span class="line">        <span class="keyword">int</span> offPrice=selfPrice*<span class="number">90</span>/<span class="number">100</span>;</span><br><span class="line">        <span class="keyword">return</span> offPrice;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/ocp_.jpg" alt=""></p>
 ]]></content>
       
         <categories>
@@ -1900,37 +1907,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[CriminalIntent程序中ListFragment相关内容]]></title>
-      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-ListFragment/</url>
-      <content type="html"><![CDATA[<h2 id="定制adapter"><a href="#定制adapter" class="headerlink" title="定制adapter"></a>定制adapter</h2><p>adapter负责：</p>
-<ol>
-<li>创建必要的视图对象</li>
-<li>用模型层数据填充视图对性爱那个</li>
-<li>将准备好的视图对象返回给ListView</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">内部类</span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Crime</span>&gt;</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CrimeAdapter</span><span class="params">(ArrayList&lt;Crime&gt; crimes)</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(getActivity(),<span class="number">0</span>,crimes);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</span><br><span class="line">                convertView=getActivity()</span><br><span class="line">                        .getLayoutInflater()</span><br><span class="line">                        .inflate(R.layout.list_item_crime,<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Crime c=(Crime)(getListAdapter()).getItem(position);</span><br><span class="line"></span><br><span class="line">            TextView titleTextView=(TextView)convertView.findViewById(R.id.list_item_crime_title_TextView);</span><br><span class="line">            TextView dateTextView=(TextView)convertView.findViewById(R.id.list_item_crime_date_TextView);</span><br><span class="line">            CheckBox solvedCheckBox=(CheckBox)convertView.findViewById(R.id.list_item_crime_isSolved_CheckBox);</span><br><span class="line"></span><br><span class="line">            solvedCheckBox.setChecked(c.isSolved());</span><br><span class="line">            <span class="keyword">return</span> convertView;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>注： 由于CheckBox默认是可聚焦的，也就是点击列表向会被解读为切换CheckBox的状态，因而无法触发<code>onListItemClick()</code>方法。解决方法：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/list_item_crime_isSolved_CheckBox"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:focusable</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_adapter </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[CriminalIntent程序中Fragment，Activity通信]]></title>
       <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/</url>
       <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
@@ -1954,7 +1930,38 @@
             
             <tag> android_fragment </tag>
             
+            <tag> android_adapter </tag>
+            
             <tag> android_activity </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CriminalIntent程序中ListFragment相关内容]]></title>
+      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-ListFragment/</url>
+      <content type="html"><![CDATA[<h2 id="定制adapter"><a href="#定制adapter" class="headerlink" title="定制adapter"></a>定制adapter</h2><p>adapter负责：</p>
+<ol>
+<li>创建必要的视图对象</li>
+<li>用模型层数据填充视图对性爱那个</li>
+<li>将准备好的视图对象返回给ListView</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">内部类</span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CrimeAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">Crime</span>&gt;</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CrimeAdapter</span><span class="params">(ArrayList&lt;Crime&gt; crimes)</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(getActivity(),<span class="number">0</span>,crimes);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</span><br><span class="line">                convertView=getActivity()</span><br><span class="line">                        .getLayoutInflater()</span><br><span class="line">                        .inflate(R.layout.list_item_crime,<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Crime c=(Crime)(getListAdapter()).getItem(position);</span><br><span class="line"></span><br><span class="line">            TextView titleTextView=(TextView)convertView.findViewById(R.id.list_item_crime_title_TextView);</span><br><span class="line">            TextView dateTextView=(TextView)convertView.findViewById(R.id.list_item_crime_date_TextView);</span><br><span class="line">            CheckBox solvedCheckBox=(CheckBox)convertView.findViewById(R.id.list_item_crime_isSolved_CheckBox);</span><br><span class="line"></span><br><span class="line">            solvedCheckBox.setChecked(c.isSolved());</span><br><span class="line">            <span class="keyword">return</span> convertView;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>注： 由于CheckBox默认是可聚焦的，也就是点击列表向会被解读为切换CheckBox的状态，因而无法触发<code>onListItemClick()</code>方法。解决方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/list_item_crime_isSolved_CheckBox"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:focusable</span>=<span class="string">"false"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
             
             <tag> android_adapter </tag>
             
@@ -2053,28 +2060,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
-      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
-      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
-<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Sunshine开发实战:测试]]></title>
       <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-android-test/</url>
       <content type="html"><![CDATA[<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPractice</span> <span class="keyword">extends</span> <span class="title">AndroidTestCase</span> </span>&#123;</span><br><span class="line">    <span class="comment">//测试前进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.setUp();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//所有测试的类必须以test开头</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testThatDemonstratesAssertations</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> b=<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> c=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">int</span> d=<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        assertEquals(<span class="string">"X should be equal"</span>,a,c);</span><br><span class="line">        assertTrue(<span class="string">"Y should be true"</span>,d&gt;a);</span><br><span class="line">        assertFalse(<span class="string">"Z should be false"</span>,a==b);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//测试之后进行的工作</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.tearDown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2093,6 +2078,28 @@
             <tag> android </tag>
             
             <tag> android_test </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Sunshine开发实战:架构(与官方原版有一些不同)]]></title>
+      <url>https://ivyxjc.xyz/2016/06/03/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/Sunshine%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/2016-06-03-sunshine-build-custom/</url>
+      <content type="html"><![CDATA[<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p>通过搜索按钮,进入搜索界面,进行搜索,返回搜索结果,选择,将地址存入数据库中.</p>
+<h2 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h2><p>点击刷新按钮,联网获取数据,处理数据,若数据非null,存入数据库,从数据库中读取数据,刷新UI.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
             
         </tags>
         
@@ -2268,28 +2275,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
-      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
-      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Algorithm </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> algorithm-recursion </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[数根]]></title>
       <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-add-digits/</url>
       <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>数根就是指将一个数的各位数字相加之后得到一个数字，若该数大于等于10则继续该运算所得到的那个数。</p>
@@ -2315,6 +2300,28 @@
         <tags>
             
             <tag> algorithm-math </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Maximum Depth of Binary Tree]]></title>
+      <url>https://ivyxjc.xyz/2016/04/26/algorithm/oj/LeetCode/2016-04-26-easy-MaximunDepthofBinary/</url>
+      <content type="html"><![CDATA[<h2 id="寻找二叉树最长路径"><a href="#寻找二叉树最长路径" class="headerlink" title="寻找二叉树最长路径"></a>寻找二叉树最长路径</h2><h3 id="递归的方法"><a href="#递归的方法" class="headerlink" title="递归的方法"></a>递归的方法</h3><p>1.节点为<code>null</code>时，返回深度为0<br>2.节点的左右子节点中有一个为<code>null</code>时，返回<code>1+maxDepth(root.left(or root.right))</code><br>3.若节点的左右子节点都不为<code>null</code>时，返回两者中大的那一个。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>&amp;&amp; root.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> max(<span class="number">1</span>+maxDepth(root.left),<span class="number">1</span>+maxDepth(root.right));</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root.left==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.right);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+maxDepth(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (a&gt;b?a:b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Algorithm </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> algorithm-recursion </tag>
             
         </tags>
         
@@ -2474,9 +2481,9 @@
         
         <tags>
             
-            <tag> faq </tag>
-            
             <tag> python </tag>
+            
+            <tag> faq </tag>
             
             <tag> spider </tag>
             
@@ -2617,6 +2624,40 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Python Spider入门]]></title>
+      <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-python-spider/</url>
+      <content type="html"><![CDATA[<h2 id="添加header和data"><a href="#添加header和data" class="headerlink" title="添加header和data"></a>添加header和data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line"><span class="comment">#response是一个http.client.HTTPResponse对象</span></span><br><span class="line">print(response.geturl()) <span class="comment">#获取网址</span></span><br><span class="line">print(response.info())  <span class="comment">#获取信息</span></span><br><span class="line">print(response.getcode()) <span class="comment"># http状态码</span></span><br><span class="line"></span><br><span class="line">html=response.read()</span><br></pre></td></tr></table></figure>
+<p><code>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</code><br>1.data参数：the HTTP request will be a POST instead of a GET when the data parameter is provided.data should be a buffer in the standard application/x-www-form-urlencoded format. The urllib.parse.urlencode() function takes a mapping or sequence of 2-tuples and returns a string in this format.<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="string">'type'</span>]=<span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'i'</span>]=content</span><br><span class="line">data[<span class="string">'doctype'</span>]=<span class="string">'json'</span></span><br><span class="line">data[<span class="string">'xmlVersion'</span>]=<span class="number">1.8</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>]=<span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'ue'</span>]=<span class="string">'UTF-8'</span></span><br><span class="line">data[<span class="string">'action'</span>]=<span class="string">'FY_BY_CLICKBUTTON'</span></span><br><span class="line">data[<span class="string">'typoResult'</span>]=<span class="string">'true'</span></span><br><span class="line"></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>2.headers：一个字典，可以直接从浏览器中复制过来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">header=&#123;&#125;</span><br><span class="line"><span class="comment">#添加header的第一种方法</span></span><br><span class="line">header[<span class="string">'User-Agent'</span>]=<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span></span><br><span class="line">request=urllib.request.Request(url,data,header)</span><br><span class="line"><span class="comment">#也可使用以下方法</span></span><br><span class="line">request.add_header(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取Response-Headers"><a href="#获取Response-Headers" class="headerlink" title="获取Response Headers"></a>获取Response Headers</h2><p>下面代码是用来判断 网页是否使用<code>gzip</code>压缩过。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> response.getheaders():</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">0</span>]==<span class="string">"Content-Encoding"</span>:</span><br><span class="line">        <span class="keyword">if</span>(i[<span class="number">-1</span>]==<span class="string">"gzip"</span>):</span><br><span class="line">            html=gzip.decompress(html)</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h2><p>1.参数是一个字典{‘类型’：‘代理ip:端口号’}<br><code>proxy_support=urllib.request.ProxyHandler({})</code><br>2.定制、创建一个openner<br><code>opener=urllib.request.build_opener(proxy_support)
+3a.安装opener</code>urllib.request.install_opener(opener)<code>3b.调用opener</code>opener.open(url)`</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line">urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">req=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(req)</span><br></pre></td></tr></table></figure>
+<h2 id="爬知乎图片"><a href="#爬知乎图片" class="headerlink" title="爬知乎图片"></a>爬知乎图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></span><br><span class="line">    iplist=[</span><br><span class="line">        <span class="string">'49.77.22.1:8118'</span>,</span><br><span class="line">        <span class="string">'58.134.102.3:12696'</span>,</span><br><span class="line">        <span class="string">'120.26.213.55:9999'</span>...]</span><br><span class="line"></span><br><span class="line">    proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">    opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">    opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line"></span><br><span class="line">    urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">    req=urllib.request.Request(url)</span><br><span class="line">    response=urllib.request.urlopen(req)</span><br><span class="line">    html=response.read()</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取图片地址，返回图片地址的list</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imgs</span><span class="params">(url)</span>:</span></span><br><span class="line">    html=url_open(url).decode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    img_address=[]</span><br><span class="line">    a=html.find(<span class="string">'data-original'</span>)</span><br><span class="line">    <span class="keyword">while</span>(a!=<span class="number">-1</span>):</span><br><span class="line">        b=html.find(<span class="string">'.jpg'</span>,a,a+<span class="number">300</span>)</span><br><span class="line">        <span class="keyword">if</span>(b!=<span class="number">-1</span>):</span><br><span class="line">            <span class="comment"># print(html[a+15:b+4])</span></span><br><span class="line">            img_address.append(html[a+<span class="number">15</span>:b+<span class="number">4</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b=a+<span class="number">9</span></span><br><span class="line">        a=html.find(<span class="string">'data-original='</span>,b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_address</span><br><span class="line"></span><br><span class="line"><span class="comment">#存储到本地</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(img_address)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        <span class="comment"># print(i)</span></span><br><span class="line">        filename=i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            img=url_open(i)</span><br><span class="line">            f.write(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zhihuPic</span><span class="params">(url,folder=<span class="string">"zhihu"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(os.path.exists(folder)):</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(folder)</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    img_address=get_imgs(url)</span><br><span class="line">    save_imgs(img_address)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    zhihuPic(<span class="string">"https://www.zhihu.com/question/22070147"</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+            <tag> pythonspider </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[正则表达式（python）]]></title>
       <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-regex/</url>
       <content type="html"><![CDATA[<h2 id="re方法"><a href="#re方法" class="headerlink" title="re方法"></a>re方法</h2><h3 id="re-search"><a href="#re-search" class="headerlink" title="re.search()"></a>re.search()</h3><p><code>re.search(pattern,string,flags=0)</code><br>例：<code>re.search(r&#39;love&#39;,&#39;I love you&#39;)</code></p>
@@ -2672,40 +2713,6 @@
             <tag> python </tag>
             
             <tag> regex </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Python Spider入门]]></title>
-      <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-python-spider/</url>
-      <content type="html"><![CDATA[<h2 id="添加header和data"><a href="#添加header和data" class="headerlink" title="添加header和data"></a>添加header和data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line"><span class="comment">#response是一个http.client.HTTPResponse对象</span></span><br><span class="line">print(response.geturl()) <span class="comment">#获取网址</span></span><br><span class="line">print(response.info())  <span class="comment">#获取信息</span></span><br><span class="line">print(response.getcode()) <span class="comment"># http状态码</span></span><br><span class="line"></span><br><span class="line">html=response.read()</span><br></pre></td></tr></table></figure>
-<p><code>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</code><br>1.data参数：the HTTP request will be a POST instead of a GET when the data parameter is provided.data should be a buffer in the standard application/x-www-form-urlencoded format. The urllib.parse.urlencode() function takes a mapping or sequence of 2-tuples and returns a string in this format.<br></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="string">'type'</span>]=<span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'i'</span>]=content</span><br><span class="line">data[<span class="string">'doctype'</span>]=<span class="string">'json'</span></span><br><span class="line">data[<span class="string">'xmlVersion'</span>]=<span class="number">1.8</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>]=<span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'ue'</span>]=<span class="string">'UTF-8'</span></span><br><span class="line">data[<span class="string">'action'</span>]=<span class="string">'FY_BY_CLICKBUTTON'</span></span><br><span class="line">data[<span class="string">'typoResult'</span>]=<span class="string">'true'</span></span><br><span class="line"></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
-<p>2.headers：一个字典，可以直接从浏览器中复制过来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">header=&#123;&#125;</span><br><span class="line"><span class="comment">#添加header的第一种方法</span></span><br><span class="line">header[<span class="string">'User-Agent'</span>]=<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span></span><br><span class="line">request=urllib.request.Request(url,data,header)</span><br><span class="line"><span class="comment">#也可使用以下方法</span></span><br><span class="line">request.add_header(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取Response-Headers"><a href="#获取Response-Headers" class="headerlink" title="获取Response Headers"></a>获取Response Headers</h2><p>下面代码是用来判断 网页是否使用<code>gzip</code>压缩过。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> response.getheaders():</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">0</span>]==<span class="string">"Content-Encoding"</span>:</span><br><span class="line">        <span class="keyword">if</span>(i[<span class="number">-1</span>]==<span class="string">"gzip"</span>):</span><br><span class="line">            html=gzip.decompress(html)</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h2><p>1.参数是一个字典{‘类型’：‘代理ip:端口号’}<br><code>proxy_support=urllib.request.ProxyHandler({})</code><br>2.定制、创建一个openner<br><code>opener=urllib.request.build_opener(proxy_support)
-3a.安装opener</code>urllib.request.install_opener(opener)<code>3b.调用opener</code>opener.open(url)`</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line">urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">req=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(req)</span><br></pre></td></tr></table></figure>
-<h2 id="爬知乎图片"><a href="#爬知乎图片" class="headerlink" title="爬知乎图片"></a>爬知乎图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></span><br><span class="line">    iplist=[</span><br><span class="line">        <span class="string">'49.77.22.1:8118'</span>,</span><br><span class="line">        <span class="string">'58.134.102.3:12696'</span>,</span><br><span class="line">        <span class="string">'120.26.213.55:9999'</span>...]</span><br><span class="line"></span><br><span class="line">    proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">    opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">    opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line"></span><br><span class="line">    urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">    req=urllib.request.Request(url)</span><br><span class="line">    response=urllib.request.urlopen(req)</span><br><span class="line">    html=response.read()</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取图片地址，返回图片地址的list</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imgs</span><span class="params">(url)</span>:</span></span><br><span class="line">    html=url_open(url).decode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    img_address=[]</span><br><span class="line">    a=html.find(<span class="string">'data-original'</span>)</span><br><span class="line">    <span class="keyword">while</span>(a!=<span class="number">-1</span>):</span><br><span class="line">        b=html.find(<span class="string">'.jpg'</span>,a,a+<span class="number">300</span>)</span><br><span class="line">        <span class="keyword">if</span>(b!=<span class="number">-1</span>):</span><br><span class="line">            <span class="comment"># print(html[a+15:b+4])</span></span><br><span class="line">            img_address.append(html[a+<span class="number">15</span>:b+<span class="number">4</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b=a+<span class="number">9</span></span><br><span class="line">        a=html.find(<span class="string">'data-original='</span>,b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_address</span><br><span class="line"></span><br><span class="line"><span class="comment">#存储到本地</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(img_address)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        <span class="comment"># print(i)</span></span><br><span class="line">        filename=i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            img=url_open(i)</span><br><span class="line">            f.write(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zhihuPic</span><span class="params">(url,folder=<span class="string">"zhihu"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(os.path.exists(folder)):</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(folder)</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    img_address=get_imgs(url)</span><br><span class="line">    save_imgs(img_address)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    zhihuPic(<span class="string">"https://www.zhihu.com/question/22070147"</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> spider </tag>
-            
-            <tag> pythonspider </tag>
             
         </tags>
         
@@ -2774,31 +2781,6 @@
         <tags>
             
             <tag> android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[AlertDialog]]></title>
-      <url>https://ivyxjc.xyz/2016/03/25/android/%E6%8E%A7%E4%BB%B6/AlertDialog/2016-03-25-Alert-Dialog/</url>
-      <content type="html"><![CDATA[<h2 id="在Activity中调用AlertDialog"><a href="#在Activity中调用AlertDialog" class="headerlink" title="在Activity中调用AlertDialog"></a>在Activity中调用AlertDialog</h2><p>只能在<code>Activity</code>中调用<code>AlertDialog</code>，所以要想在<code>Receiver</code>中使用<code>AlerDialog</code>，可以在<code>Receiver</code>中用<code>starActivity()</code>启动有<code>AlertDialog</code>的<code>Activity</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(<span class="keyword">final</span> Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">    Intent i=<span class="keyword">new</span> Intent(context,AlertDialogActivity.class);</span><br><span class="line">    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);;</span><br><span class="line">    context.startActivity(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AlertDialogActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        AlertDialog.Builder dialogBuilder=<span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">        dialogBuilder.setTitle(<span class="string">"Warning"</span>);</span><br><span class="line"></span><br><span class="line">        dialogBuilder.setMessage(<span class="string">"you are force to be offline"</span>);</span><br><span class="line">        dialogBuilder.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">        dialogBuilder.setPositiveButton(<span class="string">"OK"</span>,</span><br><span class="line">                <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</span><br><span class="line">                        ActivityCollector.finishAll();</span><br><span class="line">                        Intent intent = <span class="keyword">new</span> Intent(AlertDialogActivity.<span class="keyword">this</span>,LoginActivity.class);</span><br><span class="line">                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">                        startActivity(intent);<span class="comment">//重新启动LoginActivity</span></span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">        AlertDialog alertDialog=dialogBuilder.create();</span><br><span class="line"></span><br><span class="line">        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);</span><br><span class="line">        alertDialog.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_control </tag>
             
         </tags>
         
@@ -2892,6 +2874,31 @@
             <tag> android </tag>
             
             <tag> android_data </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[AlertDialog]]></title>
+      <url>https://ivyxjc.xyz/2016/03/25/android/%E6%8E%A7%E4%BB%B6/AlertDialog/2016-03-25-Alert-Dialog/</url>
+      <content type="html"><![CDATA[<h2 id="在Activity中调用AlertDialog"><a href="#在Activity中调用AlertDialog" class="headerlink" title="在Activity中调用AlertDialog"></a>在Activity中调用AlertDialog</h2><p>只能在<code>Activity</code>中调用<code>AlertDialog</code>，所以要想在<code>Receiver</code>中使用<code>AlerDialog</code>，可以在<code>Receiver</code>中用<code>starActivity()</code>启动有<code>AlertDialog</code>的<code>Activity</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(<span class="keyword">final</span> Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">    Intent i=<span class="keyword">new</span> Intent(context,AlertDialogActivity.class);</span><br><span class="line">    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);;</span><br><span class="line">    context.startActivity(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AlertDialogActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        AlertDialog.Builder dialogBuilder=<span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">        dialogBuilder.setTitle(<span class="string">"Warning"</span>);</span><br><span class="line"></span><br><span class="line">        dialogBuilder.setMessage(<span class="string">"you are force to be offline"</span>);</span><br><span class="line">        dialogBuilder.setCancelable(<span class="keyword">false</span>);</span><br><span class="line">        dialogBuilder.setPositiveButton(<span class="string">"OK"</span>,</span><br><span class="line">                <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</span><br><span class="line">                        ActivityCollector.finishAll();</span><br><span class="line">                        Intent intent = <span class="keyword">new</span> Intent(AlertDialogActivity.<span class="keyword">this</span>,LoginActivity.class);</span><br><span class="line">                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">                        startActivity(intent);<span class="comment">//重新启动LoginActivity</span></span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">        AlertDialog alertDialog=dialogBuilder.create();</span><br><span class="line"></span><br><span class="line">        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);</span><br><span class="line">        alertDialog.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_control </tag>
             
         </tags>
         
@@ -3240,9 +3247,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> python3 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
