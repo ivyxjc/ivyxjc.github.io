@@ -54,6 +54,131 @@
     </entry>
     
     <entry>
+      <title><![CDATA[使用Spring Boot + Oauth2 来做权限管理]]></title>
+      <url>https://ivyxjc.xyz/2019/01/18/javaWeb/spring/2019-01-18-spring-oauth2/</url>
+      <content type="html"><![CDATA[<!--nomore-->
+<h2 id="Oauth2和JWT的联系与区别"><a href="#Oauth2和JWT的联系与区别" class="headerlink" title="Oauth2和JWT的联系与区别"></a>Oauth2和JWT的联系与区别</h2>]]></content>
+      
+        <categories>
+            
+            <category> JavaWeb </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javaweb </tag>
+            
+            <tag> spring </tag>
+            
+            <tag> oauth2 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[为什么行星轨道是椭圆]]></title>
+      <url>https://ivyxjc.xyz/2018/12/30/math/2018-12-30-why-planet-orbits-the-sun-in-elipse/</url>
+      <content type="html"><![CDATA[<p>只根据基本的数学只是，微积分关于极限的思想，万有引力定律和角动量守恒定律来说明为什么行星轨道是椭圆。</p>
+<p>本文主要根据<strong>3Blue1Brown</strong>的一个视频<a href="https://www.bilibili.com/video/av28012188" target="_blank" rel="noopener">(B站)【官方双语】费曼失传的演讲</a>来写出的。</p>
+<h2 id="一种构造椭圆的特殊方法"><a href="#一种构造椭圆的特殊方法" class="headerlink" title="一种构造椭圆的特殊方法"></a>一种构造椭圆的特殊方法</h2><h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><ol>
+<li>首先构建一个圆A, 并在圆内取另外一点C</li>
+<li>从点C引线段到圆A上（即CD）</li>
+<li>取CD的垂线，其中中垂线和线段AD的焦点为E，</li>
+<li>重复2，3 的操作，点E的轨迹即是一个椭圆</li>
+</ol>
+<p>如下图： </p>
+<!-- ![一种构造椭圆的方法](https://5gbg9g.ch.files.1drv.com/y4mcF8m_X7tik4PW--_G0A8YX_-cKOFgxzlkYZLVVSXtqZfoNJTf2mYJ8xS_2o0ViPlg6T-s1Zp2o_fWpYfcrrS6dpqRTgD4g7a9f4H2ZoKumtBGg8GPVQhv4YCCOsGT9V3HHzW1wsDRM5CxwJyqM5pb5FWKq6ARBFZt5lxZmlQPjsy5rHOxSOJcL1YuYkFB1LoSseHVugXhZBUZ-XLFfGr2w/elipse_1.gif) -->
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p><strong>椭圆</strong>是平面上到两个固定点的距离之和为常数的点之轨迹。</p>
+<p><img src="https://ch3301files.storage.live.com/y4mfqesmWk9tcvBJm1cjOBUc9J1vSi1OF7mllcwoMBPO2KCVy9TifP--R9GNtwcvrSR0IL9uFVgkx4p1JLRhN5VYOqogS9p7VyBqLyFHgDmDHu55GhPG33pyLce63JoInaYWU1W5bN_SdY9x63b5zju_i2l4we5vRhHhK9Cvj2Ri8Sie4IrPfjWOaokpjlb7isFBwv__KLJwJ-PzVULUIM3eA/elipse_prove.png?psid=1&amp;width=891&amp;height=778" alt=""></p>
+<p>因为FG是CD的中垂线，所以ED=EC，因此AE+ED=AE+EC。所以点E到点A和点C的长度和是固定的，因此点E的轨迹是一个椭圆。</p>
+<p>如果我们在线FG上另取一点X, 那么XD+XA&gt;AD，意味着点X在椭圆外，这意味着FG与椭圆AC有且只有一个交点（E）。即FG是椭圆AC的切线。</p>
+<h2 id="开普勒第二定律"><a href="#开普勒第二定律" class="headerlink" title="开普勒第二定律"></a>开普勒第二定律</h2><p><strong>开普勒第二定律</strong>也被称为等面积定律，意即在相等时间内，太阳和运动着行星连线所扫过的面积是相同的。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Math </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> math </tag>
+            
+            <tag> elipse </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[将gradle项目部署到Maven Central中]]></title>
+      <url>https://ivyxjc.xyz/2018/12/08/%E6%95%88%E7%8E%87/2018-12-08-deploy-to-maven-central/</url>
+      <content type="html"><![CDATA[<p>本文主要介绍如何一个由gradle构建的项目部署到Maven Central.<br><!--nomore--></p>
+<p>网上大部分都是介绍如何将由maven构建的项目部署到Maven Central。与Gradle相关的比较少。</p>
+<h2 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h2><p>前往 <a href="https://issues.sonatype.org/" target="_blank" rel="noopener">sonatype</a>申请账号。</p>
+<p>申请完，Create Issue。</p>
+<p>按照<a href="https://issues.sonatype.org/browse/OSSRH-44681" target="_blank" rel="noopener">这个模板</a>填。</p>
+<p>这一块比较简单，网上教程也比较多。</p>
+<p>Create Issue结束后，官方会需要你证明你拥有相对应的domain。</p>
+<p>证明有以下3个途径： </p>
+<ol>
+<li>Add a TXT record to your DNS referencing this JIRA ticket: OSSRH-44681 (Fastest)</li>
+<li>Setup a redirect to your Github page (if it does not already exist)</li>
+<li>Send an email to <a href="mailto:central@sonatype.com" target="_blank" rel="noopener">central@sonatype.com</a> referencing this issue from a … email address</li>
+</ol>
+<p>证明完毕之后，你就可以发布包了。</p>
+<p>你就可以做下面几件事了：</p>
+<ol>
+<li>Deploy snapshot artifacts into repository <a href="https://oss.sonatype.org/content/repositories/snapshots" target="_blank" rel="noopener">https://oss.sonatype.org/content/repositories/snapshots</a></li>
+<li>Deploy release artifacts into the staging repository <a href="https://oss.sonatype.org/service/local/staging/deploy/maven2" target="_blank" rel="noopener">https://oss.sonatype.org/service/local/staging/deploy/maven2</a></li>
+<li>Promote staged artifacts into repository ‘Releases’</li>
+<li>Download snapshot and release artifacts from group <a href="https://oss.sonatype.org/content/groups/public" target="_blank" rel="noopener">https://oss.sonatype.org/content/groups/public</a></li>
+<li>Download snapshot, release and staged artifacts from staging group <a href="https://oss.sonatype.org/content/groups/staging" target="_blank" rel="noopener">https://oss.sonatype.org/content/groups/staging</a></li>
+</ol>
+<h2 id="构建Gradle"><a href="#构建Gradle" class="headerlink" title="构建Gradle"></a>构建Gradle</h2><p>下面主要内容基于<br><a href="https://central.sonatype.org/pages/gradle.html" target="_blank" rel="noopener">官方英文教程</a>，加上一些个人构建时候的一些收获。</p>
+<h3 id="build-gralde-文件修改"><a href="#build-gralde-文件修改" class="headerlink" title="build.gralde 文件修改"></a>build.gralde 文件修改</h3><h4 id="引入plugin"><a href="#引入plugin" class="headerlink" title="引入plugin"></a>引入plugin</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'maven'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'signing'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">task javadocJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">    classifier = <span class="string">'javadoc'</span></span><br><span class="line">    from javadoc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task sourcesJar(<span class="string">type:</span> Jar) &#123;</span><br><span class="line">    classifier = <span class="string">'sources'</span></span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives javadocJar, sourcesJar</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="引入UploadArchives-task"><a href="#引入UploadArchives-task" class="headerlink" title="引入UploadArchives task"></a>引入UploadArchives task</h4><p>引入<code>UploadArchives</code>这个task，记住更改里面的个人相关信息。</p>
+<p>其中有<code>ossrhUsername</code>和<code>ossrhPassword</code>这两个变量是定义在<code>gradle.properties</code>中的。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            beforeDeployment &#123; MavenDeployment deployment -&gt; signing.signPom(deployment) &#125;</span><br><span class="line"></span><br><span class="line">            repository(<span class="string">url:</span> <span class="string">"https://oss.sonatype.org/service/local/staging/deploy/maven2/"</span>) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> ossrhUsername, <span class="string">password:</span> ossrhPassword)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            snapshotRepository(<span class="string">url:</span> <span class="string">"https://oss.sonatype.org/content/repositories/snapshots/"</span>) &#123;</span><br><span class="line">                authentication(<span class="string">userName:</span> ossrhUsername, <span class="string">password:</span> ossrhPassword)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pom.project &#123;</span><br><span class="line">                name <span class="string">'Example Application'</span></span><br><span class="line">                packaging <span class="string">'jar'</span></span><br><span class="line">                <span class="comment">// optionally artifactId can be defined here </span></span><br><span class="line">                description <span class="string">'A application used as an example on how to set up </span></span><br><span class="line"><span class="string">                pushing its components to the Central Repository . '</span></span><br><span class="line">                url <span class="string">'http://www.example.com/example-application'</span></span><br><span class="line"></span><br><span class="line">                scm &#123;</span><br><span class="line">                    connection <span class="string">'scm:git:git@github.com:username/project.git'</span></span><br><span class="line">                    developerConnection <span class="string">'scm:git:git@github.com:username/project.git'</span></span><br><span class="line">                    url <span class="string">'https://github.com/username/project'</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                licenses &#123;</span><br><span class="line">                    license &#123;</span><br><span class="line">                        name <span class="string">'The Apache License, Version 2.0'</span></span><br><span class="line">                        url <span class="string">'http://www.apache.org/licenses/LICENSE-2.0.txt'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                developers &#123;</span><br><span class="line">                    developer &#123;</span><br><span class="line">                        id <span class="string">'manfred'</span></span><br><span class="line">                        name <span class="string">'Manfred Moser'</span></span><br><span class="line">                        email <span class="string">'manfred@sonatype.com'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编写gradle-properties"><a href="#编写gradle-properties" class="headerlink" title="编写gradle.properties"></a>编写gradle.properties</h4><p>主要是将一些认证信息填在这里。（这些信息不要加入到版本管理中)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">以下3个信息怎么来下一章节来讲</span><br><span class="line">signing.keyId=YourKeyId</span><br><span class="line">signing.password=YourPublicKeyPassword</span><br><span class="line">signing.secretKeyRingFile=PathToYourKeyRingFile</span><br><span class="line"></span><br><span class="line">ossrhUsername=your-jira-id  你在sonatype申请的账号的用户名</span><br><span class="line">ossrhPassword=your-jira-password  你在sonatype申请的账号的密码</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成GPG加密信息"><a href="#生成GPG加密信息" class="headerlink" title="生成GPG加密信息"></a>生成GPG加密信息</h2><p>windows中可以安装gpg4win来生成相关信息。但是我个人在windows10中并没有能够打开。<br>所以我使用了WSL来生成相关信息。如果你的系统是Linux也可以。</p>
+<ol>
+<li>执行<code>gpg --gen-key</code>, 按照提示的信息填入密码，用户名等信息，这些信息记录下来。这里填入的密码就是上面<code>gradle.properties</code>中的<code>signing.password</code>。</li>
+<li><p>执行<code>gpg --list-keys</code>, 可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/root/.gnupg/pubring.gpg</span><br><span class="line">pub   2048R/B98765 2018-12-08</span><br><span class="line">uid                  </span><br><span class="line">sub 2048R/A123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一行便是对应的公钥文件位置，<code>pug</code>后面的<code>B98765</code>便是public key Id，这个id也就是上面<code>gradle.properties</code>中的<code>signing.keyId</code></p>
+</li>
+<li>执行<code>gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys B98765</code>将公钥发送到<code>hkp://pool.sks-keyservers.net</code>。</li>
+<li>记录下<code>/root/.gnupg/</code>中<code>secring.png</code>的位置，这个位置便是上面<code>gradle.properties</code>中的<code>signing.secretKeyRingFile</code>的值。</li>
+</ol>
+<h2 id="发布过程"><a href="#发布过程" class="headerlink" title="发布过程"></a>发布过程</h2><p>当上述步骤全部完成时，可以直接执行<code>gradle uploadArchives</code>。</p>
+<h3 id="发布Snapshot版本"><a href="#发布Snapshot版本" class="headerlink" title="发布Snapshot版本"></a>发布Snapshot版本</h3><p>如果你的版本是<code>snapshot</code>的，你可以直接在<code>https://oss.sonatype.org/content/repositories/snapshots</code>中看到你的包。</p>
+<h3 id="发布Release版本"><a href="#发布Release版本" class="headerlink" title="发布Release版本"></a>发布Release版本</h3><p>如果你的版本是<code>release</code>版本。<br>登录<code>https://oss.sonatype.org/#welcome</code>,选择<code>Staging Repositories</code>，然后在右边用<code>groupId</code>去搜索。<br>这样会找到你的项目。选中你的项目close然后confirm。过一会再来寻找一次该构建，点击<code>Release</code>在Confirm。过一会就应该能在<code>https://oss.sonatype.org/content/groups/public</code>中看到你的项目了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 效率 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> maven </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[i++ 的线程安全性]]></title>
       <url>https://ivyxjc.xyz/2018/10/09/java/concurrency/2018-10-09-count++-thread-safe/</url>
       <content type="html"><![CDATA[<p>众所周知，++操作并不是线程安全的。这篇文章主要讲述其非线程安全的原因以及相关问题。</p>
@@ -735,22 +860,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Glide源码分析 二]]></title>
-      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
-      <content type="html"></content>
-      
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> project </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Glide源码分析 一]]></title>
       <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-11-30-Glide-source_1/</url>
       <content type="html"><![CDATA[<h2 id="从Glide入口开始"><a href="#从Glide入口开始" class="headerlink" title="从Glide入口开始"></a>从Glide入口开始</h2><p>Glide最简单的用法如下所示</p>
@@ -784,6 +893,22 @@
 <h4 id="ManifestParser"><a href="#ManifestParser" class="headerlink" title="ManifestParser"></a>ManifestParser</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">ManifestParser.java</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String GLIDE_MODULE_VALUE = <span class="string">"GlideModule"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;GlideModule&gt; <span class="title">parse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;GlideModule&gt; modules = <span class="keyword">new</span> ArrayList&lt;GlideModule&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//根据PackageName获取metadata信息</span></span><br><span class="line">        ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(</span><br><span class="line">                context.getPackageName(), PackageManager.GET_META_DATA);</span><br><span class="line">        <span class="comment">//若有metadata信息</span></span><br><span class="line">        <span class="keyword">if</span> (appInfo.metaData != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//遍历metadata</span></span><br><span class="line">            <span class="keyword">for</span> (String key : appInfo.metaData.keySet()) &#123;</span><br><span class="line">                <span class="comment">//将key和GLIDE_MODULE_VALUE相等的全部加入modules 之中</span></span><br><span class="line">                <span class="keyword">if</span> (GLIDE_MODULE_VALUE.equals(appInfo.metaData.get(key))) &#123;</span><br><span class="line">                    modules.add(parseModule(key));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to find metadata to parse GlideModules"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> modules;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过反射获取GlideModule实例</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> GlideModule <span class="title">parseModule</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">    Class&lt;?&gt; clazz;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        clazz = Class.forName(className);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Unable to find GlideModule implementation"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Object <span class="keyword">module</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">module</span> = clazz.newInstance();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InstantiationException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Unable to instantiate GlideModule implementation for "</span> + clazz, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">module</span> <span class="keyword">instanceof</span> GlideModule)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Expected instanceof GlideModule, but found: "</span> + <span class="keyword">module</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (GlideModule) <span class="keyword">module</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过反射的方式获取在Manifest.xml中自定义的GlideModule对象, 获得之后遍历ArrayList<glidemodule>, 对每一个GlideModuled调用相应的applyOptions()和registerComponents()方法.</glidemodule></p>
 ]]></content>
+      
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> project </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Glide源码分析 二]]></title>
+      <url>https://ivyxjc.xyz/2016/11/30/android/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/2016-12-5-Glide-source_2/</url>
+      <content type="html"></content>
       
         
         <tags>
@@ -894,6 +1019,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Builder]]></title>
+      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
+      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
+<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
+<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>场景类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> OO </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> callback </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[观察者模式]]></title>
       <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-observer/</url>
       <content type="html"><![CDATA[<h3 id="被观察者"><a href="#被观察者" class="headerlink" title="被观察者"></a>被观察者</h3><p>所有被观察者都继承Observable接口 ( java标准库中<code>Observable</code>是一个抽象类)</p>
@@ -920,33 +1072,6 @@
         <tags>
             
             <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Builder]]></title>
-      <url>https://ivyxjc.xyz/2016/11/18/design_pattern/2016-11-18-callback/</url>
-      <content type="html"><![CDATA[<p>回调是一种特殊的调用, 调用有三种方式：同步调用, 回调</p>
-<p>回调就是在类A中持有一个接口的对象, 但是并不在A类中实现该接口的方法, 而是交给B类去实现, 但是B本身不会调用该方法, 而是供A类去使用.<br><!--nomore--></p>
-<h2 id="以Button为例"><a href="#以Button为例" class="headerlink" title="以Button为例"></a>以Button为例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Button mButton;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mButton=<span class="keyword">new</span> Button();</span><br><span class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        mButton.doClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IListener</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    IListener mListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnClickListener</span><span class="params">(IListener listener)</span></span>&#123;</span><br><span class="line">        mListener=listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doClick</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mListener.onClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>场景类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Button</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="comment">//        Button button=new Button();</span></span><br><span class="line"><span class="comment">//        button.setOnClickListener(new IListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onClick() &#123;</span></span><br><span class="line"><span class="comment">//                StdOut.println("onClick");</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        button.doClick();</span></span><br><span class="line"></span><br><span class="line">        Activity activity=<span class="keyword">new</span> Activity();</span><br><span class="line">        activity.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">onClick</span><br></pre></td></tr></table></figure>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">Callback</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(A a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">(<span class="keyword">final</span> String question)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        //加一个线程就是异步回调, 把线程去掉直接doSomething就是同步调用</span></span><br><span class="line"><span class="comment">//        new Thread(new Runnable() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void run() &#123;</span></span><br><span class="line">                a.doSomething(A.<span class="keyword">this</span>,question);</span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;).start();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"the answer is "</span>+str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(Callback callback,String question)</span></span>&#123;</span><br><span class="line">        StdOut.println(<span class="string">"A gets question: "</span>+question);</span><br><span class="line">        StdOut.println(<span class="string">"A do something"</span>);</span><br><span class="line">        callback.solve(<span class="string">"solved"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client_Java</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        A a=<span class="keyword">new</span> A();</span><br><span class="line">        B b =<span class="keyword">new</span> B(a);</span><br><span class="line">        b.askQuestion(<span class="string">"a's question"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> OO </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> callback </tag>
             
         </tags>
         
@@ -1011,6 +1136,36 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Raspberry安装]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
+      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
+<ol>
+<li><code>/etc/apt/source.list</code></li>
+<li><code>/etc/apt/source.list.d/raspi.list</code></li>
+</ol>
+<p>将其中的网址换掉即可.</p>
+<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
+<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> generators </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[爬取豆瓣]]></title>
       <url>https://ivyxjc.xyz/2016/10/30/python/Spider/douban/2016-10-30-douban-spider/</url>
       <content type="html"><![CDATA[<p>断断续续谢了一个多星期, 基本上完成了豆瓣的爬虫的编写.</p>
@@ -1040,37 +1195,6 @@
             <tag> spider </tag>
             
             <tag> xml </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[python 生成器函数]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/</url>
-      <content type="html"><![CDATA[<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><p>生成器函数是一个迭代器, 不过只能遍历其一次, 这是因为生成器并不将数据存储在内存之中, 生成完数据后并不保存下来.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">list=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">yield</span> i*i</span><br><span class="line"></span><br><span class="line">gen=createGenerator()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line">out:</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>另外, 生成器函数并不是再调用的时候就运行的, 而是在遍历的时候才运行, 在上述代码中, 意味着生成器函数是在执行<code>for i in gen:</code>时才运行的.</p>
-<p>解释器是如何知道其是生成器函数的呢? 当解释器发现<code>yield</code>时, 就知道该函数是个生成器函数, 它会设置一个标识来标记这一情况, 调用type也可以发现这一情况.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成器标志位在第5位</span></span><br><span class="line">generator_bit=<span class="number">1</span>&lt;&lt;<span class="number">5</span></span><br><span class="line">b=bool(createGenerator.__code__.co_flags &amp; generator_bit)</span><br><span class="line">print(b)</span><br><span class="line">print(type(createGenerator))</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generator</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>参考文章:</p>
-<p><a href="http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html" target="_blank" rel="noopener">A Web Crawler With asyncio Coroutines</a></p>
-<p><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do" target="_blank" rel="noopener">What does the yield keyword do</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> generators </tag>
             
         </tags>
         
@@ -1124,16 +1248,17 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Raspberry安装]]></title>
-      <url>https://ivyxjc.xyz/2016/10/30/python/raspberry/2016-10-30-raspberry-basic/</url>
-      <content type="html"><![CDATA[<h2 id="更改源"><a href="#更改源" class="headerlink" title="更改源"></a>更改源</h2><p>需要更改的地方有两个:</p>
-<ol>
-<li><code>/etc/apt/source.list</code></li>
-<li><code>/etc/apt/source.list.d/raspi.list</code></li>
-</ol>
-<p>将其中的网址换掉即可.</p>
-<h2 id="如何连接局域网中的小米硬盘"><a href="#如何连接局域网中的小米硬盘" class="headerlink" title="如何连接局域网中的小米硬盘"></a>如何连接局域网中的小米硬盘</h2><p>命令行的方式都试了一下, 没找到有效的.</p>
-<p>用的方法是远程桌面连接Raspberry, <code>GO-&gt;Network-&gt;</code>找到硬盘, 然后移动到pi文件下面.</p>
+      <title><![CDATA[python 生成器函数]]></title>
+      <url>https://ivyxjc.xyz/2016/10/30/python/2016-10-30-generator/</url>
+      <content type="html"><![CDATA[<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><p>生成器函数是一个迭代器, 不过只能遍历其一次, 这是因为生成器并不将数据存储在内存之中, 生成完数据后并不保存下来.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">list=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createGenerator</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">yield</span> i*i</span><br><span class="line"></span><br><span class="line">gen=createGenerator()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"---"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">    print(i)</span><br><span class="line">out:</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>另外, 生成器函数并不是再调用的时候就运行的, 而是在遍历的时候才运行, 在上述代码中, 意味着生成器函数是在执行<code>for i in gen:</code>时才运行的.</p>
+<p>解释器是如何知道其是生成器函数的呢? 当解释器发现<code>yield</code>时, 就知道该函数是个生成器函数, 它会设置一个标识来标记这一情况, 调用type也可以发现这一情况.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成器标志位在第5位</span></span><br><span class="line">generator_bit=<span class="number">1</span>&lt;&lt;<span class="number">5</span></span><br><span class="line">b=bool(createGenerator.__code__.co_flags &amp; generator_bit)</span><br><span class="line">print(b)</span><br><span class="line">print(type(createGenerator))</span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generator</span>'&gt;</span></span><br></pre></td></tr></table></figure>
+<p>参考文章:</p>
+<p><a href="http://aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html" target="_blank" rel="noopener">A Web Crawler With asyncio Coroutines</a></p>
+<p><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do" target="_blank" rel="noopener">What does the yield keyword do</a></p>
 ]]></content>
       
         <categories>
@@ -1311,28 +1436,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[mysql基本命令]]></title>
-      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
-      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
-<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
-]]></content>
-      
-        <categories>
-            
-            <category> database </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> database </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[面向对象六大原则(上)]]></title>
       <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_1/</url>
       <content type="html"><![CDATA[<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>单一职责原则(Single Responsibility Principle,SRP)简而言之就是对于一个类或者接口, 引起其改变的应该只能有一个原因. 比如要将负责属性和行为的类分开.</p>
@@ -1415,6 +1518,28 @@
     </entry>
     
     <entry>
+      <title><![CDATA[mysql基本命令]]></title>
+      <url>https://ivyxjc.xyz/2016/10/24/database/2016-11-06-mysql_basic/</url>
+      <content type="html"><![CDATA[<p><code>select count(column_name) from table_name;</code> 计数</p>
+<p><code>UPDATE movie_name SET flag=&#39;1&#39; WHERE movie_id=214143</code> 更新<br><code></code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> database </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> database </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[面向对象六大原则(下)]]></title>
       <url>https://ivyxjc.xyz/2016/10/24/design_pattern/2016-10-24-basic-principle_2/</url>
       <content type="html"><![CDATA[<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principles(ISP)</p>
@@ -1457,6 +1582,34 @@
     </entry>
     
     <entry>
+      <title><![CDATA[selenium + PhantomJS]]></title>
+      <url>https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/</url>
+      <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</span><br><span class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</span><br><span class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></span><br><span class="line">        )</span><br><span class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+            <tag> selenium </tag>
+            
+            <tag> PhantomJS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[利用python解析xml, json]]></title>
       <url>https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-29-xml-parse/</url>
       <content type="html"><![CDATA[<p>##　XML</p>
@@ -1484,34 +1637,6 @@
             <tag> spider </tag>
             
             <tag> xml </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[selenium + PhantomJS]]></title>
-      <url>https://ivyxjc.xyz/2016/10/23/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-10-23-selenium/</url>
-      <content type="html"><![CDATA[<h2 id="初始化WebDriver"><a href="#初始化WebDriver" class="headerlink" title="初始化WebDriver"></a>初始化WebDriver</h2><h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.__driver=webdriver.Chrome(<span class="string">"D:\\applicationsGreen\\chromedriver_win32\\chromedriver"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="PhantomJS"><a href="#PhantomJS" class="headerlink" title="PhantomJS"></a>PhantomJS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</span><br><span class="line">        dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (</span><br><span class="line">            <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span></span><br><span class="line">        )</span><br><span class="line">self.__driver=webdriver.PhantomJS(desired_capabilities=dcap)</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> spider </tag>
-            
-            <tag> selenium </tag>
-            
-            <tag> PhantomJS </tag>
             
         </tags>
         
@@ -1907,6 +2032,38 @@
     </entry>
     
     <entry>
+      <title><![CDATA[CriminalIntent程序中Fragment，Activity通信]]></title>
+      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/</url>
+      <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
+<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</span><br></pre></td></tr></table></figure>
+<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</span><br><span class="line">....</span><br><span class="line">....</span><br><span class="line">UUID crimeId=(UUID)getActivity()</span><br><span class="line">                .getIntent()</span><br><span class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</span><br></pre></td></tr></table></figure>
+<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
+<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ActivityCrime.java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        UUID crimeId=(UUID)getIntent()</span><br><span class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     UUID crimeId=(UUID)getArguments()</span><br><span class="line">             .getSerializable(EXTRA_CRIME_ID);</span><br><span class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     Bundle args=<span class="keyword">new</span> Bundle();</span><br><span class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</span><br><span class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</span><br><span class="line">     fragment.setArguments(args);</span><br><span class="line">     <span class="keyword">return</span> fragment;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_fragment </tag>
+            
+            <tag> android_activity </tag>
+            
+            <tag> android_adapter </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CriminalIntent程序中ListFragment相关内容]]></title>
       <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-ListFragment/</url>
       <content type="html"><![CDATA[<h2 id="定制adapter"><a href="#定制adapter" class="headerlink" title="定制adapter"></a>定制adapter</h2><p>adapter负责：</p>
@@ -1954,38 +2111,6 @@
         <tags>
             
             <tag> faq </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[CriminalIntent程序中Fragment，Activity通信]]></title>
-      <url>https://ivyxjc.xyz/2016/07/06/android/%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/AndroidBigNerdRanceGuide/CriminalIntent%E5%BC%80%E5%8F%91/2016-07-06-CriminalIntent-Intent/</url>
-      <content type="html"><![CDATA[<h2 id="最简单的应用"><a href="#最简单的应用" class="headerlink" title="最简单的应用"></a>最简单的应用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent=<span class="keyword">new</span> Intent(getActivity(), ActivityCrimeBase.class);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-<h2 id="使用extra添加信息"><a href="#使用extra添加信息" class="headerlink" title="使用extra添加信息"></a>使用extra添加信息</h2><h3 id="附加extra信息"><a href="#附加extra信息" class="headerlink" title="附加extra信息"></a>附加extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.putExtra(FragmentCrime.EXTRA_CRIME_ID,c.getId());</span><br></pre></td></tr></table></figure>
-<h3 id="获取extra信息"><a href="#获取extra信息" class="headerlink" title="获取extra信息"></a>获取extra信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_CRIME_ID=<span class="string">"com.jc.criminalIntent2.crime_id"</span>;</span><br><span class="line">....</span><br><span class="line">....</span><br><span class="line">UUID crimeId=(UUID)getActivity()</span><br><span class="line">                .getIntent()</span><br><span class="line">                .getSerializableExtra(EXTRA_CRIME_ID);</span><br></pre></td></tr></table></figure>
-<p>此方法会破坏fragment的封装性，因为这时fragment总是需要由某个具体的activity托管。</p>
-<p>为了解决这一问题，可以就爱你个<code>mCrimeId</code>存放在fragment的arguments bundle中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ActivityCrime.java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityCrime</span> <span class="keyword">extends</span> <span class="title">ActivitySetFragmentBase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Fragment <span class="title">createFragment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        UUID crimeId=(UUID)getIntent()</span><br><span class="line">                .getSerializableExtra(FragmentCrime.EXTRA_CRIME_ID);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> FragmentCrime.newInstance(crimeId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FragmentCrime.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     UUID crimeId=(UUID)getArguments()</span><br><span class="line">             .getSerializable(EXTRA_CRIME_ID);</span><br><span class="line">     mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FragmentCrime <span class="title">newInstance</span><span class="params">(UUID crimeId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     Bundle args=<span class="keyword">new</span> Bundle();</span><br><span class="line">     args.putSerializable(EXTRA_CRIME_ID,crimeId);</span><br><span class="line">     FragmentCrime fragment=<span class="keyword">new</span> FragmentCrime();</span><br><span class="line">     fragment.setArguments(args);</span><br><span class="line">     <span class="keyword">return</span> fragment;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_fragment </tag>
-            
-            <tag> android_activity </tag>
-            
-            <tag> android_adapter </tag>
             
         </tags>
         
@@ -2524,29 +2649,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[python文件处理]]></title>
-      <url>https://ivyxjc.xyz/2016/03/29/python/os/2016-03-29-python-os/</url>
-      <content type="html"><![CDATA[<h2 id="遍历文件夹下所有的文件"><a href="#遍历文件夹下所有的文件" class="headerlink" title="遍历文件夹下所有的文件"></a>遍历文件夹下所有的文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.listdir(path)</span><br></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> Python </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> python </tag>
-            
-            <tag> regex </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[BeautifulSoup4入门]]></title>
       <url>https://ivyxjc.xyz/2016/03/29/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-29-beautiful-soup4-basic/</url>
       <content type="html"><![CDATA[<h2 id="对象的种类"><a href="#对象的种类" class="headerlink" title="对象的种类"></a>对象的种类</h2><p>BeautifulSoup会将HTML文档抓换成一个树形结构, 每个节点都是Python对象，所有对象可以分为4类：<code>Tag</code>,<code>NavigableString</code>,<code>BeautifulSoup</code>,<code>Comment</code>。</p>
@@ -2624,6 +2726,63 @@
     </entry>
     
     <entry>
+      <title><![CDATA[python文件处理]]></title>
+      <url>https://ivyxjc.xyz/2016/03/29/python/os/2016-03-29-python-os/</url>
+      <content type="html"><![CDATA[<h2 id="遍历文件夹下所有的文件"><a href="#遍历文件夹下所有的文件" class="headerlink" title="遍历文件夹下所有的文件"></a>遍历文件夹下所有的文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.listdir(path)</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> regex </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Python Spider入门]]></title>
+      <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-python-spider/</url>
+      <content type="html"><![CDATA[<h2 id="添加header和data"><a href="#添加header和data" class="headerlink" title="添加header和data"></a>添加header和data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line"><span class="comment">#response是一个http.client.HTTPResponse对象</span></span><br><span class="line">print(response.geturl()) <span class="comment">#获取网址</span></span><br><span class="line">print(response.info())  <span class="comment">#获取信息</span></span><br><span class="line">print(response.getcode()) <span class="comment"># http状态码</span></span><br><span class="line"></span><br><span class="line">html=response.read()</span><br></pre></td></tr></table></figure>
+<p><code>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</code><br>1.data参数：the HTTP request will be a POST instead of a GET when the data parameter is provided.data should be a buffer in the standard application/x-www-form-urlencoded format. The urllib.parse.urlencode() function takes a mapping or sequence of 2-tuples and returns a string in this format.<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="string">'type'</span>]=<span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'i'</span>]=content</span><br><span class="line">data[<span class="string">'doctype'</span>]=<span class="string">'json'</span></span><br><span class="line">data[<span class="string">'xmlVersion'</span>]=<span class="number">1.8</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>]=<span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'ue'</span>]=<span class="string">'UTF-8'</span></span><br><span class="line">data[<span class="string">'action'</span>]=<span class="string">'FY_BY_CLICKBUTTON'</span></span><br><span class="line">data[<span class="string">'typoResult'</span>]=<span class="string">'true'</span></span><br><span class="line"></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>2.headers：一个字典，可以直接从浏览器中复制过来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">header=&#123;&#125;</span><br><span class="line"><span class="comment">#添加header的第一种方法</span></span><br><span class="line">header[<span class="string">'User-Agent'</span>]=<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span></span><br><span class="line">request=urllib.request.Request(url,data,header)</span><br><span class="line"><span class="comment">#也可使用以下方法</span></span><br><span class="line">request.add_header(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取Response-Headers"><a href="#获取Response-Headers" class="headerlink" title="获取Response Headers"></a>获取Response Headers</h2><p>下面代码是用来判断 网页是否使用<code>gzip</code>压缩过。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> response.getheaders():</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">0</span>]==<span class="string">"Content-Encoding"</span>:</span><br><span class="line">        <span class="keyword">if</span>(i[<span class="number">-1</span>]==<span class="string">"gzip"</span>):</span><br><span class="line">            html=gzip.decompress(html)</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h2><p>1.参数是一个字典{‘类型’：‘代理ip:端口号’}<br><code>proxy_support=urllib.request.ProxyHandler({})</code><br>2.定制、创建一个openner<br><code>opener=urllib.request.build_opener(proxy_support)
+3a.安装opener</code>urllib.request.install_opener(opener)<code>3b.调用opener</code>opener.open(url)`</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line">urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">req=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(req)</span><br></pre></td></tr></table></figure>
+<h2 id="爬知乎图片"><a href="#爬知乎图片" class="headerlink" title="爬知乎图片"></a>爬知乎图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></span><br><span class="line">    iplist=[</span><br><span class="line">        <span class="string">'49.77.22.1:8118'</span>,</span><br><span class="line">        <span class="string">'58.134.102.3:12696'</span>,</span><br><span class="line">        <span class="string">'120.26.213.55:9999'</span>...]</span><br><span class="line"></span><br><span class="line">    proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">    opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">    opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line"></span><br><span class="line">    urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">    req=urllib.request.Request(url)</span><br><span class="line">    response=urllib.request.urlopen(req)</span><br><span class="line">    html=response.read()</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取图片地址，返回图片地址的list</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imgs</span><span class="params">(url)</span>:</span></span><br><span class="line">    html=url_open(url).decode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    img_address=[]</span><br><span class="line">    a=html.find(<span class="string">'data-original'</span>)</span><br><span class="line">    <span class="keyword">while</span>(a!=<span class="number">-1</span>):</span><br><span class="line">        b=html.find(<span class="string">'.jpg'</span>,a,a+<span class="number">300</span>)</span><br><span class="line">        <span class="keyword">if</span>(b!=<span class="number">-1</span>):</span><br><span class="line">            <span class="comment"># print(html[a+15:b+4])</span></span><br><span class="line">            img_address.append(html[a+<span class="number">15</span>:b+<span class="number">4</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b=a+<span class="number">9</span></span><br><span class="line">        a=html.find(<span class="string">'data-original='</span>,b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_address</span><br><span class="line"></span><br><span class="line"><span class="comment">#存储到本地</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(img_address)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        <span class="comment"># print(i)</span></span><br><span class="line">        filename=i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            img=url_open(i)</span><br><span class="line">            f.write(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zhihuPic</span><span class="params">(url,folder=<span class="string">"zhihu"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(os.path.exists(folder)):</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(folder)</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    img_address=get_imgs(url)</span><br><span class="line">    save_imgs(img_address)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    zhihuPic(<span class="string">"https://www.zhihu.com/question/22070147"</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+            <tag> pythonspider </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[正则表达式（python）]]></title>
       <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-regex/</url>
       <content type="html"><![CDATA[<h2 id="re方法"><a href="#re方法" class="headerlink" title="re方法"></a>re方法</h2><h3 id="re-search"><a href="#re-search" class="headerlink" title="re.search()"></a>re.search()</h3><p><code>re.search(pattern,string,flags=0)</code><br>例：<code>re.search(r&#39;love&#39;,&#39;I love you&#39;)</code></p>
@@ -2685,34 +2844,34 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Python Spider入门]]></title>
-      <url>https://ivyxjc.xyz/2016/03/27/python/Spider/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2016-03-27-python-spider/</url>
-      <content type="html"><![CDATA[<h2 id="添加header和data"><a href="#添加header和data" class="headerlink" title="添加header和data"></a>添加header和data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">request=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(request)</span><br><span class="line"><span class="comment">#response是一个http.client.HTTPResponse对象</span></span><br><span class="line">print(response.geturl()) <span class="comment">#获取网址</span></span><br><span class="line">print(response.info())  <span class="comment">#获取信息</span></span><br><span class="line">print(response.getcode()) <span class="comment"># http状态码</span></span><br><span class="line"></span><br><span class="line">html=response.read()</span><br></pre></td></tr></table></figure>
-<p><code>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</code><br>1.data参数：the HTTP request will be a POST instead of a GET when the data parameter is provided.data should be a buffer in the standard application/x-www-form-urlencoded format. The urllib.parse.urlencode() function takes a mapping or sequence of 2-tuples and returns a string in this format.<br></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="string">'type'</span>]=<span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'i'</span>]=content</span><br><span class="line">data[<span class="string">'doctype'</span>]=<span class="string">'json'</span></span><br><span class="line">data[<span class="string">'xmlVersion'</span>]=<span class="number">1.8</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>]=<span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'ue'</span>]=<span class="string">'UTF-8'</span></span><br><span class="line">data[<span class="string">'action'</span>]=<span class="string">'FY_BY_CLICKBUTTON'</span></span><br><span class="line">data[<span class="string">'typoResult'</span>]=<span class="string">'true'</span></span><br><span class="line"></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
-<p>2.headers：一个字典，可以直接从浏览器中复制过来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">header=&#123;&#125;</span><br><span class="line"><span class="comment">#添加header的第一种方法</span></span><br><span class="line">header[<span class="string">'User-Agent'</span>]=<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span></span><br><span class="line">request=urllib.request.Request(url,data,header)</span><br><span class="line"><span class="comment">#也可使用以下方法</span></span><br><span class="line">request.add_header(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取Response-Headers"><a href="#获取Response-Headers" class="headerlink" title="获取Response Headers"></a>获取Response Headers</h2><p>下面代码是用来判断 网页是否使用<code>gzip</code>压缩过。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> response.getheaders():</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">0</span>]==<span class="string">"Content-Encoding"</span>:</span><br><span class="line">        <span class="keyword">if</span>(i[<span class="number">-1</span>]==<span class="string">"gzip"</span>):</span><br><span class="line">            html=gzip.decompress(html)</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h2><p>1.参数是一个字典{‘类型’：‘代理ip:端口号’}<br><code>proxy_support=urllib.request.ProxyHandler({})</code><br>2.定制、创建一个openner<br><code>opener=urllib.request.build_opener(proxy_support)
-3a.安装opener</code>urllib.request.install_opener(opener)<code>3b.调用opener</code>opener.open(url)`</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line">urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">req=urllib.request.Request(url)</span><br><span class="line">response=urllib.request.urlopen(req)</span><br></pre></td></tr></table></figure>
-<h2 id="爬知乎图片"><a href="#爬知乎图片" class="headerlink" title="爬知乎图片"></a>爬知乎图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></span><br><span class="line">    iplist=[</span><br><span class="line">        <span class="string">'49.77.22.1:8118'</span>,</span><br><span class="line">        <span class="string">'58.134.102.3:12696'</span>,</span><br><span class="line">        <span class="string">'120.26.213.55:9999'</span>...]</span><br><span class="line"></span><br><span class="line">    proxy_support=urllib.request.ProxyHandler(&#123;<span class="string">'http'</span>:random.choice(iplist)&#125;)</span><br><span class="line"></span><br><span class="line">    opener=urllib.request.build_opener(proxy_support)</span><br><span class="line">    opener.addheaders=[(<span class="string">'User-Agent'</span>,<span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'</span>)]</span><br><span class="line"></span><br><span class="line">    urllib.request.install_opener(opener)</span><br><span class="line"></span><br><span class="line">    req=urllib.request.Request(url)</span><br><span class="line">    response=urllib.request.urlopen(req)</span><br><span class="line">    html=response.read()</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取图片地址，返回图片地址的list</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imgs</span><span class="params">(url)</span>:</span></span><br><span class="line">    html=url_open(url).decode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    img_address=[]</span><br><span class="line">    a=html.find(<span class="string">'data-original'</span>)</span><br><span class="line">    <span class="keyword">while</span>(a!=<span class="number">-1</span>):</span><br><span class="line">        b=html.find(<span class="string">'.jpg'</span>,a,a+<span class="number">300</span>)</span><br><span class="line">        <span class="keyword">if</span>(b!=<span class="number">-1</span>):</span><br><span class="line">            <span class="comment"># print(html[a+15:b+4])</span></span><br><span class="line">            img_address.append(html[a+<span class="number">15</span>:b+<span class="number">4</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            b=a+<span class="number">9</span></span><br><span class="line">        a=html.find(<span class="string">'data-original='</span>,b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        print(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_address</span><br><span class="line"></span><br><span class="line"><span class="comment">#存储到本地</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(img_address)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> img_address:</span><br><span class="line">        <span class="comment"># print(i)</span></span><br><span class="line">        filename=i.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            img=url_open(i)</span><br><span class="line">            f.write(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zhihuPic</span><span class="params">(url,folder=<span class="string">"zhihu"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(os.path.exists(folder)):</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(folder)</span><br><span class="line">        os.chdir(folder)</span><br><span class="line">    img_address=get_imgs(url)</span><br><span class="line">    save_imgs(img_address)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    zhihuPic(<span class="string">"https://www.zhihu.com/question/22070147"</span>)</span><br></pre></td></tr></table></figure>
+      <title><![CDATA[跨程序共享数据]]></title>
+      <url>https://ivyxjc.xyz/2016/03/26/android/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/2016-03-26-content-provider/</url>
+      <content type="html"><![CDATA[<p>可以利用<code>getContentResolver()</code>获取<code>ContentResolver</code>. <code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br><a id="more"></a></p>
+<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>通过<code>getContentResolver()</code>获取<code>ContentResolver</code>的实例，<code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br>其中<br> 1.insert() 用于添加<br> 2.update() 用于更新<br> 3.delete() 用于删除<br> 4.query()  用于查询</p>
+<h3 id="内容URI及用法"><a href="#内容URI及用法" class="headerlink" title="内容URI及用法"></a>内容URI及用法</h3><p><code>ContentResolver</code>中的CRUD操作是不接受表名参数的，而是使用一个<code>Uri</code>参数代替。该参数被称为内容<code>URI</code>，由两部分组成：authority和path。<br>内容<code>URI</code>标准写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content://com.example.app.provider/table1</span><br></pre></td></tr></table></figure>
+<p>需要将内容<code>URI</code>解析成<code>Uri</code>对象才可以作为参数传入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri uri=Uri.parse(<span class="string">"content://com.example.app.provider/table1"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,orderBy);</span><br></pre></td></tr></table></figure>
+<p>其它操作与之类似，也和SQLite中的操作相像。<br><img src="/assets/img/posts/content_provider_query.png" alt=""></p>
+<h2 id="自定义ContentProvider"><a href="#自定义ContentProvider" class="headerlink" title="自定义ContentProvider"></a>自定义ContentProvider</h2><p>可以<code>extends ContentProvider</code>，需要覆盖父类的6个方法.</p>
+<p> 1.<code>public boolean onCreate()</code>:初始化ContentProvider时调用，完成对数据库的创建和升级，返回true则表示ContentProvider初始化成功，返回false表示失败。<strong>注意：只有存在<code>ContentResolver</code>尝试访问该程序中的而数据时，ContentProvider才会初始化</strong>。<br> 2.<code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code>：从ContentProvider中查询数据。使用<code>uri</code>参数来确定查询哪一张表，<code>projection</code>用于确定查询哪些列，<code>selection</code>和<code>selectionArgs</code>用来约束查询内容，<code>sordOreder</code>参数用于对结果进行排序，查询结果放在<code>Cursor</code>中返回。<br> 3.<code>public Uri insert(Uri uri, ContentValues values)</code>：向<code>ContentProvider</code>中添加一条数据。<br> 4.<code>public int delete(Uri uri, String selection, String[] selectionArgs)</code>：从<code>ContentProvider</code>中删除数据。<br> 5.<code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code>：更新数据<br> 6.<code>public String getType(Uri uri)</code>:根据传入的内容URI来返回相对应的MIME类型。</p>
+<p>一个内容URI对应的MIME字符串由三部分组成：<br> 1.必须以vnd开头。<br> 2.如果内容URI以路径结尾，则后街<code>androi.cursor.dir/</code>,如果内容URI以id结尾，则后接<code>android.cursor.item/</code>。<br> 3.最后街上<code>vnd.&lt;authority&gt;.&lt;path&gt;</code></p>
+<h2 id="安全性保证"><a href="#安全性保证" class="headerlink" title="安全性保证"></a>安全性保证</h2><p>因为所有的CRUD操作都一定要匹配到相应的内容URI格式才能进行，所以我们可以控制外部程序能够获得的存储内容。</p>
 ]]></content>
       
         <categories>
             
-            <category> Python </category>
+            <category> Android </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> python </tag>
+            <tag> android </tag>
             
-            <tag> spider </tag>
-            
-            <tag> pythonspider </tag>
+            <tag> android_data </tag>
             
         </tags>
         
@@ -2747,40 +2906,6 @@
         <tags>
             
             <tag> android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[跨程序共享数据]]></title>
-      <url>https://ivyxjc.xyz/2016/03/26/android/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/2016-03-26-content-provider/</url>
-      <content type="html"><![CDATA[<p>可以利用<code>getContentResolver()</code>获取<code>ContentResolver</code>. <code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br><a id="more"></a></p>
-<h2 id="ContentProvider"><a href="#ContentProvider" class="headerlink" title="ContentProvider"></a>ContentProvider</h2><p>通过<code>getContentResolver()</code>获取<code>ContentResolver</code>的实例，<code>ContentResolver</code>中提供了一系列方法用于对数据进行CRUD操作.<br>其中<br> 1.insert() 用于添加<br> 2.update() 用于更新<br> 3.delete() 用于删除<br> 4.query()  用于查询</p>
-<h3 id="内容URI及用法"><a href="#内容URI及用法" class="headerlink" title="内容URI及用法"></a>内容URI及用法</h3><p><code>ContentResolver</code>中的CRUD操作是不接受表名参数的，而是使用一个<code>Uri</code>参数代替。该参数被称为内容<code>URI</code>，由两部分组成：authority和path。<br>内容<code>URI</code>标准写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content://com.example.app.provider/table1</span><br></pre></td></tr></table></figure>
-<p>需要将内容<code>URI</code>解析成<code>Uri</code>对象才可以作为参数传入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uri uri=Uri.parse(<span class="string">"content://com.example.app.provider/table1"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cursor cursor=getContentResolver().query(uri,projection,selection,selectionArgs,orderBy);</span><br></pre></td></tr></table></figure>
-<p>其它操作与之类似，也和SQLite中的操作相像。<br><img src="/assets/img/posts/content_provider_query.png" alt=""></p>
-<h2 id="自定义ContentProvider"><a href="#自定义ContentProvider" class="headerlink" title="自定义ContentProvider"></a>自定义ContentProvider</h2><p>可以<code>extends ContentProvider</code>，需要覆盖父类的6个方法.</p>
-<p> 1.<code>public boolean onCreate()</code>:初始化ContentProvider时调用，完成对数据库的创建和升级，返回true则表示ContentProvider初始化成功，返回false表示失败。<strong>注意：只有存在<code>ContentResolver</code>尝试访问该程序中的而数据时，ContentProvider才会初始化</strong>。<br> 2.<code>public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)</code>：从ContentProvider中查询数据。使用<code>uri</code>参数来确定查询哪一张表，<code>projection</code>用于确定查询哪些列，<code>selection</code>和<code>selectionArgs</code>用来约束查询内容，<code>sordOreder</code>参数用于对结果进行排序，查询结果放在<code>Cursor</code>中返回。<br> 3.<code>public Uri insert(Uri uri, ContentValues values)</code>：向<code>ContentProvider</code>中添加一条数据。<br> 4.<code>public int delete(Uri uri, String selection, String[] selectionArgs)</code>：从<code>ContentProvider</code>中删除数据。<br> 5.<code>public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)</code>：更新数据<br> 6.<code>public String getType(Uri uri)</code>:根据传入的内容URI来返回相对应的MIME类型。</p>
-<p>一个内容URI对应的MIME字符串由三部分组成：<br> 1.必须以vnd开头。<br> 2.如果内容URI以路径结尾，则后街<code>androi.cursor.dir/</code>,如果内容URI以id结尾，则后接<code>android.cursor.item/</code>。<br> 3.最后街上<code>vnd.&lt;authority&gt;.&lt;path&gt;</code></p>
-<h2 id="安全性保证"><a href="#安全性保证" class="headerlink" title="安全性保证"></a>安全性保证</h2><p>因为所有的CRUD操作都一定要匹配到相应的内容URI格式才能进行，所以我们可以控制外部程序能够获得的存储内容。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_data </tag>
             
         </tags>
         
@@ -3101,39 +3226,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ProgressBar和ProgressDialog]]></title>
-      <url>https://ivyxjc.xyz/2016/03/09/android/%E6%8E%A7%E4%BB%B6/Bar/2016-03-09-ProgressBar/</url>
-      <content type="html"><![CDATA[<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>可以精确显示进度(可以显示刻度或者百分比)</p>
-<p>不可以精确显示进度()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示两种进度条</span></span><br><span class="line">setProgressBarVisibility(<span class="keyword">true</span>);</span><br><span class="line">setProgressBarIndeterminateVisibility(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
-<p>还可分类为圆圈型，直线型。</p>
-<h2 id="ProgressBar属性"><a href="#ProgressBar属性" class="headerlink" title="ProgressBar属性"></a>ProgressBar属性</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">android:max="100"</span><br><span class="line">android:progress="50"----第一进度</span><br><span class="line">android:secondaryProgress="80"---第二进度</span><br><span class="line">android:indeterminate="true"---设置是否精确显示，true显示不精确显示进度，false表示精确显示进度</span><br></pre></td></tr></table></figure>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">first=progressBar.getProgress();<span class="comment">//获取第一进度条的进度</span></span><br><span class="line">second=progressBar.getSecondaryProgress();<span class="comment">//获取第二进度条的进度</span></span><br><span class="line">max=progressBar.getMax();<span class="comment">//获取进度条的最大进度</span></span><br><span class="line"><span class="keyword">int</span> firstPercent=(<span class="keyword">int</span>)(first/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line"><span class="keyword">int</span> seconPercent=(<span class="keyword">int</span>)(second/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">text.setText(<span class="string">"FirstProgress"</span>+firstPercent+<span class="string">"%  SecondProgress"</span>+seconPercent+<span class="string">"%"</span>);</span><br><span class="line"></span><br><span class="line">addButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">reduceButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">resetButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (v.getId())&#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add:&#123;</span><br><span class="line">            first+=<span class="number">5</span>;</span><br><span class="line">            second+=<span class="number">5</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> R.id.reduce:&#123;</span><br><span class="line">            first-=<span class="number">5</span>;</span><br><span class="line">            second-=<span class="number">5</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> R.id.reset:&#123;</span><br><span class="line">            first=<span class="number">0</span>;</span><br><span class="line">            second=<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span>:&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//也可使用incrementProgress</span></span><br><span class="line">    progressBar.setProgress(first);</span><br><span class="line">    progressBar.setSecondaryProgress(second);</span><br><span class="line">    <span class="keyword">int</span> firstPercent=(<span class="keyword">int</span>)(first/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">int</span> seconPercent=(<span class="keyword">int</span>)(second/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">    text.setText(<span class="string">"FirstProgress"</span> + firstPercent + <span class="string">"%  SecondProgress"</span> + seconPercent+<span class="string">"%"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://oezmbgg4j.bkt.clouddn.com/progressbar.gif" alt=""></p>
-<h2 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/showDialog"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"Dialog"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> R.id.showDialog:&#123;</span><br><span class="line">    <span class="comment">//新建ProgressDialog的对象</span></span><br><span class="line">    prodialog=<span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置显示风格</span></span><br><span class="line">    prodialog.setProgress(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    prodialog.setTitle(<span class="string">"IVYXJC"</span>);</span><br><span class="line">    <span class="comment">//设置对话框文本</span></span><br><span class="line">    prodialog.setMessage(<span class="string">"Welcome to ProgressDialog"</span>);</span><br><span class="line">    <span class="comment">//设置图标</span></span><br><span class="line">    prodialog.setIcon(android.R.drawable.ic_dialog_alert);</span><br><span class="line">    <span class="comment">//设定最大进度</span></span><br><span class="line">    prodialog.setMax(<span class="number">100</span>);</span><br><span class="line">    <span class="comment">//设定初始化已经增长到的进度</span></span><br><span class="line">    prodialog.incrementProgressBy(<span class="number">50</span>);</span><br><span class="line">    <span class="comment">//进度条是明确显示进度的</span></span><br><span class="line">    prodialog.setIndeterminate(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设定一个确定按钮</span></span><br><span class="line">    prodialog.setButton(DialogInterface.BUTTON_POSITIVE,<span class="string">"确定"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"欢迎"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    prodialog.show();</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://oezmbgg4j.bkt.clouddn.com/progressdialog.gif" alt=""></p>
-<h2 id="自定义ProgressBar的样式"><a href="#自定义ProgressBar的样式" class="headerlink" title="自定义ProgressBar的样式"></a>自定义ProgressBar的样式</h2><p>ProgressBar的样式是可以自定义的，可参考默认的样式更改。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> android </tag>
-            
-            <tag> android_bar </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Fragment初步]]></title>
       <url>https://ivyxjc.xyz/2016/03/09/android/UI%E7%9B%B8%E5%85%B3/Fragment/2016-03-09-Fragment-basic/</url>
       <content type="html"><![CDATA[<h2 id="Fragment概要"><a href="#Fragment概要" class="headerlink" title="Fragment概要"></a>Fragment概要</h2><p><img src="http://oezmbgg4j.bkt.clouddn.com/fragmentIntro.png" alt=""></p>
@@ -3181,6 +3273,39 @@
             <tag> android_UI </tag>
             
             <tag> android_fragment </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ProgressBar和ProgressDialog]]></title>
+      <url>https://ivyxjc.xyz/2016/03/09/android/%E6%8E%A7%E4%BB%B6/Bar/2016-03-09-ProgressBar/</url>
+      <content type="html"><![CDATA[<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>可以精确显示进度(可以显示刻度或者百分比)</p>
+<p>不可以精确显示进度()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示两种进度条</span></span><br><span class="line">setProgressBarVisibility(<span class="keyword">true</span>);</span><br><span class="line">setProgressBarIndeterminateVisibility(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<p>还可分类为圆圈型，直线型。</p>
+<h2 id="ProgressBar属性"><a href="#ProgressBar属性" class="headerlink" title="ProgressBar属性"></a>ProgressBar属性</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">android:max="100"</span><br><span class="line">android:progress="50"----第一进度</span><br><span class="line">android:secondaryProgress="80"---第二进度</span><br><span class="line">android:indeterminate="true"---设置是否精确显示，true显示不精确显示进度，false表示精确显示进度</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">first=progressBar.getProgress();<span class="comment">//获取第一进度条的进度</span></span><br><span class="line">second=progressBar.getSecondaryProgress();<span class="comment">//获取第二进度条的进度</span></span><br><span class="line">max=progressBar.getMax();<span class="comment">//获取进度条的最大进度</span></span><br><span class="line"><span class="keyword">int</span> firstPercent=(<span class="keyword">int</span>)(first/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line"><span class="keyword">int</span> seconPercent=(<span class="keyword">int</span>)(second/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">text.setText(<span class="string">"FirstProgress"</span>+firstPercent+<span class="string">"%  SecondProgress"</span>+seconPercent+<span class="string">"%"</span>);</span><br><span class="line"></span><br><span class="line">addButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">reduceButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">resetButton.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (v.getId())&#123;</span><br><span class="line">        <span class="keyword">case</span> R.id.add:&#123;</span><br><span class="line">            first+=<span class="number">5</span>;</span><br><span class="line">            second+=<span class="number">5</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> R.id.reduce:&#123;</span><br><span class="line">            first-=<span class="number">5</span>;</span><br><span class="line">            second-=<span class="number">5</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> R.id.reset:&#123;</span><br><span class="line">            first=<span class="number">0</span>;</span><br><span class="line">            second=<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span>:&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//也可使用incrementProgress</span></span><br><span class="line">    progressBar.setProgress(first);</span><br><span class="line">    progressBar.setSecondaryProgress(second);</span><br><span class="line">    <span class="keyword">int</span> firstPercent=(<span class="keyword">int</span>)(first/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">    <span class="keyword">int</span> seconPercent=(<span class="keyword">int</span>)(second/(<span class="keyword">float</span>)max*<span class="number">100</span>);</span><br><span class="line">    text.setText(<span class="string">"FirstProgress"</span> + firstPercent + <span class="string">"%  SecondProgress"</span> + seconPercent+<span class="string">"%"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/progressbar.gif" alt=""></p>
+<h2 id="ProgressDialog"><a href="#ProgressDialog" class="headerlink" title="ProgressDialog"></a>ProgressDialog</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/showDialog"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">"Dialog"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> R.id.showDialog:&#123;</span><br><span class="line">    <span class="comment">//新建ProgressDialog的对象</span></span><br><span class="line">    prodialog=<span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//设置显示风格</span></span><br><span class="line">    prodialog.setProgress(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    prodialog.setTitle(<span class="string">"IVYXJC"</span>);</span><br><span class="line">    <span class="comment">//设置对话框文本</span></span><br><span class="line">    prodialog.setMessage(<span class="string">"Welcome to ProgressDialog"</span>);</span><br><span class="line">    <span class="comment">//设置图标</span></span><br><span class="line">    prodialog.setIcon(android.R.drawable.ic_dialog_alert);</span><br><span class="line">    <span class="comment">//设定最大进度</span></span><br><span class="line">    prodialog.setMax(<span class="number">100</span>);</span><br><span class="line">    <span class="comment">//设定初始化已经增长到的进度</span></span><br><span class="line">    prodialog.incrementProgressBy(<span class="number">50</span>);</span><br><span class="line">    <span class="comment">//进度条是明确显示进度的</span></span><br><span class="line">    prodialog.setIndeterminate(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设定一个确定按钮</span></span><br><span class="line">    prodialog.setButton(DialogInterface.BUTTON_POSITIVE,<span class="string">"确定"</span>,<span class="keyword">new</span> DialogInterface.OnClickListener()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"欢迎"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    prodialog.show();</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://oezmbgg4j.bkt.clouddn.com/progressdialog.gif" alt=""></p>
+<h2 id="自定义ProgressBar的样式"><a href="#自定义ProgressBar的样式" class="headerlink" title="自定义ProgressBar的样式"></a>自定义ProgressBar的样式</h2><p>ProgressBar的样式是可以自定义的，可参考默认的样式更改。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> android </tag>
+            
+            <tag> android_bar </tag>
             
         </tags>
         
